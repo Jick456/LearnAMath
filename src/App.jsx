@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import Avatar from './components/Avatar';
 import TopicSelector from './components/TopicSelector';
 import RewardModal from './components/RewardModal';
@@ -252,6 +253,7 @@ function App() {
     <BrowserRouter>
       <UserProgressProvider>
         <MainApp />
+        <Analytics />
       </UserProgressProvider>
     </BrowserRouter>
   );
