@@ -28,10 +28,11 @@
   --accent-info: #7da2a9;
   /* Misty mountain lake */
 
-  --text-main: #2c3e38;
-  /* Deep tea leaf green/gray */
-  --text-muted: #6b7a74;
-  --text-dark: #192b23;
+  --text-main: #1a2622;
+  /* Darker tea leaf for better contrast */
+  --text-muted: #54635d;
+  /* Darker muted text for WCAG compliance */
+  --text-dark: #0d1a15;
 
   /* Typography */
   --font-heading: 'Outfit', sans-serif;
@@ -62,11 +63,24 @@
   --surface-hover: rgba(40, 55, 48, 0.85);
   --surface-border: rgba(140, 179, 105, 0.15);
 
-  --text-main: #f0f4f1;
-  --text-muted: #9baaa3;
+  --text-main: #f8faf9;
+  --text-muted: #b0bfb8;
+  /* Slightly brighter for dark theme contrast */
+
+  --secondary: #e2c9a1;
+  /* Brighter gold for dark background */
+  --accent-warning: #fbbf24;
 
   --primary-glow: rgba(140, 179, 105, 0.2);
   --secondary-glow: rgba(212, 184, 138, 0.2);
+}
+
+:root:not(.light-mode) {
+  /* Only apply to the default light theme (Matcha Ivory) */
+  --secondary: #b89a68;
+  /* Darkened bamboo for light bg */
+  --accent-warning: #947119;
+  /* Darkened honey for light bg */
 }
 
 /* Thematic Background Classes */

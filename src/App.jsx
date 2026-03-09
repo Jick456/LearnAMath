@@ -24,7 +24,7 @@ import 'katex/dist/katex.min.css';
 
 function MainApp() {
   const {
-    user, setUser, xp, level, maxXp, theme, toggleTheme,
+    user, setUser, logout, xp, level, maxXp, theme, toggleTheme,
     unlockedCharacters, activeCharacter, setActiveCharacter, claimCharacter,
     activeLevel, setActiveLevel, userStream, setUserStream,
     weaknesses, gainXp, markWeakness, resolveWeakness,
@@ -65,6 +65,11 @@ function MainApp() {
   const handleAccountSetupComplete = (lvl) => {
     setUserStream(lvl);
     navigate('/home');
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
   };
 
   const handleStartTopic = (topicId) => {
@@ -117,9 +122,25 @@ function MainApp() {
             <Button variant="secondary" onClick={toggleTheme} style={{ padding: '6px', borderRadius: '50%', minWidth: '40px', height: '40px' }}>
               {theme === 'dark' ? '☀️' : '🌙'}
             </Button>
-            <div className="flex items-center gap-2 text-sm sm:text-base">
-              <span style={{ fontWeight: 600, color: 'var(--accent-warning)' }}>Lvl {level}</span>
-              <span style={{ color: 'var(--primary-hover)', fontWeight: 600 }}>{xp}/{maxXp} XP</span>
+
+            <div className="flex items-center gap-3 glass-panel" style={{ padding: '4px 12px 4px 6px', borderRadius: 'var(--radius-full)' }}>
+              {user.picture ? (
+                <img src={user.picture} alt={user.name} style={{ width: '32px', height: '32px', borderRadius: '50%', border: '2px solid var(--primary)' }} />
+              ) : (
+                <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '12px' }}>
+                  {user.name?.[0] || 'A'}
+                </div>
+              )}
+              <div className="flex items-center gap-2 text-sm">
+                <span style={{ fontWeight: 600, color: 'var(--accent-warning)' }}>Lvl {level}</span>
+              </div>
+              <button
+                onClick={handleLogout}
+                style={{ fontSize: '0.8rem', color: 'var(--accent-error)', marginLeft: '4px', textDecoration: 'underline', border: 'none', background: 'none', cursor: 'pointer' }}
+                title="Sign Out"
+              >
+                Logout
+              </button>
             </div>
           </div>
         </header>

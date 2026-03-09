@@ -1,31 +1,56 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import { googleLogout } from '@react-oauth/google';
 import { gachaCharacters, getCharacterStage } from '../data/characters';
 import analytics from '../utils/analytics';
 
 const UserProgressContext = createContext();
 
 export function UserProgressProvider({ children }) {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => {
+        const saved = localStorage.getItem('learnamath_user');
+        return saved ? JSON.parse(saved) : null;
+    });
 
     // Progress State
-    const [xp, setXp] = useState(0);
-    const [level, setLevel] = useState(1);
-    const [weaknesses, setWeaknesses] = useState([]);
+    const [xp, setXp] = useState(() => Number(localStorage.getItem('learnamath_xp')) || 0);
+    const [level, setLevel] = useState(() => Number(localStorage.getItem('learnamath_level')) || 1);
+    const [weaknesses, setWeaknesses] = useState(() => JSON.parse(localStorage.getItem('learnamath_weaknesses') || '[]'));
 
     // Settings & Preferences
-    const [activeLevel, setActiveLevel] = useState('Sec 1');
-    const [userStream, setUserStream] = useState('G3');
-    const [theme, setTheme] = useState('dark');
+    const [activeLevel, setActiveLevel] = useState(() => localStorage.getItem('learnamath_activeLevel') || 'Sec 1');
+    const [userStream, setUserStream] = useState(() => localStorage.getItem('learnamath_userStream') || 'G3');
+    const [theme, setTheme] = useState(() => localStorage.getItem('learnamath_theme') || 'dark');
 
     // Inventory State
-    const [unlockedCharacters, setUnlockedCharacters] = useState([gachaCharacters[0]]);
-    const [activeCharacter, setActiveCharacter] = useState(gachaCharacters[0]);
+    const [unlockedCharacters, setUnlockedCharacters] = useState(() => {
+        const saved = JSON.parse(localStorage.getItem('learnamath_unlocked') || 'null');
+        return saved || [gachaCharacters[0]];
+    });
+    const [activeCharacter, setActiveCharacter] = useState(() => {
+        const savedId = localStorage.getItem('learnamath_activeCharId');
+        return gachaCharacters.find(c => c.id === savedId) || gachaCharacters[0];
+    });
 
     // UI Modals global state
     const [showReward, setShowReward] = useState(false);
     const [rewardData, setRewardData] = useState({ title: '', text: '', emoji: '' });
 
     const maxXp = level * 100;
+
+    // Persistence Effect
+    useEffect(() => {
+        if (user) localStorage.setItem('learnamath_user', JSON.stringify(user));
+        else localStorage.removeItem('learnamath_user');
+
+        localStorage.setItem('learnamath_xp', xp);
+        localStorage.setItem('learnamath_level', level);
+        localStorage.setItem('learnamath_weaknesses', JSON.stringify(weaknesses));
+        localStorage.setItem('learnamath_activeLevel', activeLevel);
+        localStorage.setItem('learnamath_userStream', userStream);
+        localStorage.setItem('learnamath_theme', theme);
+        localStorage.setItem('learnamath_unlocked', JSON.stringify(unlockedCharacters));
+        localStorage.setItem('learnamath_activeCharId', activeCharacter.id);
+    }, [user, xp, level, weaknesses, activeLevel, userStream, theme, unlockedCharacters, activeCharacter]);
 
     useEffect(() => {
         if (theme === 'light') {
@@ -36,6 +61,13 @@ export function UserProgressProvider({ children }) {
     }, [theme]);
 
     const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+
+    const logout = () => {
+        googleLogout();
+        setUser(null);
+        // We keep progress locally for now, or we could clear it. 
+        // For an educational app, keeping locally but signing out of profile is usually safer.
+    };
 
     const gainXp = (amount) => {
         let newXp = xp + amount;
@@ -96,7 +128,7 @@ export function UserProgressProvider({ children }) {
     };
 
     const val = {
-        user, setUser,
+        user, setUser, logout,
         xp, level, maxXp, gainXp,
         weaknesses, setWeaknesses, markWeakness, resolveWeakness,
         activeLevel, setActiveLevel,
