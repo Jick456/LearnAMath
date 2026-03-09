@@ -1,0 +1,232 @@
+/* Button Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all var(--transition-bounce);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.btn:hover::after {
+    opacity: 1;
+}
+
+
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 0 30px var(--primary-glow), 0 0 10px var(--primary-hover);
+    /* Transform handled by framer-motion */
+}
+
+.btn-secondary {
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    color: var(--text-main);
+}
+
+.btn-secondary:hover {
+    background: var(--surface-hover);
+    border-color: var(--primary);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    /* Transform handled by framer-motion */
+}
+
+/* Card Styles */
+.card {
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    transition: all var(--transition-bounce);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+    border-color: var(--primary-glow);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5), inset 0 0 20px var(--primary-glow);
+    /* Transform handled by framer-motion */
+}
+
+.glow-on-hover:hover {
+    box-shadow: 0 0 30px var(--accent-glow);
+}
+
+/* Progress Bar Styles */
+.progress-container {
+    width: 100%;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--surface-border);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: var(--radius-full);
+    transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Math Rendering Styles */
+.math-text-container {
+    width: 100%;
+}
+
+.math-span {
+    display: inline-block;
+    padding: 0 4px;
+    color: var(--primary-hover);
+    font-weight: 500;
+}
+
+.math-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-4);
+    margin: var(--space-4) 0;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-lg);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+    overflow-x: auto;
+    color: #e2e8f0;
+    font-size: 1.15em;
+}
+
+.light-mode .math-block {
+    background: rgba(241, 245, 249, 0.5);
+    color: #1e293b;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.text-span {
+    vertical-align: middle;
+}
+
+.question-text {
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-main);
+}
+
+.option-btn {
+    transition: all 0.2s ease;
+    border: 1px solid var(--surface-border);
+    background: var(--surface);
+    color: var(--text-main);
+}
+
+.option-btn:hover:not(:disabled) {
+    background: var(--surface-hover);
+    border-color: var(--primary);
+    transform: translateX(5px);
+}
+
+.option-btn-active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary-glow);
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+/* Avatar Styles */
+.avatar-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--surface-hover) 0%, transparent 70%);
+    animation: pulse-glow 3s infinite;
+}
+
+.avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.6));
+    animation: float 4s ease-in-out infinite;
+}
+
+.level-badge {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    background: var(--accent-warning);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid var(--bg-dark);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}

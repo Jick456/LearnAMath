@@ -1,0 +1,254 @@
+:root {
+  /* Color Palette - Serene Mountain Tea */
+  --bg-dark: #fbf9f4;
+  /* Warm ivory/rice paper */
+  --bg-gradient: linear-gradient(135deg, #fbf9f4 0%, #eef0e5 100%);
+  /* Soft misty morning */
+
+  /* Soft frosted glass */
+  --surface: rgba(255, 255, 255, 0.75);
+  --surface-hover: rgba(255, 255, 255, 0.9);
+  --surface-border: rgba(200, 210, 190, 0.4);
+
+  --primary: #8cb369;
+  /* Matcha Green */
+  --primary-hover: #7b995b;
+  --primary-glow: rgba(140, 179, 105, 0.4);
+
+  --secondary: #d4b88a;
+  /* Bamboo Gold */
+  --secondary-glow: rgba(212, 184, 138, 0.4);
+
+  --accent-success: #6ba867;
+  /* Soft Sage */
+  --accent-warning: #eab308;
+  /* Warm honey */
+  --accent-error: #e07a5f;
+  /* Soft terra-cotta pink */
+  --accent-info: #7da2a9;
+  /* Misty mountain lake */
+
+  --text-main: #2c3e38;
+  /* Deep tea leaf green/gray */
+  --text-muted: #6b7a74;
+  --text-dark: #192b23;
+
+  /* Typography */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: clamp(1rem, 4vw, 1.5rem);
+  --space-8: clamp(1.5rem, 6vw, 2rem);
+  --space-12: clamp(2rem, 8vw, 3rem);
+
+  /* Fluid Typography */
+  --font-size-base: clamp(0.9rem, 2vw, 1rem);
+  --font-size-h1: clamp(2.5rem, 8vw, 4.5rem);
+  --font-size-h2: clamp(2rem, 6vw, 3rem);
+  --font-size-h3: clamp(1.4rem, 4vw, 1.8rem);
+}
+
+.light-mode {
+  /* This acts as Dark Mode for the Serene theme to invert it beautifully */
+  --bg-dark: #121815;
+  /* Deep forest night */
+  --bg-gradient: linear-gradient(135deg, #121815 0%, #1e2825 100%);
+  --surface: rgba(30, 40, 35, 0.65);
+  --surface-hover: rgba(40, 55, 48, 0.85);
+  --surface-border: rgba(140, 179, 105, 0.15);
+
+  --text-main: #f0f4f1;
+  --text-muted: #9baaa3;
+
+  --primary-glow: rgba(140, 179, 105, 0.2);
+  --secondary-glow: rgba(212, 184, 138, 0.2);
+}
+
+/* Thematic Background Classes */
+.theme-forest {
+  --bg-gradient: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+}
+
+.light-mode.theme-forest {
+  --bg-gradient: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+}
+
+.theme-glacier {
+  --bg-gradient: linear-gradient(135deg, #0c4a6e 0%, #082f49 100%);
+}
+
+.light-mode.theme-glacier {
+  --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+}
+
+.theme-abyss {
+  --bg-gradient: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
+}
+
+.light-mode.theme-abyss {
+  --bg-gradient: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+}
+
+.theme-volcano {
+  --bg-gradient: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
+}
+
+.light-mode.theme-volcano {
+  --bg-gradient: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+}
+
+.theme-sky {
+  --bg-gradient: linear-gradient(135deg, #4c1d95 0%, #2e1065 100%);
+}
+
+.light-mode.theme-sky {
+  --bg-gradient: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.5s ease;
+  font-size: var(--font-size-base);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Base Layout Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-2 {
+  gap: var(--space-2);
+}
+
+.gap-4 {
+  gap: var(--space-4);
+}
+
+.gap-6 {
+  gap: var(--space-6);
+}
+
+.gap-8 {
+  gap: var(--space-8);
+}
+
+.w-full {
+  width: 100%;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--surface);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* Animations & Effects */
+.glow-text {
+  text-shadow: 0 0 10px var(--primary-glow);
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Responsive Grid Overrides */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+
+  .flex-mobile-col {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --space-8: 1.25rem;
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "short_name": "LearnAMath",
+    "name": "LearnAMath: Gamified A-Math Mastery",
+    "icons": [
+        {
+            "src": "/vite.svg",
+            "type": "image/svg+xml",
+            "sizes": "any"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#fbf9f4",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#8cb369",
+    "description": "Master Additional Mathematics with interactive gamified learning."
+}

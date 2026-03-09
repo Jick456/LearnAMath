@@ -1,0 +1,48 @@
+# Build and Dependencies
+node_modules
+dist
+dist-ssr
+*.local
+temp_build/
+.pdf_venv/
+
+# Environment and Data
+.env
+.env.*
+!.env.example
+
+# Temporary Migration Scripts, Data Fragments, and PDFs
+*.cjs
+*.js.bak
+*.py
+*.txt
+*.pdf
+# Specifically exclude root level data fragments
+am_questions.js
+am_topics.js
+g2_sec1_questions.js
+g2_sec1_topics.js
+g2_sec2_questions.js
+g2_sec34_questions.js
+test_parse*.js
+
+# Protect Source and Config
+!src/
+!public/
+!*.config.js
+!package.json
+!package-lock.json
+!index.html
+!README.md
+!.gitignore
+
+# IDE and System
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
