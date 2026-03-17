@@ -6,7 +6,8 @@ import Button from './Button';
 export default function StoryAnimation({ topic, pet, onComplete }) {
     const [step, setStep] = useState(0);
 
-    const dialogs = [
+    // Use specific story segments if they exist, otherwise fallback to generic
+    const dialogs = topic.storySegments || [
         { text: `Welcome to ${topic.location}, Arithmancer!`, character: pet.name },
         { text: topic.storyline, character: pet.name },
         { text: "Are you ready to cast your Proofs, defeat the Irrational, and restore this island?", character: pet.name }
@@ -35,9 +36,16 @@ export default function StoryAnimation({ topic, pet, onComplete }) {
                         repeat: Infinity,
                         ease: "easeInOut"
                     }}
-                    style={{ fontSize: '8rem', zIndex: 2, marginBottom: '-20px' }}
+                    style={{ zIndex: 2, marginBottom: '-20px' }}
                 >
-                    {pet.emoji}
+                    <img
+                        src={pet.image}
+                        alt={pet.name}
+                        style={{
+                            width: 'clamp(150px, 40vw, 250px)',
+                            filter: "drop-shadow(0 0 20px " + topic.color + "88)"
+                        }}
+                    />
                 </motion.div>
 
                 {/* The Dialog Box */}
@@ -55,7 +63,8 @@ export default function StoryAnimation({ topic, pet, onComplete }) {
                             border: `2px solid ${topic.color}`,
                             boxShadow: `0 0 20px ${topic.color}44`,
                             position: 'relative',
-                            textAlign: 'center'
+                            textAlign: 'center',
+                            zIndex: 3
                         }}
                     >
                         <div style={{ position: 'absolute', top: '-15px', left: '20px', backgroundColor: topic.color, padding: '2px 12px', borderRadius: 'full', fontSize: '0.8rem', fontWeight: 'bold' }}>

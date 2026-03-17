@@ -3,6 +3,7 @@ import Card from './Card';
 import Button from './Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import analytics from '../utils/analytics';
+import DOMPurify from 'dompurify';
 
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -53,7 +54,7 @@ const FormatMathText = ({ text }) => {
                                                     key={`inline-text-${i}-${j}`}
                                                     className="text-span"
                                                     dangerouslySetInnerHTML={{
-                                                        __html: inlinePart.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                                                        __html: DOMPurify.sanitize(inlinePart.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'))
                                                     }}
                                                 />
                                             );

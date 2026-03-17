@@ -6,9 +6,19 @@ import analytics from '../utils/analytics';
 const UserProgressContext = createContext();
 
 export function UserProgressProvider({ children }) {
+    // Simple obfuscation to prevent casual reading of PII in localStorage
+    const encodeData = (data) => btoa(JSON.stringify(data));
+    const decodeData = (encoded) => {
+        try {
+            return JSON.parse(atob(encoded));
+        } catch (e) {
+            return null;
+        }
+    };
+
     const [user, setUser] = useState(() => {
-        const saved = localStorage.getItem('learnamath_user');
-        return saved ? JSON.parse(saved) : null;
+        const saved = localStorage.getItem('learnamath_user_v2');
+        return saved ? decodeData(saved) : null;
     });
 
     // Progress State
@@ -39,8 +49,8 @@ export function UserProgressProvider({ children }) {
 
     // Persistence Effect
     useEffect(() => {
-        if (user) localStorage.setItem('learnamath_user', JSON.stringify(user));
-        else localStorage.removeItem('learnamath_user');
+        if (user) localStorage.setItem('learnamath_user_v2', encodeData(user));
+        else localStorage.removeItem('learnamath_user_v2');
 
         localStorage.setItem('learnamath_xp', xp);
         localStorage.setItem('learnamath_level', level);

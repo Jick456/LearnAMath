@@ -3,6 +3,7 @@ import Card from './Card';
 import Button from './Button';
 import { motion, AnimatePresence } from 'framer-motion';
 import analytics from '../utils/analytics';
+import DOMPurify from 'dompurify';
 
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -53,7 +54,7 @@ const FormatMathText = ({ text }) => {
                                                     key={`inline-text-${i}-${j}`}
                                                     className="text-span"
                                                     dangerouslySetInnerHTML={{
-                                                        __html: inlinePart.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                                                        __html: DOMPurify.sanitize(inlinePart.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'))
                                                     }}
                                                 />
                                             );
@@ -94,7 +95,8 @@ const FormatMathText = ({ text }) => {
 };
 
 export default function QuestionInterface({ questionsObj, onComplete, onGainXp, onMissedQuestion, isWeaknessMode, activeCharacter }) {
-    const [phase, setPhase] = useState(isWeaknessMode ? 'testing' : 'learning');
+    const [difficulty, setDifficulty] = useState(null);
+    const [phase, setPhase] = useState(isWeaknessMode ? 'testing' : 'difficulty-select');
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
     const [hasAnswered, setHasAnswered] = useState(false);
@@ -103,14 +105,69 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
 
     // Safely extract the questions list depending on the phase
     const getQuestionsList = () => {
-        if (phase === 'review') return testAnswers.map(a => a.question);
+        if (phase === 'review' || phase === 'difficulty-select') return [];
         const rawList = isWeaknessMode ? questionsObj : (questionsObj ? (questionsObj[phase] || []) : []);
 
-        // Sort by difficulty: easy -> medium -> hard
+        // If a difficulty is selected, filter by it
+        if (difficulty && !isWeaknessMode) {
+            const filtered = rawList.filter(q => q.difficulty === difficulty);
+            // If we have at least 5 questions for this difficulty, use it. 
+            // Otherwise fallback to showing all but weighted by proximity.
+            if (filtered.length > 0) return filtered;
+        }
+
+        // Default: Sort by difficulty: easy -> medium -> hard
         const weight = { 'easy': 1, 'medium': 2, 'hard': 3 };
         return [...rawList].sort((a, b) => (weight[a.difficulty] || 2) - (weight[b.difficulty] || 2));
     };
+
     const questionsList = getQuestionsList();
+
+    const handleStartDifficulty = (diff) => {
+        setDifficulty(diff);
+        setPhase('learning');
+        setCurrentIndex(0);
+    };
+
+    if (phase === 'difficulty-select' && !isWeaknessMode) {
+        return (
+            <div className="flex flex-col items-center gap-8 w-full max-w-[800px] mx-auto" style={{ animation: 'fadeIn 0.5s ease' }}>
+                <h2 className="glow-text" style={{ fontSize: '2.5rem' }}>Choose Your Tier</h2>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-6)', width: '100%' }}>
+                    {[
+                        { id: 'easy', label: 'Apprentice', color: 'var(--accent-success)', desc: 'Fundamental concepts & simple proofs.' },
+                        { id: 'medium', label: 'Journeyman', color: 'var(--accent-warning)', desc: 'Complex logic & multi-step variables.' },
+                        { id: 'hard', label: 'Grandmaster', color: 'var(--accent-error)', desc: 'Recursive challenges & abstract axioms.' }
+                    ].map(tier => (
+                        <Card
+                            key={tier.id}
+                            style={{
+                                padding: 'var(--space-6)',
+                                borderTop: `6px solid ${tier.color}`,
+                                cursor: 'pointer',
+                                transition: 'transform 0.2s ease',
+                                height: '100%',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'space-between'
+                            }}
+                            className="glass-panel"
+                            onClick={() => handleStartDifficulty(tier.id)}
+                            hoverEffect
+                        >
+                            <div>
+                                <h3 style={{ color: tier.color, marginBottom: 'var(--space-2)' }}>{tier.label}</h3>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{tier.desc}</p>
+                            </div>
+                            <Button style={{ marginTop: 'var(--space-4)', width: '100%', backgroundColor: tier.color }}>
+                                Select {tier.id}
+                            </Button>
+                        </Card>
+                    ))}
+                </div>
+            </div>
+        );
+    }
 
     // Handle empty or exhausted question lists
     if (!questionsList || questionsList.length === 0) {

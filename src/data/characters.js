@@ -17,7 +17,7 @@ export const gachaCharacters = [
         ]
     },
     {
-        id: 'aqua', image: aquaIcon, name: 'Aqua Sylph', rarity: 'Rare', color: '#8dd3c7', // Soft minty aqua
+        id: 'aqua', image: aquaIcon, name: 'Aqua Sylph', rarity: 'Common', color: '#8dd3c7', // Soft minty aqua
         stages: [
             { levelThreshold: 1, image: aquaIcon, name: 'Aqua Droplet' },
             { levelThreshold: 5, image: aquaIcon, name: 'Aqua Sylph' },
@@ -33,7 +33,7 @@ export const gachaCharacters = [
         ]
     },
     {
-        id: 'ignis', image: ignisIcon, name: 'Phoenix of Variables', rarity: 'Epic', color: '#fdcdac', // Soft warm peach
+        id: 'ignis', image: ignisIcon, name: 'Phoenix of Variables', rarity: 'Rare', color: '#fdcdac', // Soft warm peach
         stages: [
             { levelThreshold: 1, image: ignisIcon, name: 'Ignis Ember' },
             { levelThreshold: 5, image: ignisIcon, name: 'Ignis Flare' },
@@ -41,7 +41,7 @@ export const gachaCharacters = [
         ]
     },
     {
-        id: 'void', image: voidIcon, name: 'Void Weaver', rarity: 'Legendary', color: '#decbe4', // Soft lavender
+        id: 'void', image: voidIcon, name: 'Void Weaver', rarity: 'Epic', color: '#decbe4', // Soft lavender
         stages: [
             { levelThreshold: 1, image: voidIcon, name: 'Void Ripple' },
             { levelThreshold: 5, image: voidIcon, name: 'Void Walker' },
@@ -49,7 +49,7 @@ export const gachaCharacters = [
         ]
     },
     {
-        id: 'luminous', image: luminousIcon, name: 'Luminous Seraph', rarity: 'Legendary', color: '#fff2ae', // Soft pale gold
+        id: 'luminous', image: luminousIcon, name: 'Luminous Seraph', rarity: 'Epic', color: '#fff2ae', // Soft pale gold
         stages: [
             { levelThreshold: 1, image: luminousIcon, name: 'Luminous Spark' },
             { levelThreshold: 5, image: luminousIcon, name: 'Luminous Spirit' },
@@ -83,24 +83,25 @@ export const getCharacterStage = (character, currentLevel) => {
 };
 
 export const getRandomCharacter = () => {
-    // Simple weighted random: 50% Common, 30% Rare, 15% Epic, 5% Legendary
+    // Weighted probabilities: 
+    // Common: 60%, Rare: 25%, Epic: 12%, Legendary: 3%
     const roll = Math.random() * 100;
 
     try {
-        if (roll > 95) {
+        if (roll > 97) { // 3%
             const legendaries = gachaCharacters.filter(c => c.rarity === 'Legendary');
             if (legendaries.length > 0) return legendaries[Math.floor(Math.random() * legendaries.length)];
         }
-        if (roll > 80) {
+        if (roll > 85) { // 12%
             const epics = gachaCharacters.filter(c => c.rarity === 'Epic');
             if (epics.length > 0) return epics[Math.floor(Math.random() * epics.length)];
         }
-        if (roll > 50) {
+        if (roll > 60) { // 25%
             const rares = gachaCharacters.filter(c => c.rarity === 'Rare');
             if (rares.length > 0) return rares[Math.floor(Math.random() * rares.length)];
         }
 
-        // Default to a Common character
+        // Default to a Common character (60%)
         const commons = gachaCharacters.filter(c => c.rarity === 'Common');
         if (commons.length > 0) return commons[Math.floor(Math.random() * commons.length)];
 

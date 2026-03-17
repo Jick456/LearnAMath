@@ -2,6 +2,8 @@
 
 **LearnAMath** is a premium, gamified learning platform designed to help students master the MOE Additional Mathematics syllabus through a serene, interactive, and high-quality "Mountain Tea" aesthetic.
 
+![LearnAMath Home](assets/screenshots/homepage.png)
+
 ## ✨ Features
 
 - **Interactive Crash Courses**: Concise, high-density study guides with embedded LaTeX for perfect mathematical rendering.
@@ -9,6 +11,13 @@
 - **Companion Evolution**: Collect and evolve elemental spirits (Terra, Aqua, Aero, Ignis, Void, Luminous) as you gain XP.
 - **PWA Support**: Installable on iOS, Android, and Desktop for a native app-like experience.
 - **Exception Resilience**: Robust error handling with global Error Boundaries to ensure a flawless session.
+
+## 🖼️ Gallery
+
+<p align="center">
+  <img src="assets/screenshots/syllabus.png" width="45%" alt="Syllabus Selection" />
+  <img src="assets/screenshots/learning_interface.png" width="45%" alt="Learning Interface" />
+</p>
 
 ## 🛠️ Technology Stack
 

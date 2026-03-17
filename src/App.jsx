@@ -97,7 +97,7 @@ function MainApp() {
   const handleGachaClaim = (pulledChar) => {
     setShowGacha(false);
     claimCharacter(pulledChar);
-    navigate('/home');
+    navigate('/selector');
   };
 
   const getActiveQuestions = () => {
