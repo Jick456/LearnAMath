@@ -8,6 +8,7 @@ import GachaPull from './components/GachaPull';
 import LoginScreen from './components/LoginScreen';
 import AccountSetup from './components/AccountSetup';
 import GuideCompanion from './components/GuideCompanion';
+import Sidebar from './components/Sidebar';
 import { topics, questions } from './data/questions';
 
 // Lazy loaded components for better performance
@@ -114,11 +115,13 @@ function MainApp() {
   }
 
   return (
-    <div className="container" style={{ paddingBottom: 'var(--space-12)' }}>
-      {user && (
+    <div className="flex min-h-screen">
+      {user && <Sidebar />}
+      <div className={`flex-1 transition-all duration-300 ${user ? 'app-content-with-sidebar' : ''} container`} style={{ paddingBottom: 'var(--space-12)' }}>
+        {user && (
         <header className="flex justify-between items-center py-6 px-10 relative z-[2000]" style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)' }}>
           <div className="flex items-center gap-4 cursor-pointer" onClick={() => navigate('/home')}>
-            <span className="glow-text font-black text-2xl tracking-[4px] uppercase">Realm of Axiom</span>
+            <span className="glow-text font-black text-2xl tracking-[4px] uppercase">LearnAMaths</span>
           </div>
           
           <div className="flex gap-4 items-center">
@@ -276,7 +279,7 @@ function MainApp() {
       </main>
 
       <footer className="mt-auto py-12 border-t border-white/10 text-center opacity-40 text-xs font-bold uppercase tracking-[4px]">
-        <p>© 2026 Realm of Axiom | Masters of Mathematics</p>
+        <p>© 2026 LearnAMaths | Masters of Mathematics</p>
         <div className="flex justify-center gap-8 mt-4">
           <button onClick={() => setLegalType('terms')} className="hover:text-geo-gold transition-colors underline cursor-pointer">Decree of Axiom</button>
           <button onClick={() => setLegalType('privacy')} className="hover:text-geo-gold transition-colors underline cursor-pointer">Veil of Shadows</button>
@@ -302,6 +305,7 @@ function MainApp() {
       )}
 
       <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+      </div>
     </div>
   );
 }

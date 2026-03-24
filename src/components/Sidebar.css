@@ -1,0 +1,167 @@
+:root {
+    --sidebar-width: 280px;
+}
+
+.tea-sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: #fdfaf5;
+    border-right: 2px solid #e8e2d8;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
+    color: #4a3e2e;
+    font-family: 'Inter', sans-serif;
+}
+
+.tea-sidebar-header {
+    padding: 2rem 1.5rem;
+    border-bottom: 1px solid #e8e2d8;
+    background: #f8f5f0;
+}
+
+.tea-sidebar-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #556b2f;
+    margin: 0;
+}
+
+.tea-sidebar-subtitle {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+.tea-sidebar-tabs {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e8e2d8;
+    background: #fff;
+}
+
+.tea-tab-btn {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s;
+    position: relative;
+    opacity: 0.4;
+}
+
+.tea-tab-btn.active {
+    opacity: 1;
+    background: #f0f4ee;
+}
+
+.tea-sidebar-content {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.tea-section-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8b7355;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tea-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tea-item {
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #fff;
+    border: 1px solid #eee;
+}
+
+.tea-item:hover {
+    background: #f8f5f0;
+    border-color: #dcd0c0;
+    transform: translateX(4px);
+}
+
+.tea-item.active {
+    background: #556b2f;
+    color: #fff;
+    border-color: #556b2f;
+    box-shadow: 0 4px 10px rgba(85, 107, 47, 0.3);
+}
+
+.tea-char-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: #f0f4ee;
+    padding: 4px;
+}
+
+.tea-difficulty-badge {
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.tea-diff-easy { background: #e6ffec; color: #22c55e; }
+.tea-diff-medium { background: #fffbeb; color: #f59e0b; }
+.tea-diff-hard { background: #fee2e2; color: #ef4444; }
+
+/* Scrollbar */
+.tea-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tea-sidebar::-webkit-scrollbar-track {
+    background: #fdfaf5;
+}
+
+.tea-sidebar::-webkit-scrollbar-thumb {
+    background: #dcd0c0;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 70px;
+    }
+    .tea-sidebar-title, .tea-sidebar-subtitle, .tea-item span, .tea-section-title {
+        display: none;
+    }
+}
+
+.app-content-with-sidebar {
+    margin-left: var(--sidebar-width);
+}

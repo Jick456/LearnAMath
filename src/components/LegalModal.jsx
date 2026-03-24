@@ -14,7 +14,7 @@ const LegalModal = ({ show, onClose, type }) => {
 *Sanctified on: March 17, 2026*
 
 ## 1. Acceptance of Resonance
-By accessing the Realm of Axiom ("the Service"), you agree to be bound by these Sacred Decrees. If you do not resonate with these terms, you may not enter the Domain.
+By accessing the LearnAMaths ("the Service"), you agree to be bound by these Sacred Decrees. If you do not resonate with these terms, you may not enter the Domain.
 
 ## 2. Divine Purpose
 MathMastery SG is a celestial learning experience designed to guide Scholars through the Singapore MOE syllabus.

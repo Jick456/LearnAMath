@@ -11,9 +11,10 @@ import MathDiagram from './MathDiagrams';
 import { FormatMathText } from './FormatMathText';
 
 
-export default function QuestionInterface({ questionsObj, onComplete, onGainXp, onMissedQuestion, isWeaknessMode, activeCharacter }) {
-    const [difficulty, setDifficulty] = useState(null);
-    const [phase, setPhase] = useState(isWeaknessMode ? 'testing' : 'difficulty-select');
+export default function QuestionInterface({ questionsObj, onComplete, onGainXp, onMissedQuestion, isWeaknessMode }) {
+    const { difficulty: globalDifficulty, activeCharacter } = useUserProgress();
+    const [difficulty, setDifficulty] = useState(isWeaknessMode ? null : globalDifficulty);
+    const [phase, setPhase] = useState((isWeaknessMode || globalDifficulty) ? 'learning' : 'difficulty-select');
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
     const [hasAnswered, setHasAnswered] = useState(false);

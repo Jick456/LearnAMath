@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Card from './Card';
 import Button from './Button';
-import { FormatMathText } from './QuestionInterfaceNew';
+import { FormatMathText } from './FormatMathText';
 import ConceptVisualizer from './ConceptVisualizer';
 
 export default function CrashCourse({ topic, onSkip, onContinue }) {

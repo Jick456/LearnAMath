@@ -6,10 +6,13 @@ import Button from './Button';
 export default function StoryAnimation({ topic, pet, onComplete }) {
     const [step, setStep] = useState(0);
 
+    const petName = pet?.name || 'Companion';
+    const petImage = pet?.image || null;
+
     const dialogs = topic.storySegments || [
-        { text: `Welcome to ${topic.location}, Scholar!`, character: pet.name },
-        { text: topic.storyline, character: pet.name },
-        { text: "Are you ready to cast your Proofs, defeat the Irrational, and restore this island?", character: pet.name }
+        { text: `Welcome to ${topic.location || topic.title}, Scholar!`, character: petName },
+        { text: topic.storyline || topic.description || '', character: petName },
+        { text: "Are you ready to cast your Proofs, defeat the Irrational, and restore this island?", character: petName }
     ];
 
     const handleNext = () => {

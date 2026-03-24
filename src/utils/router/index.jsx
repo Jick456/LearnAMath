@@ -36,8 +36,8 @@ export const useLocation = () => {
     return { pathname: path };
 };
 
-export const Routes = ({ children }) => {
-    const { path } = useContext(RouterContext);
+export const Routes = ({ children, fallbackPath = '/' }) => {
+    const { path, navigate } = useContext(RouterContext);
     let match = null;
 
     React.Children.forEach(children, (child) => {
@@ -46,6 +46,13 @@ export const Routes = ({ children }) => {
             match = child;
         }
     });
+
+    // Fallback: redirect unmatched routes (handles direct URL load & browser refresh)
+    React.useEffect(() => {
+        if (!match && path !== fallbackPath) {
+            navigate(fallbackPath);
+        }
+    }, [path, match, fallbackPath, navigate]);
 
     return match;
 };
