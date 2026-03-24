@@ -51,8 +51,12 @@ export function UserProgressProvider({ children }) {
 
     // Persistence Effect
     useEffect(() => {
-        if (user) localStorage.setItem('learnamath_user_v2', encodeData(user));
-        else localStorage.removeItem('learnamath_user_v2');
+        if (user) {
+            const safeToStoreUser = { id: user.id, name: user.name, isGuest: user.isGuest, isNewUser: user.isNewUser };
+            localStorage.setItem('learnamath_user_v2', encodeData(safeToStoreUser));
+        } else {
+            localStorage.removeItem('learnamath_user_v2');
+        }
 
         localStorage.setItem('learnamath_xp', xp);
         localStorage.setItem('learnamath_level', level);
@@ -67,14 +71,39 @@ export function UserProgressProvider({ children }) {
     }, [user, xp, level, weaknesses, activeLevel, userStream, theme, unlockedCharacters, activeCharacter, gachaPity, difficulty]);
 
     useEffect(() => {
-        if (theme === 'light') {
-            document.body.classList.add('light-mode');
+        if (theme === 'dark') {
+            document.body.classList.add('dark-mode');
         } else {
-            document.body.classList.remove('light-mode');
+            document.body.classList.remove('dark-mode');
         }
     }, [theme]);
 
     const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+
+    const login = (newUser) => {
+        if (user && user.id !== newUser.id) {
+            const keep = window.confirm("A different scholar was previously active. Do you wish to inherit their progress? (Cancel to start fresh)");
+            if (!keep) {
+                setXp(0);
+                setLevel(1);
+                setWeaknesses([]);
+                setUnlockedCharacters([gachaCharacters[0]]);
+                setActiveCharacter(gachaCharacters[0]);
+                setGachaPity(0);
+                setDifficulty('medium');
+            }
+        }
+        
+        // Strip PII (email, picture) for privacy before persisting
+        const safeUser = {
+            id: newUser.id,
+            name: newUser.name,
+            isNewUser: newUser.isNewUser,
+            isGuest: newUser.isGuest,
+            picture: newUser.picture // Keep for current session UI, but we'll strip below for storage
+        };
+        setUser(safeUser);
+    };
 
     const logout = () => {
         googleLogout();
@@ -142,7 +171,7 @@ export function UserProgressProvider({ children }) {
     };
 
     const val = {
-        user, setUser, logout,
+        user, setUser, login, logout,
         xp, level, maxXp, gainXp,
         weaknesses, setWeaknesses, markWeakness, resolveWeakness,
         activeLevel, setActiveLevel,

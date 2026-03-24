@@ -8,8 +8,8 @@ import DOMPurify from 'dompurify';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
 import MathDiagram from './MathDiagrams';
-import { FormatMathText } from './FormatMathText';
-
+import FormatMathText from './FormatMathText';
+import { useUserProgress } from '../context/UserProgressContext';
 
 export default function QuestionInterface({ questionsObj, onComplete, onGainXp, onMissedQuestion, isWeaknessMode }) {
     const { difficulty: globalDifficulty, activeCharacter } = useUserProgress();
@@ -81,13 +81,29 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         );
     }
 
-    if (!questionsList || questionsList.length === 0) {
-        if (phase === 'learning' && !isWeaknessMode) {
-            if (questionsObj && questionsObj['testing'] && questionsObj['testing'].length > 0) {
-                setPhase('testing');
-                setCurrentIndex(0);
-                return null;
+    useEffect(() => {
+        if (!questionsList || questionsList.length === 0) {
+            if (phase === 'learning' && !isWeaknessMode) {
+                if (questionsObj && questionsObj['testing'] && questionsObj['testing'].length > 0) {
+                    setPhase('testing');
+                    setCurrentIndex(0);
+                }
             }
+        }
+    }, [questionsList, phase, isWeaknessMode, questionsObj]);
+
+    const handleFinalComplete = (weaknessId = null) => {
+        const timeSpent = Math.round((Date.now() - startTime) / 1000);
+        const correctCount = testAnswers.filter(a => a.isCorrect).length;
+        const totalCount = testAnswers.length || 1;
+        const safeTopicId = questionsList[currentIndex]?.topicId || testAnswers[0]?.question?.topicId || 'unknown';
+        analytics.trackTopicCompletion(safeTopicId, timeSpent, (correctCount / totalCount) * 100);
+        onComplete(weaknessId);
+    };
+
+    if (!questionsList || questionsList.length === 0) {
+        if (phase === 'learning' && !isWeaknessMode && questionsObj && questionsObj['testing'] && questionsObj['testing'].length > 0) {
+            return null;
         }
         if (phase !== 'review') {
             return (
@@ -157,6 +173,7 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         if (phase === 'testing') {
             const isAnsCorrect = index === question.correctAnswer;
             analytics.trackQuestionResult(question.topicId || 'unknown', question.id, question.difficulty, isAnsCorrect);
+            setHasAnswered(true); // <-- FIX: block further clicks during the 600ms timeout
             setTestAnswers(prev => [...prev, { question, selectedOption: index, isCorrect: isAnsCorrect }]);
             if (isAnsCorrect) onGainXp(question.xpReward * 2);
             else if (onMissedQuestion) onMissedQuestion(question);
@@ -170,13 +187,7 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         }
     };
 
-    const handleFinalComplete = (weaknessId = null) => {
-        const timeSpent = Math.round((Date.now() - startTime) / 1000);
-        const correctCount = testAnswers.filter(a => a.isCorrect).length;
-        const totalCount = testAnswers.length || 1;
-        analytics.trackTopicCompletion(question.topicId || 'unknown', timeSpent, (correctCount / totalCount) * 100);
-        onComplete(weaknessId);
-    };
+    // handleFinalComplete was moved up to avoid stale question refs in review block
 
     const handleNext = () => {
         if (currentIndex < questionsList.length - 1) {

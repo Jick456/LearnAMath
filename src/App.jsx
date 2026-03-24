@@ -18,6 +18,7 @@ const QuestionInterface = lazy(() => import('./components/QuestionInterfaceNew')
 const ConceptVisualizer = lazy(() => import('./components/ConceptVisualizer'));
 import analytics from './utils/analytics';
 import LegalModal from './components/LegalModal';
+import genshinBg from './assets/images/genshin_bg.png';
 
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from './utils/router';
 import { useUserProgress, UserProgressProvider } from './context/UserProgressContext';
@@ -27,7 +28,7 @@ import 'katex/dist/katex.min.css';
 
 function MainApp() {
   const {
-    user, setUser, logout, xp, level, maxXp, theme, toggleTheme,
+    user, setUser, login, logout, xp, level, maxXp, theme, toggleTheme,
     unlockedCharacters, activeCharacter, setActiveCharacter, claimCharacter,
     activeLevel, setActiveLevel, userStream, setUserStream,
     weaknesses, gainXp, markWeakness, resolveWeakness,
@@ -40,6 +41,13 @@ function MainApp() {
 
   const navigate = useNavigate();
   const { pathname: viewMode } = useLocation();
+
+  useEffect(() => {
+    document.body.style.backgroundImage = `url(${genshinBg})`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundAttachment = 'fixed';
+  }, []);
 
   useEffect(() => {
     analytics.trackEvent('page_view', { view: viewMode, topic: selectedTopic });
@@ -109,10 +117,13 @@ function MainApp() {
   };
 
   // Redirect to login if user object is not present in Context, unless currently there.
-  if (!user && viewMode !== '/') {
-    navigate('/');
-    return null;
-  }
+  useEffect(() => {
+    if (!user && viewMode !== '/') {
+      navigate('/');
+    }
+  }, [user, viewMode, navigate]);
+
+  if (!user && viewMode !== '/') return null;
 
   return (
     <div className="flex min-h-screen">
@@ -246,6 +257,7 @@ function MainApp() {
                   topic={activeTopicObj}
                   pet={activeCharacter}
                   onComplete={() => navigate('/crashcourse')}
+                  onSkip={() => navigate('/questions')}
                 />
               ) : <div />
             } />

@@ -20,13 +20,25 @@ export default function LoginScreen({ onLogin }) {
                     },
                 });
                 const profile = await res.json();
+                
+                // Check if returning user
+                const storedRaw = localStorage.getItem('learnamath_user_v2');
+                let isNewUser = true;
+                if (storedRaw) {
+                    try {
+                        const storedUser = JSON.parse(atob(storedRaw));
+                        if (storedUser && storedUser.id === profile.sub) {
+                            isNewUser = false;
+                        }
+                    } catch(e) {}
+                }
 
                 onLogin({
                     id: profile.sub,
                     name: profile.name,
                     email: profile.email,
                     picture: profile.picture,
-                    isNewUser: true, // We'll handle existing users in the context
+                    isNewUser: isNewUser,
                     isGuest: false,
                 });
             } catch (err) {
@@ -47,12 +59,21 @@ export default function LoginScreen({ onLogin }) {
             setError('You must agree to the Terms of Service and Privacy Policy to continue.');
             return;
         }
+        
+        // Persist guest ID so reload doesn't reset session entirely
+        let guestId = localStorage.getItem('learnamath_guest_id');
+        let isNewUser = false;
+        if (!guestId) {
+            guestId = 'guest-' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('learnamath_guest_id', guestId);
+            isNewUser = true;
+        }
 
         const mockUser = {
-            id: 'guest-' + Math.random().toString(36).substr(2, 9),
+            id: guestId,
             name: 'Guest Scholar',
             email: 'guest@learnamath.app',
-            isNewUser: true,
+            isNewUser: isNewUser,
             isGuest: true,
         };
 

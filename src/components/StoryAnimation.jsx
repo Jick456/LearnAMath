@@ -3,17 +3,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Card from './Card';
 import Button from './Button';
 
-export default function StoryAnimation({ topic, pet, onComplete }) {
+export default function StoryAnimation({ topic, pet, onComplete, onSkip }) {
     const [step, setStep] = useState(0);
 
     const petName = pet?.name || 'Companion';
     const petImage = pet?.image || null;
 
-    const dialogs = topic.storySegments || [
-        { text: `Welcome to ${topic.location || topic.title}, Scholar!`, character: petName },
-        { text: topic.storyline || topic.description || '', character: petName },
-        { text: "Are you ready to cast your Proofs, defeat the Irrational, and restore this island?", character: petName }
-    ];
+    const baseStory = topic.storyline || topic.description || '';
+    const fullText = `Welcome to ${topic.location || topic.title}, Scholar!\n\n${baseStory}\n\nAre you ready to cast your Proofs, defeat the Irrational, and restore this island?`;
+    
+    const dialogs = topic.storySegments 
+        ? [{ text: topic.storySegments.map(s => s.text).join('\n\n'), character: petName }]
+        : [{ text: fullText, character: petName }];
+
+    const handleSkip = (e) => {
+        e.stopPropagation();
+        if (onSkip) onSkip();
+        else onComplete();
+    };
 
     const handleNext = () => {
         if (step < dialogs.length - 1) {
@@ -24,7 +31,15 @@ export default function StoryAnimation({ topic, pet, onComplete }) {
     };
 
     return (
-        <div className="w-full flex justify-center items-center pb-20" style={{ minHeight: '600px' }}>
+        <div className="w-full flex justify-center items-center pb-20 relative" style={{ minHeight: '600px' }}>
+            {/* Quick Skip Button */}
+            <button 
+                onClick={handleSkip}
+                className="absolute top-8 right-8 genshin-btn py-2 px-6 text-sm opacity-50 hover:opacity-100 transition-all z-20"
+                style={{ borderRadius: '50px' }}
+            >
+                Skip Intro ⏭️
+            </button>
             <div className="relative w-full max-w-[900px] flex flex-col items-center">
                 
                 {/* Floating Pet with Magical Glow */}

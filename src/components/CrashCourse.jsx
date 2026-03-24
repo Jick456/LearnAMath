@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Card from './Card';
 import Button from './Button';
-import { FormatMathText } from './FormatMathText';
+import FormatMathText from './FormatMathText';
 import ConceptVisualizer from './ConceptVisualizer';
 
 export default function CrashCourse({ topic, onSkip, onContinue }) {
@@ -68,13 +68,6 @@ export default function CrashCourse({ topic, onSkip, onContinue }) {
                             Accept Trial
                         </button>
                     </div>
-
-                    <style jsx>{`
-                        @keyframes float {
-                            0%, 100% { transform: translateY(0) rotate(0); }
-                            50% { transform: translateY(-15px) rotate(2deg); }
-                        }
-                    `}</style>
                 </div>
             </motion.div>
         </AnimatePresence>

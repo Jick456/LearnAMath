@@ -31,10 +31,10 @@ const g3Topics = [
 
 **Speed: The Magic Triangle**
 - Formula: $\\text{Speed} = \\text{Distance} \\div \\text{Time}$.
-- **Average Speed** = $\frac{\\text{Total Distance}}{\\text{Total Time}}$. Never ever simply average two different speeds!
+- **Average Speed** = $\\frac{\\text{Total Distance}}{\\text{Total Time}}$. Never ever simply average two different speeds!
 
 **Percentage Changes**
-- Formula for the real world: $\frac{\\text{Actual Change}}{\\text{Original Amount}} \\times 100%$.
+- Formula for the real world: $\\frac{\\text{Actual Change}}{\\text{Original Amount}} \\times 100%$.
 
 > [!tip] **Exam Strategy**
 > For percentage increase/decrease, the denominator is ALWAYS the original amount, never the new amount.`
@@ -65,7 +65,7 @@ const g3Topics = [
 
 **Linear Graphs: City Grid Navigation**
 - Standard straight-line form: $y = mx + c$.
-- **Gradient ($m$)**: Represents hill steepness. Formula: $m = \frac{\\text{rise}}{\\text{run}} = \frac{y_2 - y_1}{x_2 - x_1}$.
+- **Gradient ($m$)**: Represents hill steepness. Formula: $m = \\frac{\\text{rise}}{\\text{run}} = \\frac{y_2 - y_1}{x_2 - x_1}$.
 - **y-intercept ($c$)**: The exact coordinate where the line violently crosses the vertical y-axis (i.e. where $x = 0$).
 
 > [!tip] **Exam Strategy**
@@ -85,7 +85,7 @@ const g3Topics = [
 **Mensuration of Prisms: Building Blocks**
 - **Volume of any uniform Prism**: Base Floor Area $\\times$ Length (or Height).
 - A cylinder is essentially just a circular prism: $V = \\pi r^2 h$.
-- **Area of Trapezium**: Average of the parallel walls $\\times$ height: $\frac{1}{2} (a+b) h$.
+- **Area of Trapezium**: Average of the parallel walls $\\times$ height: $\\frac{1}{2} (a+b) h$.
 
 > [!tip] **Exam Strategy**
 > Angles on a straight line ($180^\\circ$) and angles around a point ($360^\\circ$) are explicit reasoning. State them clearly in your proofs.`
@@ -102,7 +102,7 @@ const g3Topics = [
 - **Mode**: The trendiest, most frequent value.
 
 **Intro to Probability: What are the Odds?**
-- Calculated purely as $\frac{\\text{No. of Favorable Outcomes}}{\\text{Total Possible Outcomes}}$.
+- Calculated purely as $\\frac{\\text{No. of Favorable Outcomes}}{\\text{Total Possible Outcomes}}$.
 - Always lands rigidly between $0$ (impossible dream) and $1$ (absolute certainty).
 
 > [!tip] **Exam Strategy**
@@ -173,9 +173,9 @@ const g3Topics = [
 - **Pythagoras Theorem**: $a^2 + b^2 = c^2$, where $c$ is the long diagonal hypotenuse facing the $90^\\circ$ corner.
 
 **Trigonometric Ratios (TOA CAH SOH)**
-- **Tangent**: $\tan(\theta) = \frac{\\text{Opposite}}{\\text{Adjacent}}$
-- **Cosine**: $\\cos(\theta) = \frac{\\text{Adjacent}}{\\text{Hypotenuse}}$
-- **Sine**: $\\sin(\theta) = \frac{\\text{Opposite}}{\\text{Hypotenuse}}$
+- **Tangent**: $\\tan(\\theta) = \\frac{\\text{Opposite}}{\\text{Adjacent}}$
+- **Cosine**: $\\cos(\\theta) = \\frac{\\text{Adjacent}}{\\text{Hypotenuse}}$
+- **Sine**: $\\sin(\\theta) = \\frac{\\text{Opposite}}{\\text{Hypotenuse}}$
 
 > [!tip] **Exam Strategy**
 > When doing multi-step trigonometry, keep the exact value (using the 'ANS' button or a long decimal) until the very final step to avoid rounding errors.`
@@ -187,8 +187,8 @@ const g3Topics = [
         crashCourse: `[DIAGRAM: cylinder]
 
 **3D Shapes Formulas: Filling the Void**
-- **Pyramid/Cone Volume**: They hold exactly $1/3$ of a straight prism. $V = \frac{1}{3} \\times \\text{Base Area} \\times \\text{Height}$.
-- **Sphere Volume**: The perfect orb. $V = \frac{4}{3}\\pi r^3$.
+- **Pyramid/Cone Volume**: They hold exactly $1/3$ of a straight prism. $V = \\frac{1}{3} \\times \\text{Base Area} \\times \\text{Height}$.
+- **Sphere Volume**: The perfect orb. $V = \\frac{4}{3}\\pi r^3$.
 
 **Surface Area: Wrapping Paper**
 - **Sphere Surface Area**: Exactly 4 flat circles! $4\\pi r^2$.
@@ -210,7 +210,7 @@ const g3Topics = [
 
 **Formulating Equations: Translation**
 - Translate English word problems directly into mathematical algebra. Let $x$ confidently represent the unknown.
-- **Speed problems** notoriously result in quadratic equations: e.g., $\frac{D}{x} - \frac{D}{x+2} = 1\\text{ hour}$ difference!
+- **Speed problems** notoriously result in quadratic equations: e.g., $\\frac{D}{x} - \\frac{D}{x+2} = 1\\text{ hour}$ difference!
 
 > [!tip] **Exam Strategy**
 > If $D/x - D/(x+2) = 1$, multiply EVERYTHING by $x(x+2)$ to instantly wipe out the fractions and reveal a quadratic equation.`
@@ -222,12 +222,12 @@ const g3Topics = [
         crashCourse: `[DIAGRAM: parabola]
 
 **The Ultimate Quadratic Formula**
-- The heavy artillery solver: $x = \frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$
+- The heavy artillery solver: $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$
 - **The Discriminant ($b^2 - 4ac$)**: It predicts the future! If $>0$ (two real roots), if $=0$ (one touching root), if $<0$ (graph floats, no real roots).
 
 **Other Strange Graphs**
 - **Exponential**: $y = a^x$. Curve shoots upwards to infinity rapidly, approaching but never fully touching the $x$-axis.
-- **Reciprocal/Power**: $y = \frac{k}{x}$. Curve splits into asymptotes (invisible forcefield lines it approaches but can never touch).
+- **Reciprocal/Power**: $y = \\frac{k}{x}$. Curve splits into asymptotes (invisible forcefield lines it approaches but can never touch).
 
 > [!tip] **Exam Strategy**
 > Exponential curves ($y=2^x$) rocket upwards and never cross the x-axis. Reciprocal curves ($y=1/x$) break into pieces across asymptotes.`
@@ -292,7 +292,7 @@ const g3Topics = [
 
 **Coordinate Geometry Basics**
 - **Distance**: $\\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$ (Rise and Run Pythagoras)
-- **Gradient**: $m = \frac{y_2 - y_1}{x_2 - x_1}$
+- **Gradient**: $m = \\frac{y_2 - y_1}{x_2 - x_1}$
 
 > [!tip] **Exam Strategy**
 > Any triangle drawn inside a semicircle that touches the edge will have a perfect $90^\\circ$ angle opposite the diameter.`
@@ -302,9 +302,9 @@ const g3Topics = [
         description: 'Sine/Cosine for obtuse, Sine/Cosine rules, 3D problems, Bearings.', color: '#fbbf24', emoji: '🧭',
         location: 'The Compass Caves', storyline: 'Navigate your bearings in 3D to find the hidden path.', themeClass: 'theme-abyss',
         crashCourse: `**Advanced Trigonometry: Any Triangle**
-- **Sine Rule**: $\frac{a}{\\sin A} = \frac{b}{\\sin B} = \frac{c}{\\sin C}$
+- **Sine Rule**: $\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}$
 - **Cosine Rule**: $c^2 = a^2 + b^2 - 2ab\\cos C$
-- **Area of ANY Triangle**: $\frac{1}{2}ab\\sin C$
+- **Area of ANY Triangle**: $\\frac{1}{2}ab\\sin C$
 
 **Bearings & 3D Space**
 - Bearings are strictly measured starting from North ($000^\\circ$) turning purely clockwise.
@@ -321,16 +321,16 @@ const g3Topics = [
 
 **Using Pure Radians**
 - Radians are the true measure of a circle. $\\pi \\text{ radians} = 180^\\circ$.
-- To convert to radians: Multiply by $\frac{\\pi}{180^\\circ}$.
-- **Arc Length**: $s = r\theta$ (where $\theta$ MUST be in radians!)
-- **Sector Area**: $A = \frac{1}{2}r^2\theta$ (radians only!)
+- To convert to radians: Multiply by $\\frac{\\pi}{180^\\circ}$.
+- **Arc Length**: $s = r\\theta$ (where $\\theta$ MUST be in radians!)
+- **Sector Area**: $A = \\frac{1}{2}r^2\\theta$ (radians only!)
 
 **(If forced to use Degrees)**
-- Arc Length = $\frac{\theta}{360} \\times 2\\pi r$
-- Sector Area = $\frac{\theta}{360} \\times \\pi r^2$
+- Arc Length = $\\frac{\\theta}{360} \\times 2\\pi r$
+- Sector Area = $\\frac{\\theta}{360} \\times \\pi r^2$
 
 > [!tip] **Exam Strategy**
-> Circle formulas $s = r\theta$ and Area $= 0.5r^2\theta$ ONLY work if your calculator is set strictly to RADIANS mode.`
+> Circle formulas $s = r\\theta$ and Area $= 0.5r^2\\theta$ ONLY work if your calculator is set strictly to RADIANS mode.`
     },
     {
         id: 'g3-s34-stats', level: 'Sec 3/4 (G3)', title: 'Stats & Probability',

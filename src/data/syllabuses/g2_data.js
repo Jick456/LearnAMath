@@ -223,15 +223,15 @@ const g2Topics = [
         crashCourse: `[DIAGRAM: cylinder]
 
 **Volumes of 3D Solids: The Liquid Measure**
-- **Sphere**: The perfect ball. $V = \frac{4}{3}\\pi r^3$.
-- **Pyramid/Cone**: The pointy rule! They hold exactly $\frac{1}{3}$ the volume of their straight box/cylinder equivalents! $V = \frac{1}{3} \times \\text{Base Area} \times \\text{Height}$.
+- **Sphere**: The perfect ball. $V = \\frac{4}{3}\\pi r^3$.
+- **Pyramid/Cone**: The pointy rule! They hold exactly $\\frac{1}{3}$ the volume of their straight box/cylinder equivalents! $V = \\frac{1}{3} \\times \\text{Base Area} \\times \\text{Height}$.
 
 **Wrapping them up (Surface Area)**
 - **Sphere Surface Area**: Exactly four circles! $4\\pi r^2$.
 - **Cone Curved Surface Area**: $\\pi r l$ (where $l$ is the diagonal slant height down the side).
 
 > [!tip] **Exam Strategy**
-> A sphere has NO straight edges. Its volume is $\frac{4}{3}\\pi r^3$. Always double check you are using radius $r$, not diameter $d$!`
+> A sphere has NO straight edges. Its volume is $\\frac{4}{3}\\pi r^3$. Always double check you are using radius $r$, not diameter $d$!`
     },
 
     // --- SECONDARY 3/4 G2 ---
@@ -241,7 +241,7 @@ const g2Topics = [
         location: 'The Shifting Sands', storyline: 'Make yourself the subject of the desert trial.', themeClass: 'theme-desert',
         crashCourse: `**Changing the Subject: Rewriting the Rules**
 - Rearrange the equation so your target variable is isolated entirely alone on one side.
-- Use opposite operators to kick everything else over the fence: E.g. Make $x$ the subject for $y = mx+c \\Rightarrow y-c = mx \\Rightarrow x = \frac{y-c}{m}$.
+- Use opposite operators to kick everything else over the fence: E.g. Make $x$ the subject for $y = mx+c \\Rightarrow y-c = mx \\Rightarrow x = \\frac{y-c}{m}$.
 
 **Algebraic Fractions: Finding Common Ground**
 - **Add/Subtract**: You CANNOT combine them without a common denominator. Multiply the top and bottom of each piece to forcefully match their denominators!
@@ -258,7 +258,7 @@ const g2Topics = [
 
 **The Ultimate Quadratic Formula**
 - When simple factorising fails, this beast solves $ax^2 + bx + c = 0$ perfectly every time:
-  $x = \frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$
+  $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$
 
 **Linear Inequalities ($<, >$)**
 - Treat them identically to normal equations (like $=$), WITH ONE DEADLY EXCEPTION:
@@ -275,7 +275,7 @@ const g2Topics = [
 
 **Coordinate Geometry Toolkit**
 - **Distance**: The line between $(x_1, y_1)$ and $(x_2, y_2)$ is just Pythagoras! $\\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$
-- **Gradient** ($m$): Rise over Run! $\frac{y_2 - y_1}{x_2 - x_1}$
+- **Gradient** ($m$): Rise over Run! $\\frac{y_2 - y_1}{x_2 - x_1}$
 
 **Circle Theorems: Hidden Patterns**
 - Angle built in a semicircle is always a perfect right angle ($90^\\circ$).
@@ -291,7 +291,7 @@ const g2Topics = [
         location: 'The Compass Caves', storyline: 'Navigate your bearings to find the hidden path.', themeClass: 'theme-abyss',
         crashCourse: `**Trigonometry Rules: Breaking the $90^\\circ$ Limit**
 - For NON-right-angled triangles!
-- **Sine Rule**: $\frac{a}{\\sin A} = \frac{b}{\\sin B}$. Use this when you have a "matching pair" of a known side and its specific opposite angle.
+- **Sine Rule**: $\\frac{a}{\\sin A} = \\frac{b}{\\sin B}$. Use this when you have a "matching pair" of a known side and its specific opposite angle.
 - **Cosine Rule**: $c^2 = a^2 + b^2 - 2ab \\cos C$. Use this when you're trapped with all 3 sides, or 2 sides hugging the angle between them.
 
 **Bearings: Map Navigation**
@@ -309,12 +309,12 @@ const g2Topics = [
 
 **Radians: The True Measure of Angles**
 - Radians wrap the radius around the crust! $180^\\circ = \\pi \\text{ radians}$.
-- Conversion: To force degrees into radians, multiply by $\frac{\\pi}{180^\\circ}$.
+- Conversion: To force degrees into radians, multiply by $\\frac{\\pi}{180^\\circ}$.
 
 **The Radian Shortcut Formulas**
-- If your angle $\theta$ is already in radians, the circle slice formulas become blissfully simple!
-- **Arc Length (Crust)**: $s = r\theta$
-- **Area of Sector (Pizza Slice)**: $A = \frac{1}{2}r^2\theta$`
+- If your angle $\\theta$ is already in radians, the circle slice formulas become blissfully simple!
+- **Arc Length (Crust)**: $s = r\\theta$
+- **Area of Sector (Pizza Slice)**: $A = \\frac{1}{2}r^2\\theta$`
     },
     {
         id: 'g2-s34-stats', level: 'Sec 3/4 (G2)', title: 'Stats & Probability',
@@ -323,7 +323,7 @@ const g2Topics = [
         crashCourse: `[DIAGRAM: venn-diagram]
 
 **Probability of Combined Events**
-- **Independent Events**: (Like dice rolls). One doesn't affect the other. "AND" means MULTIPLY: $P(A \\text{ AND } B) = P(A) \times P(B)$.
+- **Independent Events**: (Like dice rolls). One doesn't affect the other. "AND" means MULTIPLY: $P(A \\text{ AND } B) = P(A) \\times P(B)$.
 - **Mutually Exclusive**: They cannot occur together at the same time. "OR" means ADD: $P(A \\text{ OR } B) = P(A) + P(B)$.
 
 **Standard Deviation (SD)**
@@ -365,7 +365,7 @@ const g2Questions = {
             generateQuestion("Find the LCM of 15, 20, and 30.", ["60", "30", "120", "90"], 0, "Smallest multiple for all.", 20, 'hard'),
             generateQuestion("Simplify: $(-2)^3 \\times (-1)^4$.", ["-8", "8", "-16", "16"], 0, "Negative to odd power is negative.", 20, 'hard'),
             generateQuestion("Which is greater: $2^5$ or $5^2$?", ["$2^5$", "$5^2$", "Equal", "None"], 0, "$32 > 25$.", 20, 'hard'),
-            generateQuestion("Find HCF of $2^3 \\times 3^2$ and $2^2 \times 3^4$.", ["$2^2 \\times 3^2$", "$2^3 \\times 3^4$", "$2 \\times 3$", "$2^5 \times 3^6$"], 0, "Lowest powers of common primes.", 20, 'hard'),
+            generateQuestion("Find HCF of $2^3 \\times 3^2$ and $2^2 \\times 3^4$.", ["$2^2 \\times 3^2$", "$2^3 \\times 3^4$", "$2 \\times 3$", "$2^5 \\times 3^6$"], 0, "Lowest powers of common primes.", 20, 'hard'),
             generateQuestion("If $x^2 = 1.44$, find $x$ (positive).", ["1.2", "0.12", "12", "1.4"], 0, "Square root shift.", 20, 'hard'),
             generateQuestion("Express 120 as a product of prime factors.", ["$2^3 \\times 3 \\times 5$", "$2^2 \\times 3^2 \\times 5$", "$2 \\times 60$", "$2^3 \\times 15$"], 0, "Full binary tree growth.", 20, 'hard'),
             generateQuestion("Total prime numbers between 20 and 30?", ["2", "1", "3", "4"], 0, "23 and 29.", 20, 'hard'),
@@ -379,7 +379,7 @@ const g2Questions = {
             generateQuestion("Which is a multiple of 9?", ["18", "13", "21", "30"], 0, "9, 18, 27...", 5, 'easy'),
             generateQuestion("Round $0.99$ to 1 decimal place.", ["1.0", "0.9", "1.1", "0.1"], 0, "Propagating carry.", 5, 'easy'),
             generateQuestion("$-2 + 5 = $?", ["3", "-3", "7", "-7"], 0, "Number line move.", 5, 'easy'),
-            generateQuestion("Find square of 11.", ["121", "22", "110", "111"], 0, "$11 \times 11$.", 5, 'easy'),
+            generateQuestion("Find square of 11.", ["121", "22", "110", "111"], 0, "$11 \\times 11$.", 5, 'easy'),
             generateQuestion("Divide 100 by 0.1.", ["1000", "10", "100", "1"], 0, "Multiplying by 10.", 5, 'easy'),
             generateQuestion("Which is NOT a factor of 12?", ["5", "3", "4", "6"], 0, "Non-divisor check.", 5, 'easy'),
             generateQuestion("Decimal $0.75$ as a fraction?", ["3/4", "1/4", "1/2", "3/5"], 0, "Standard conversion.", 5, 'easy'),
@@ -389,8 +389,8 @@ const g2Questions = {
             generateQuestion("Round $3456$ to 2 significant figures.", ["3500", "3400", "3460", "35"], 0, "Second digit is 4, 3rd is 5, round up.", 10, 'medium'),
             generateQuestion("Value of $(-3)^2$?", ["9", "-9", "6", "-6"], 0, "Square of negative is positive.", 10, 'medium'),
             generateQuestion("Find HCF of 18, 24.", ["6", "2", "3", "12"], 0, "Largest common divisor.", 10, 'medium'),
-            generateQuestion("Express 36 as product of primes.", ["$2^2 \\times 3^2$", "$4 \times 9$", "$2 \times 3^3$", "$2^3 \times 3$"], 0, "Unique factorisation.", 10, 'medium'),
-            generateQuestion("Square root of $0.09$?", ["0.3", "0.03", "3", "0.9"], 0, "$0.3 \times 0.3 = 0.09$.", 10, 'medium'),
+            generateQuestion("Express 36 as product of primes.", ["$2^2 \\times 3^2$", "$4 \\times 9$", "$2 \\times 3^3$", "$2^3 \\times 3$"], 0, "Unique factorisation.", 10, 'medium'),
+            generateQuestion("Square root of $0.09$?", ["0.3", "0.03", "3", "0.9"], 0, "$0.3 \\times 0.3 = 0.09$.", 10, 'medium'),
             generateQuestion("$1/3$ of 90?", ["30", "60", "10", "45"], 0, "Division by 3.", 10, 'medium'),
             generateQuestion("Find common factor of 17 and 19.", ["1", "None", "17", "19"], 0, "Both are prime.", 10, 'medium'),
             generateQuestion("Write $2049$ to 1 s.f.", ["2000", "2", "2050", "3000"], 0, "Most significant digit.", 10, 'medium'),
@@ -400,7 +400,7 @@ const g2Questions = {
             generateQuestion("[Interleaved] Which fraction is definitely the largest?", ["2/3", "3/5", "4/7", "1/2"], 0, "**Lesson**: Compare via decimals efficiently. $2/3 \\approx 0.67$.", 20, 'hard'),
             generateQuestion("If $n^3 = 125$, find $n$.", ["5", "10", "15", "25"], 0, "Cube root.", 20, 'hard'),
             generateQuestion("Find LCM of 12, 18, 24.", ["72", "144", "48", "36"], 0, "Multiplying up.", 20, 'hard'),
-            generateQuestion("Is 91 prime?", ["No", "Yes"], 0, "$7 \times 13 = 91$.", 20, 'hard'),
+            generateQuestion("Is 91 prime?", ["No", "Yes"], 0, "$7 \\times 13 = 91$.", 20, 'hard'),
             generateQuestion("Simplify: $|-5 - 3| - |2 - 8|$.", ["2", "14", "-2", "0"], 0, "$8 - 6 = 2$.", 20, 'hard'),
             generateQuestion("Express $0.000305$ in 2 s.f.", ["0.00031", "0.0003", "0.00030", "0.31"], 0, "Counting from non-zero.", 20, 'hard'),
             generateQuestion("Find sum of all prime factors of 60.", ["10", "5", "60", "15"], 0, "$2 + 3 + 5 = 10$.", 20, 'hard'),
@@ -501,7 +501,7 @@ const g2Questions = {
             generateQuestion("A grade of 18/24 is what percentage?", ["75%", "80%", "66.7%", "72%"], 0, "3/4 = 75%.", 15, 'medium'),
             generateQuestion("Find $12.5\\%$ of 80.", ["10", "12", "8", "15"], 0, "1/8 of 80.", 15, 'medium'),
             generateQuestion("A population grows from 1000 to 1100. Growth %?", ["10%", "100%", "1%", "110%"], 0, "100/1000.", 15, 'medium'),
-            generateQuestion("Value of $\$40$ after 7% GST?", ["$\$42.80", "$\$43.20", "$\$45", "$\$2.80"], 0, "$40 \times 1.07$.", 15, 'medium'),
+            generateQuestion("Value of $\$40$ after 7% GST?", ["$\$42.80", "$\$43.20", "$\$45", "$\$2.80"], 0, "$40 \\times 1.07$.", 15, 'medium'),
             generateQuestion("Express 4.5% as a decimal.", ["0.045", "0.45", "4.5", "0.0045"], 0, "Divide by 100.", 15, 'medium'),
             generateQuestion("Fraction 7/8 as a percentage?", ["87.5%", "70%", "85%", "12.5%"], 0, "Divide 7 by 8.", 15, 'medium'),
             // Hard (1-10)
@@ -509,7 +509,7 @@ const g2Questions = {
             generateQuestion("A value drops from 50 to 42. Percentage decrease?", ["16%", "8%", "20%", "12%"], 0, "8/50 = 16%.", 20, 'hard'),
             generateQuestion("Compound interest on $\$1000 at 5% for 1 year?", ["$\$50", "$\$1050", "$\$5", "$\$100"], 0, "Single year interest.", 20, 'hard'),
             generateQuestion("If $x$ is $20\\%$ of $y$, then $y$ is what $\%$ of $x$?", ["500%", "200%", "80%", "50%"], 0, "$y = 5x$.", 20, 'hard'),
-            generateQuestion("Service charge 10% then GST 7%. Total extra on $\$100$?", ["$\$17.70", "$\$17", "$\$117.70", "$\$17.10"], 0, "$100 \times 1.1 \times 1.07 = 117.7$.", 20, 'hard'),
+            generateQuestion("Service charge 10% then GST 7%. Total extra on $\$100$?", ["$\$17.70", "$\$17", "$\$117.70", "$\$17.10"], 0, "$100 \\times 1.1 \\times 1.07 = 117.7$.", 20, 'hard'),
             generateQuestion("A car loses $15\\%$ value annually. Value after 1 year if start $\$20000$?", ["$\$17000", "$\$18500", "$\$3000", "$\$15000"], 0, "85% of 20000.", 20, 'hard'),
             generateQuestion("If 30% of A is 45, find 40% of A.", ["60", "150", "45", "75"], 0, "A=150, 40% is 60.", 20, 'hard'),
             generateQuestion("Express $x/y$ as a percentage.", ["$(x/y) \\times 100\\%$", "$x/y$", "$100x/y$", "$xy/100$"], 0, "Standard conversion.", 20, 'hard'),
@@ -530,11 +530,11 @@ const g2Questions = {
             generateQuestion("Convert 20% to decimal.", ["0.2", "2.0", "0.02", "20"], 0, "Divide by 100.", 5, 'easy'),
             // Medium (1-10)
             generateQuestion("A car drops from $\\$10,000$ to $\\$8,500$. Find percentage decrease.", ["15%", "85%", "25%", "10%"], 0, "**Lesson**: Drop is 1500. $1500/10000 = 15\\%$.", 10, 'medium'),
-            generateQuestion("Find $17.5\\%$ of 200.", ["35", "17.5", "70", "34"], 0, "$0.175 \times 200$.", 10, 'medium'),
-            generateQuestion("An item costs $\$50$ before 8% tax. Tax amount?", ["$\$4", "$\$8", "$\$46", "$\$54"], 0, "$50 \times 0.08$.", 10, 'medium'),
+            generateQuestion("Find $17.5\\%$ of 200.", ["35", "17.5", "70", "34"], 0, "$0.175 \\times 200$.", 10, 'medium'),
+            generateQuestion("An item costs $\$50$ before 8% tax. Tax amount?", ["$\$4", "$\$8", "$\$46", "$\$54"], 0, "$50 \\times 0.08$.", 10, 'medium'),
             generateQuestion("Express 3/5 as a percentage.", ["60%", "35%", "40%", "15%"], 0, "0.6 = 60%.", 10, 'medium'),
             generateQuestion("If price rises from $\$2 to $\$2.50, % rise?", ["25%", "50%", "20%", "10%"], 0, "$0.5 / 2 = 25\%$.", 10, 'medium'),
-            generateQuestion("Find 120% of 50.", ["60", "50", "70", "120"], 0, "$1.2 \times 50$.", 10, 'medium'),
+            generateQuestion("Find 120% of 50.", ["60", "50", "70", "120"], 0, "$1.2 \\times 50$.", 10, 'medium'),
             generateQuestion("15 is what percentage of 60?", ["25%", "15%", "40%", "20%"], 0, "1/4 = 25%.", 10, 'medium'),
             generateQuestion("Decrease 200 by 4.5%.", ["191", "195.5", "9", "209"], 0, "$200 - 9 = 191$.", 10, 'medium'),
             generateQuestion("What is $\$3$ as percentage of $\$12$?", ["25%", "33.3%", "12%", "30%"], 0, "1/4.", 10, 'medium'),
@@ -543,10 +543,10 @@ const g2Questions = {
             generateQuestion("After a $20\\%$ discount, price is $\$240. Original price?", ["$\$300", "$\$280", "$\$288", "$\$200"], 0, "**Lesson**: $80\\%$ is 240, so $100\\%$ is $240 / 0.8 = 300$.", 20, 'hard'),
             generateQuestion("[Interleaved] $2x + 5 = 15$. Find x.", ["5", "10", "2", "20"], 0, "**Lesson**: $2x = 10$, $x = 5$.", 10, 'expert'),
             generateQuestion("If tax is 7% and total is $\$107, find tax amount.", ["$\$7", "$\$100", "$\$7.49", "$\$1"], 0, "$1.07X = 107, X=100$. Tax=7.", 20, 'hard'),
-            generateQuestion("A shop increases price by 20% then discounts by 20%. Net % change?", ["4% decrease", "0%", "4% increase", "2% decrease"], 0, "$1.2 \times 0.8 = 0.96$.", 20, 'hard'),
+            generateQuestion("A shop increases price by 20% then discounts by 20%. Net % change?", ["4% decrease", "0%", "4% increase", "2% decrease"], 0, "$1.2 \\times 0.8 = 0.96$.", 20, 'hard'),
             generateQuestion("If 40% of x is 60, find 10% of x.", ["15", "6", "60", "24"], 0, "$60 / 4$.", 20, 'hard'),
             generateQuestion("Convert 0.2% to decimal.", ["0.002", "0.02", "0.2", "0.0002"], 0, "Divide by 100.", 20, 'hard'),
-            generateQuestion("Successive discounts of 10% and 10%. Equivalent single discount?", ["19%", "20%", "18%", "21%"], 0, "$1 - 0.9 \times 0.9 = 0.19$.", 20, 'hard'),
+            generateQuestion("Successive discounts of 10% and 10%. Equivalent single discount?", ["19%", "20%", "18%", "21%"], 0, "$1 - 0.9 \\times 0.9 = 0.19$.", 20, 'hard'),
             generateQuestion("Water expands 10% when freezing. Volume increase for 1L?", ["0.1L", "1.1L", "0.01L", "1L"], 0, "10% of 1.", 20, 'hard'),
             generateQuestion("If A's height is 25% more than B's, B is what % shorter than A?", ["20%", "25%", "15%", "10%"], 0, "$A = 1.25B \Rightarrow B = 0.8A$.", 20, 'hard'),
             generateQuestion("Solve: $x + 10\%x = 33$.", ["30", "33", "3", "20"], 0, "$1.1x = 33 \Rightarrow x = 30$.", 20, 'hard')
@@ -598,13 +598,13 @@ const g2Questions = {
             generateQuestion("If $x+2=5, x=___$.", ["3", "7", "2.5", "10"], 0, "Isolate x.", 5, 'easy'),
             generateQuestion("Term $5y$ consists of coefficient ___.", ["5", "y", "1", "0"], 0, "Numerical factor.", 5, 'easy'),
             generateQuestion("Simplify $0 \\times x$.", ["0", "x", "1", "x^0"], 0, "Multiplication by zero property.", 5, 'easy'),
-            generateQuestion("Result of $a \times a$?", ["$a^2$", "$2a$", "$a$", "$a/a$"], 0, "Index notation.", 5, 'easy'),
+            generateQuestion("Result of $a \\times a$?", ["$a^2$", "$2a$", "$a$", "$a/a$"], 0, "Index notation.", 5, 'easy'),
             generateQuestion("If $y=4, 2y=___$.", ["8", "6", "2", "16"], 0, "Double value.", 5, 'easy'),
             // Medium (1-10)
             generateQuestion("Factorise purely $6x + 9$.", ["$3(2x+3)$", "$3(2x+9)$", "$3x(2+3)$", "$2(3x+4.5)$"], 0, "**Lesson**: HCF is 3. Pull it out.", 10, 'medium'),
             generateQuestion("Simplify $2x + 4x - 10x$.", ["$-4x$", "$4x$", "$-6x$", "$6x$"], 0, "Track signs.", 10, 'medium'),
             generateQuestion("Expand $(x-1)(x+1)$.", ["$x^2 - 1$", "$x^2 + 1$", "$x^2 - 2x + 1$", "$2x$"], 0, "Result of conjugate pairs.", 10, 'medium'),
-            generateQuestion("If $x=2, y=3$, value of $xy + x$?", ["8", "6", "5", "10"], 0, "$2 \times 3 + 2$.", 10, 'medium'),
+            generateQuestion("If $x=2, y=3$, value of $xy + x$?", ["8", "6", "5", "10"], 0, "$2 \\times 3 + 2$.", 10, 'medium'),
             generateQuestion("Solve $\\frac{3}{x} = 1$.", ["3", "1", "0", "1/3"], 0, "$x=3$.", 10, 'medium'),
             generateQuestion("Expand $-2(x-5)$.", ["$-2x + 10$", "$-2x - 10$", "$x + 10$", "$2x - 10$"], 0, "Negative distribution.", 10, 'medium'),
             generateQuestion("Simplify $\\frac{x^5}{x^2}$.", ["$x^3$", "$x^7$", "$x^{2.5}$", "1"], 0, "Subtract indices.", 10, 'medium'),
@@ -657,7 +657,7 @@ const g2Questions = {
             generateQuestion("If $f(x) = x^2 - x$, find $f(-2)$.", ["6", "2", "-6", "4"], 0, "$(-2)^2 - (-2) = 4+2=6$.", 20, 'hard'),
             generateQuestion("Find equation of line through (1, 2) and (4, 11).", ["$y = 3x - 1$", "$y = 3x + 1$", "$y = 9x - 7$", "$y = 3x + 2$"], 0, "$m=9/3=3. 2=3(1)+c \Rightarrow c=-1$.", 20, 'hard'),
             generateQuestion("Intersection of y = x and y = 2x - 5?", ["(5, 5)", "(0, 0)", "(2.5, 2.5)", "(1, 1)"], 0, "$x = 2x - 5 \Rightarrow x=5$.", 20, 'hard'),
-            generateQuestion("Which point is NOT on $y = x^2 + 1$?", ["(2, 4)", "(0, 1)", "(1, 2)", "(-1, 2)"], 0, "$2^2 + 1 = 5 \neq 4$.", 20, 'hard'),
+            generateQuestion("Which point is NOT on $y = x^2 + 1$?", ["(2, 4)", "(0, 1)", "(1, 2)", "(-1, 2)"], 0, "$2^2 + 1 = 5 \\neq 4$.", 20, 'hard'),
             generateQuestion("Coordinate of turning point for $y = (x-2)^2 + 3$?", ["(2, 3)", "(-2, 3)", "(3, 2)", "(0, 7)"], 0, "Vertex form.", 20, 'hard')
         ],
         testing: [
@@ -746,22 +746,22 @@ const g2Questions = {
             generateQuestion("Complementary angles sum to?", ["$90^\\circ$", "$180^\\circ$", "$360^\\circ$", "$45^\\circ$"], 0, "Radian check.", 5, 'easy'),
             // Medium (1-10)
             generateQuestion("Find one exterior angle of regular hexagon.", ["$60^\\circ$", "$120^\\circ$", "$90^\\circ$", "$45^\\circ$"], 0, "360 / 6 = 60.", 10, 'medium'),
-            generateQuestion("Area of triangle base 5, height 4?", ["10", "20", "9", "40"], 0, "$0.5 \times 5 \times 4$.", 10, 'medium'),
+            generateQuestion("Area of triangle base 5, height 4?", ["10", "20", "9", "40"], 0, "$0.5 \\times 5 \\times 4$.", 10, 'medium'),
             generateQuestion("Find angle between hands of clock at 3:00.", ["$90^\\circ$", "$45^\\circ$", "$30^\\circ$", "$0^\\circ$"], 0, "1/4 of circle.", 10, 'medium'),
-            generateQuestion("A polygon has 5 sides. Sum of interior angles?", ["$540^\\circ$", "$360^\\circ$", "$720^\\circ$", "$180^\\circ$"], 0, "$3 \times 180$.", 10, 'medium'),
+            generateQuestion("A polygon has 5 sides. Sum of interior angles?", ["$540^\\circ$", "$360^\\circ$", "$720^\\circ$", "$180^\\circ$"], 0, "$3 \\times 180$.", 10, 'medium'),
             generateQuestion("Find diameter if circumference is $10\\pi$.", ["10", "5", "20", "15"], 0, "$C = \\pi d$.", 10, 'medium'),
             generateQuestion("Which quadrilateral has 4 equal sides but not always 90 deg?", ["Rhombus", "Rectangle", "Trapezium", "Kite"], 0, "Slanted square.", 10, 'medium'),
             generateQuestion("Is every rectangle a square?", ["No", "Yes"], 0, "Square needs 4 equal sides.", 10, 'medium'),
-            generateQuestion("Area of trapezium with bases 2, 4 and height 3?", ["9", "18", "12", "6"], 0, "$0.5 \times (2+4) \times 3 = 9$.", 10, 'medium'),
+            generateQuestion("Area of trapezium with bases 2, 4 and height 3?", ["9", "18", "12", "6"], 0, "$0.5 \\times (2+4) \\times 3 = 9$.", 10, 'medium'),
             generateQuestion("Angle sum of any quadrilateral?", ["$360^\\circ$", "$180^\\circ$", "$720^\\circ$", "$90^\\circ$"], 0, "Two triangles.", 10, 'medium'),
             generateQuestion("Midpoint of a diameter is the ___.", ["Center", "Origin", "Radius", "Edge"], 0, "Point of symmetry.", 10, 'medium'),
             // Hard (1-10)
             generateQuestion("Find interior angle of regular decagon (10 sides).", ["$144^\\circ$", "$36^\\circ$", "$108^\\circ$", "$120^\\circ$"], 0, "**Lesson**: $(8 \\times 180) / 10 = 144$.", 20, 'hard'),
             generateQuestion("[Interleaved] Expand $(x+1)(x-1)$.", ["$x^2-1$", "$x^2+1$", "$2x$", "0"], 0, "Classic algebra identity.", 10, 'expert'),
-            generateQuestion("Find height of triangle if Area is 20, base is 5.", ["8", "4", "10", "40"], 0, "$20 = 0.5 \times 5 \times h \\Rightarrow h=8$.", 20, 'hard'),
+            generateQuestion("Find height of triangle if Area is 20, base is 5.", ["8", "4", "10", "40"], 0, "$20 = 0.5 \\times 5 \\times h \\Rightarrow h=8$.", 20, 'hard'),
             generateQuestion("Spheres S1 and S2 have radius ratio 1:2. Volume ratio?", ["1:8", "1:4", "1:2", "1:1"], 0, "$R^3$.", 20, 'hard'),
             generateQuestion("Volume of cylinder with radius 2, height 5?", ["$20\\pi$", "$10\\pi$", "$50\\pi$", "$4\\pi$"], 0, "$\\pi r^2 h = \\pi(4)(5) = 20\\pi$.", 20, 'hard'),
-            generateQuestion("Total surface area of a cube side 2?", ["24", "8", "16", "32"], 0, "$6 \times 2^2$.", 20, 'hard'),
+            generateQuestion("Total surface area of a cube side 2?", ["24", "8", "16", "32"], 0, "$6 \\times 2^2$.", 20, 'hard'),
             generateQuestion("Angle between North and Southeast?", ["$135^\\circ$", "$45^\\circ$", "$90^\\circ$", "$180^\\circ$"], 0, "Clockwise rotation.", 20, 'hard'),
             generateQuestion("Can a triangle have sides 2, 3, 6?", ["No", "Yes"], 0, "$2+3 < 6$. Triangle inequality rule.", 20, 'hard'),
             generateQuestion("Find x in reflex angle if interior is $70^\\circ$.", ["$290^\\circ$", "$110^\\circ$", "$200^\\circ$", "$180^\\circ$"], 0, "$360 - 70$.", 20, 'hard'),
@@ -790,7 +790,7 @@ const g2Questions = {
             generateQuestion("Range of -5 to 5.", ["10", "0", "5", "25"], 0, "$5 - (-5) = 10$.", 15, 'medium'),
             generateQuestion("Standard deviation measures ___.", ["Spread", "Average", "Total", "Max"], 0, "Variability.", 15, 'medium'),
             generateQuestion("Odds of tails on a fair coin?", ["0.5", "1", "0", "0.2"], 0, "1 in 2.", 15, 'medium'),
-            generateQuestion("If mean is 10 for 5 items, total is ___.", ["50", "2", "15", "10"], 0, "$Mean \times Count$.", 15, 'medium'),
+            generateQuestion("If mean is 10 for 5 items, total is ___.", ["50", "2", "15", "10"], 0, "$Mean \\times Count$.", 15, 'medium'),
             generateQuestion("Is it likely to rain if probability is 0.9?", ["Likely", "Unlikely"], 0, "Close to 1.", 15, 'medium'),
             // Hard (1-10)
             generateQuestion("Find x if Mean of 5, 8, x is 7.", ["8", "7", "6", "9"], 0, "**Lesson**: $5+8+x = 21 \\Rightarrow x = 8$.", 20, 'hard'),
@@ -801,8 +801,8 @@ const g2Questions = {
             generateQuestion("Find Range if max is 2x and min is x.", ["x", "2x", "3x", "0"], 0, "$2x-x$.", 20, 'hard'),
             generateQuestion("If sum is 100 and mean is 4, how many items?", ["25", "400", "50", "4"], 0, "$100/4$.", 20, 'hard'),
             generateQuestion("Mode of 1, 1, 2, 2, 3.", ["1 and 2", "3", "None", "1"], 0, "Bimodal.", 20, 'hard'),
-            generateQuestion("Degrees in pie chart for 20% slice?", ["$72^\\circ$", "$20^\\circ$", "$36^\\circ$", "$90^\\circ$"], 0, "$0.2 \times 360$.", 20, 'hard'),
-            generateQuestion("Probability of A or B if mutually exclusive?", ["$P(A) + P(B)$", "$P(A) \times P(B)$", "1", "0"], 0, "Sum of individual probabilities.", 20, 'hard')
+            generateQuestion("Degrees in pie chart for 20% slice?", ["$72^\\circ$", "$20^\\circ$", "$36^\\circ$", "$90^\\circ$"], 0, "$0.2 \\times 360$.", 20, 'hard'),
+            generateQuestion("Probability of A or B if mutually exclusive?", ["$P(A) + P(B)$", "$P(A) \\times P(B)$", "1", "0"], 0, "Sum of individual probabilities.", 20, 'hard')
         ],
         testing: [
             // Easy (1-10)
@@ -835,7 +835,7 @@ const g2Questions = {
             generateQuestion("Mean of 10 items is 5. One more item added. New sum?", ["Cannot tell", "55", "5", "50"], 0, "Depends on the new item value.", 20, 'hard'),
             generateQuestion("Sum of squares of deviations from mean is used for ___.", ["Variance", "Median", "Mode", "Range"], 0, "Statistical formula component.", 20, 'hard'),
             generateQuestion("Probability of at least one head in two flips?", ["3/4", "1/4", "1/2", "1"], 0, "1 - P(TT).", 20, 'hard'),
-            generateQuestion("Degrees for 1% in pie chart?", ["$3.6^\\circ$", "$1^\\circ$", "$36^\\circ$", "$0.36^\\circ$"], 0, "$0.01 \times 360$.", 20, 'hard'),
+            generateQuestion("Degrees for 1% in pie chart?", ["$3.6^\\circ$", "$1^\\circ$", "$36^\\circ$", "$0.36^\\circ$"], 0, "$0.01 \\times 360$.", 20, 'hard'),
             generateQuestion("Standard deviation of [10, 10, 10]?", ["0", "10", "1", "30"], 0, "No deviation.", 20, 'hard'),
             generateQuestion("If Mean > Median, the distribution is ___.", ["Positively skewed", "Symmetrical", "Negatively skewed", "Normal"], 0, "Shape of data.", 20, 'hard')
         ]
@@ -861,7 +861,7 @@ const g2Questions = {
             generateQuestion("Expand $(2x+1)(x+4)$.", ["$2x^2+9x+4$", "$2x^2+8x+1$", "$2x^2+x+4$", "$2x^2+10x+4$"], 0, "FOIL: $2x^2+8x+x+4$.", 15, 'medium'),
             generateQuestion("Simplify $\\frac{4x^2}{8x}$.", ["$x/2$", "2x", "4x", "0.5"], 0, "Cancel 4 and x.", 15, 'medium'),
             generateQuestion("Factorise fully $4x^2 - 1$.", ["$(2x-1)(2x+1)$", "$(4x-1)(4x+1)$", "$(2x-1)^2$", "$2(x^2-0.5)$"], 0, "$(2x)^2 - 1^2$.", 15, 'medium'),
-            generateQuestion("Expand $(x-3)(x-7)$.", ["$x^2-10x+21$", "$x^2+10x+21$", "$x^2-4x+21$", "$x^2-21$"], 0, "$-3 \times -7 = +21$.", 15, 'medium'),
+            generateQuestion("Expand $(x-3)(x-7)$.", ["$x^2-10x+21$", "$x^2+10x+21$", "$x^2-4x+21$", "$x^2-21$"], 0, "$-3 \\times -7 = +21$.", 15, 'medium'),
             generateQuestion("Simplify $\\frac{x+2}{x^2+4x+4}$.", ["$\\frac{1}{x+2}$", "$x+2$", "1", "$\\frac{1}{x-2}$"], 0, "Bottom is $(x+2)^2$.", 15, 'medium'),
             generateQuestion("Factorise $ax+ay+bx+by$.", ["$(a+b)(x+y)$", "$(a+x)(b+y)$", "$(ab)(xy)$", "a(x+y)+b"], 0, "Factor by grouping.", 15, 'medium'),
             generateQuestion("Simplify $2(x+3) - (x-1)$.", ["$x+7$", "$x+5$", "$x+2$", "$3x+5$"], 0, "$2x+6-x+1$.", 15, 'medium'),
@@ -1000,18 +1000,18 @@ const g2Questions = {
             generateQuestion("Which transformation is a 'flip'?", ["Reflection", "Rotation", "Translation", "Enlargement"], 0, "Mirror image.", 10, 'easy'),
             generateQuestion("Regular polygons have all sides ___.", ["Equal", "Unequal", "Parallel", "Curved"], 0, "Definition of regular.", 10, 'easy'),
             // Medium (1-10)
-            generateQuestion("Find interior angle of regular octagon.", ["$135^\\circ$", "$45^\\circ$", "$120^\\circ$", "$108^\\circ$"], 0, "$(6 \times 180) / 8 = 135$.", 15, 'medium'),
+            generateQuestion("Find interior angle of regular octagon.", ["$135^\\circ$", "$45^\\circ$", "$120^\\circ$", "$108^\\circ$"], 0, "$(6 \\times 180) / 8 = 135$.", 15, 'medium'),
             generateQuestion("If two triangles are similar, their sides are ___.", ["Proportional", "Equal", "Congruent", "Parallel"], 0, "Ratio matches.", 15, 'medium'),
             generateQuestion("Find x if exterior angle of regular polygon is $72^\\circ$. Sides?", ["5", "6", "4", "10"], 0, "$360 / 72 = 5$.", 15, 'medium'),
             generateQuestion("A shape is rotated $180^\\circ$. Is it congruent?", ["Yes", "No"], 0, "Rotation preserves size.", 15, 'medium'),
             generateQuestion("Scale factor is 2. Area increase factor?", ["4", "2", "8", "1"], 0, "$2^2$.", 15, 'medium'),
-            generateQuestion("Find sum of interior angles of a pentagon.", ["$540^\\circ$", "$360^\\circ$", "$720^\\circ$", "$180^\\circ$"], 0, "$3 \times 180$.", 15, 'medium'),
+            generateQuestion("Find sum of interior angles of a pentagon.", ["$540^\\circ$", "$360^\\circ$", "$720^\\circ$", "$180^\\circ$"], 0, "$3 \\times 180$.", 15, 'medium'),
             generateQuestion("One interior angle of regular polygon is $140^\\circ$. Exterior?", ["$40^\\circ$", "$140^\\circ$", "$180^\\circ$", "$90^\\circ$"], 0, "$180 - 140$.", 15, 'medium'),
             generateQuestion("How many diagonals in a pentagon?", ["5", "2", "10", "3"], 0, "$n(n-3)/2$.", 15, 'medium'),
             generateQuestion("Which triangle proof uses hypotenuse and one side?", ["RHS", "SSS", "SAS", "AAS"], 0, "Right-angle Hypotenuse Side.", 15, 'medium'),
             generateQuestion("An enlargement has scale factor 0.5. The shape gets ___.", ["Smaller", "Bigger", "Stays same", "Rotates"], 0, "Factor < 1.", 15, 'medium'),
             // Hard (1-10)
-            generateQuestion("Find number of sides if sum of interior angles is $1800^\\circ$.", ["12", "10", "14", "8"], 0, "$(n-2) \times 180 = 1800 \\Rightarrow n-2=10 \\Rightarrow n=12$.", 20, 'hard'),
+            generateQuestion("Find number of sides if sum of interior angles is $1800^\\circ$.", ["12", "10", "14", "8"], 0, "$(n-2) \\times 180 = 1800 \\Rightarrow n-2=10 \\Rightarrow n=12$.", 20, 'hard'),
             generateQuestion("Total lines of symmetry in a regular hexagon?", ["6", "3", "12", "1"], 0, "Match number of sides.", 20, 'hard'),
             generateQuestion("Find x if interior angles are $x, 2x, 3x, 4x$ in quad.", ["$36^\\circ$", "$72^\\circ$", "$18^\\circ$", "$45^\\circ$"], 0, "$10x = 360$.", 20, 'hard'),
             generateQuestion("Similar triangles A and B. Sides ratio 3:4. Volume ratio?", ["27:64", "9:16", "3:4", "1:1"], 0, "Ratio cubed.", 20, 'hard'),
@@ -1019,7 +1019,7 @@ const g2Questions = {
             generateQuestion("Area of two similar squares is 25 and 100. Scale factor?", ["2", "4", "5", "10"], 0, "$\sqrt{100/25} = 2$.", 20, 'hard'),
             generateQuestion("Which proof for congruent triangles doesn't include sides?", ["None (Need at least 1 side)", "AAA", "Angle-only", "SSS"], 0, "AAA is for similarity only.", 20, 'hard'),
             generateQuestion("Number of lines of symmetry in a non-isosceles trapezium?", ["0", "1", "2", "4"], 0, "No symmetry.", 20, 'hard'),
-            generateQuestion("Find interior angle of regular 20-gon.", ["$162^\\circ$", "$18^\\circ$", "$160^\\circ$", "$144^\\circ$"], 0, "$18 \times 180 / 20 = 162$.", 20, 'hard'),
+            generateQuestion("Find interior angle of regular 20-gon.", ["$162^\\circ$", "$18^\\circ$", "$160^\\circ$", "$144^\\circ$"], 0, "$18 \\times 180 / 20 = 162$.", 20, 'hard'),
             generateQuestion("Can a polygon have interior sum of $450^\\circ$?", ["No", "Yes"], 0, "Must be multiple of 180.", 20, 'hard')
         ],
         testing: [
@@ -1037,16 +1037,16 @@ const g2Questions = {
             // Medium (1-10)
             generateQuestion("Find exterior angle of regular pentagon.", ["$72^\\circ$", "$108^\\circ$", "$60^\\circ$", "$90^\\circ$"], 0, "$360 / 5 = 72$.", 10, 'medium'),
             generateQuestion("An enlargement has scale factor -2. The shape is ___.", ["Enlarged and flipped", "Smaller", "Stays same", "No change"], 0, "Negative flips it.", 10, 'medium'),
-            generateQuestion("Total interior sum of a 10-sided shape?", ["$1440^\\circ$", "$1800^\\circ$", "$1620^\\circ$", "$360^\\circ$"], 0, "$8 \times 180$.", 10, 'medium'),
+            generateQuestion("Total interior sum of a 10-sided shape?", ["$1440^\\circ$", "$1800^\\circ$", "$1620^\\circ$", "$360^\\circ$"], 0, "$8 \\times 180$.", 10, 'medium'),
             generateQuestion("If sides ratio is 2:3, area ratio is ___.", ["4:9", "2:3", "8:27", "4:6"], 0, "$2^2:3^2$.", 10, 'medium'),
-            generateQuestion("One interior angle of regular hexagon?", ["$120^\\circ$", "$60^\\circ$", "$90^\\circ$", "$150^\\circ$"], 0, "$4 \times 180 / 6$.", 10, 'medium'),
+            generateQuestion("One interior angle of regular hexagon?", ["$120^\\circ$", "$60^\\circ$", "$90^\\circ$", "$150^\\circ$"], 0, "$4 \\times 180 / 6$.", 10, 'medium'),
             generateQuestion("A triangle has angles 40, 60, 80. Is it similar to one with 40, 60, 80?", ["Yes", "No"], 0, "AAA rule.", 10, 'medium'),
             generateQuestion("Number of lines of symmetry in an equilateral triangle?", ["3", "1", "0", "6"], 0, "One through each vertex.", 10, 'medium'),
             generateQuestion("Transformation that changes size?", ["Enlargement", "Rotation", "Reflection", "Translation"], 0, "Scale factor.", 10, 'medium'),
             generateQuestion("Exterior angle of regular 12-sided shape?", ["$30^\\circ$", "$15^\\circ$", "$60^\\circ$", "$45^\\circ$"], 0, "$360 / 12$.", 10, 'medium'),
             generateQuestion("If two shapes are congruent, they must be similar.", ["Yes", "No"], 0, "Identical is a scale of 1.", 10, 'medium'),
             // Hard (1-10)
-            generateQuestion("Find x if interior angles of regular polygon sum to $1260^\\circ$. Sides?", ["9", "7", "8", "10"], 0, "$(n-2) \times 180 = 1260 \\Rightarrow n-2=7 \\Rightarrow n=9$.", 20, 'hard'),
+            generateQuestion("Find x if interior angles of regular polygon sum to $1260^\\circ$. Sides?", ["9", "7", "8", "10"], 0, "$(n-2) \\times 180 = 1260 \\Rightarrow n-2=7 \\Rightarrow n=9$.", 20, 'hard'),
             generateQuestion("Area of two similar triangles ratio 4:25. Side ratio?", ["2:5", "4:25", "8:125", "16:625"], 0, "Square root.", 20, 'hard'),
             generateQuestion("Find interior angle of regular polygon with 15 sides.", ["$156^\\circ$", "$24^\\circ$", "$144^\\circ$", "$150^\\circ$"], 0, "Ext is 24. $180-24$.", 20, 'hard'),
             generateQuestion("How many lines of symmetry in a regular 100-gon?", ["100", "50", "0", "1"], 0, "Pattern holds.", 20, 'hard'),
@@ -1070,7 +1070,7 @@ const g2Questions = {
             generateQuestion("Is Pythagoras used for all triangles?", ["No (Only Right-angled)", "Yes", "Maybe", "Sometimes"], 0, "Requirement: $90^\\circ$.", 10, 'easy'),
             generateQuestion("Calculate $8^2 + 15^2$.", ["289", "225", "64", "200"], 0, "$64+225=289$.", 10, 'easy'),
             generateQuestion("Hypotenuse is 5, one side is 3. Other side?", ["4", "2", "8", "16"], 0, "$\sqrt{25-9}$.", 10, 'easy'),
-            generateQuestion("Square root of 625?", ["25", "15", "35", "5"], 0, "$25 \times 25$.", 10, 'easy'),
+            generateQuestion("Square root of 625?", ["25", "15", "35", "5"], 0, "$25 \\times 25$.", 10, 'easy'),
             // Medium (1-10)
             generateQuestion("Hypotenuse is 13, one leg is 5. Find other leg.", ["12", "144", "8", "10"], 0, "**Lesson**: $a = \\sqrt{13^2 - 5^2} = \\sqrt{144} = 12$.", 15, 'medium'),
             generateQuestion("Find hypotenuse for sides 7 and 24.", ["25", "31", "49", "100"], 0, "$\sqrt{49+576}$.", 15, 'medium'),
@@ -1110,7 +1110,7 @@ const g2Questions = {
             generateQuestion("Find other side if $c=25$ and $a=7$.", ["24", "18", "32", "15"], 0, "$625-49 = 576$.", 10, 'medium'),
             generateQuestion("Find hypotenuse for sides 8 and 15.", ["17", "23", "64", "225"], 0, "$\sqrt{64+225}$.", 10, 'medium'),
             generateQuestion("Diagonal of rectangle 9m by 12m.", ["15m", "81m", "21m", "3m"], 0, "$\sqrt{81+144}$.", 10, 'medium'),
-            generateQuestion("Check if 5, 10, 11 is right-angled.", ["No", "Yes"], 0, "$25+100=125 \neq 121$.", 10, 'medium'),
+            generateQuestion("Check if 5, 10, 11 is right-angled.", ["No", "Yes"], 0, "$25+100=125 \\neq 121$.", 10, 'medium'),
             generateQuestion("Find side of square if diagonal is 2.", ["$\\sqrt{2}$", "1", "2", "4"], 0, "$2s^2=4 \Rightarrow s^2=2$.", 10, 'medium'),
             generateQuestion("Hypotenuse of 12 and 16 triangle?", ["20", "28", "4", "400"], 0, "Scaling 3,4,5 triangle.", 10, 'medium'),
             generateQuestion("If $a=b=1$, what is c?", ["$\\sqrt{2}$", "2", "1", "1.4"], 0, "$\sqrt{1+1}$.", 10, 'medium'),
@@ -1137,7 +1137,7 @@ const g2Questions = {
             generateQuestion("Fractional rule governing volume of Cone?", ["\\frac{1}{3}\\pi r^2 h", "\\pi r^2 h", "\\frac{4}{3}\\pi r^3", "2\\pi r h"], 0, "**Lesson**: A cone is precisely one-third of its surrounding cylinder.", 15, 'easy'),
             generateQuestion("Volume of a cube with side 2.", ["8", "4", "6", "12"], 0, "Cube = $side^3$.", 10, 'easy'),
             generateQuestion("Base area of cylinder is $\\pi r^2$. Volume?", ["$\\pi r^2 h$", "$2\\pi r h$", "$\\frac{1}{3}\\pi r^2 h$", "$\\pi r^3$"], 0, "Area times height.", 10, 'easy'),
-            generateQuestion("Surface area of one face of cube side 5?", ["25", "125", "20", "10"], 0, "$5 \times 5$.", 10, 'easy'),
+            generateQuestion("Surface area of one face of cube side 5?", ["25", "125", "20", "10"], 0, "$5 \\times 5$.", 10, 'easy'),
             generateQuestion("Volume of 3D box with sides 2, 3, 4?", ["24", "9", "48", "12"], 0, "Product of 3 sides.", 10, 'easy'),
             generateQuestion("Unit for volume?", ["$cm^3$", "$cm^2$", "$cm$", "kg"], 0, "Cubic units.", 10, 'easy'),
             generateQuestion("Unit for surface area?", ["$cm^2$", "$cm^3$", "$cm$", "m"], 0, "Square units.", 10, 'easy'),
@@ -1145,8 +1145,8 @@ const g2Questions = {
             generateQuestion("Volume of pyramid is $\\frac{1}{3} \\times$ ___ $\\times$ height.", ["Base Area", "Radius", "Side", "Perimeter"], 0, "Standard pyramid formula.", 10, 'easy'),
             // Medium (1-10)
             generateQuestion("Volume of sphere with radius 1.", ["$\\frac{4}{3}\\pi$", "$\\pi$", "$4\\pi$", "$2\\pi$"], 0, "Direct formula use.", 15, 'medium'),
-            generateQuestion("Base area of cone is 50, height is 6. Volume?", ["100", "300", "50", "600"], 0, "$\\frac{1}{3} \times 50 \times 6$.", 15, 'medium'),
-            generateQuestion("Total surface area of cube side 3?", ["54", "27", "9", "36"], 0, "$6 \times 3^2$.", 15, 'medium'),
+            generateQuestion("Base area of cone is 50, height is 6. Volume?", ["100", "300", "50", "600"], 0, "$\\frac{1}{3} \\times 50 \\times 6$.", 15, 'medium'),
+            generateQuestion("Total surface area of cube side 3?", ["54", "27", "9", "36"], 0, "$6 \\times 3^2$.", 15, 'medium'),
             generateQuestion("Radius of cylinder 2, height 10. Volume?", ["$40\\pi$", "$20\\pi$", "$80\\pi$", "$100\\pi$"], 0, "$\\pi(4)(10)$.", 15, 'medium'),
             generateQuestion("Surface area of sphere radius 2?", ["$16\\pi$", "$8\\pi$", "$32\\pi$", "$4\\pi$"], 0, "$4\\pi(4)$.", 15, 'medium'),
             generateQuestion("Volume of hemisphere radius 3?", ["$18\\pi$", "$36\\pi$", "$9\\pi$", "$54\\pi$"], 0, "Half of sphere volume.", 15, 'medium'),
@@ -1162,7 +1162,7 @@ const g2Questions = {
             generateQuestion("A ball fits exactly inside a cube side 2. Volume of ball?", ["$\\frac{4}{3}\\pi$", "$8\\pi$", "$4\\pi$", "$\\frac{32}{3}\\pi$"], 0, "Radius is 1. $\\frac{4}{3}\\pi(1)^3$.", 20, 'hard'),
             generateQuestion("Find radius of sphere if Surface Area is $100\\pi$.", ["5", "10", "2.5", "50"], 0, "$4\\pi r^2 = 100\\pi \Rightarrow r^2=25$.", 20, 'hard'),
             generateQuestion("Volume of cone radius r, height 3h?", ["$\\pi r^2 h$", "$\\frac{1}{3}\\pi r^2 h$", "$3\\pi r^2 h$", "$\\pi r^2$"], 0, "The 1/3 and 3 cancel out.", 20, 'hard'),
-            generateQuestion("Sphere vs Cube: Both same radius/side $s$. Ratio of sphere volume to cube volume roughly?", ["$\\approx 0.52$", "$1$", "$2$", "$0.78$"], 0, "$\frac{4/3 \pi}{8} \approx 0.523$.", 20, 'hard'),
+            generateQuestion("Sphere vs Cube: Both same radius/side $s$. Ratio of sphere volume to cube volume roughly?", ["$\\approx 0.52$", "$1$", "$2$", "$0.78$"], 0, "$\\frac{4/3 \pi}{8} \approx 0.523$.", 20, 'hard'),
             generateQuestion("Correct formula for Cone curved surface area using slant length $l$?", ["$\\pi r l$", "$\\pi r^2 l$", "$2\\pi r l$", "$\\frac{1}{3}\\pi r l$"], 0, "Standard formula.", 20, 'hard'),
             generateQuestion("[Interleaved] Sum of interior angles of a pentagon.", ["$540^\\circ$", "$360^\\circ$", "$180^\\circ$", "$720^\\circ$"], 0, "Geometry link.", 10, 'expert')
         ],
@@ -1176,28 +1176,28 @@ const g2Questions = {
             generateQuestion("Is volume of cone less than cylinder of same dimensions?", ["Yes (1/3)", "No", "Exactly half", "Twice"], 0, "Pointy factor.", 5, 'easy'),
             generateQuestion("If radius is 2, what is $r^2$?", ["4", "2", "8", "0"], 0, "Basic square.", 5, 'easy'),
             generateQuestion("Base of a cone is what shape?", ["Circle", "Square", "Triangle", "Point"], 0, "Circular base.", 5, 'easy'),
-            generateQuestion("Prism volume = ___ $\times$ Height.", ["Cross Section Area", "Radius", "Perimeter", "Side"], 0, "Uniform slice.", 5, 'easy'),
+            generateQuestion("Prism volume = ___ $\\times$ Height.", ["Cross Section Area", "Radius", "Perimeter", "Side"], 0, "Uniform slice.", 5, 'easy'),
             generateQuestion("Is a pyramid a prism?", ["No", "Yes"], 0, "Prisms have uniform cross sections.", 5, 'easy'),
             // Medium (1-10)
-            generateQuestion("Find volume of sphere with radius 3m.", ["$36\\pi m^3$", "$9\\pi m^3$", "$108\\pi m^3$", "$27\\pi m^3$"], 0, "$\frac{4}{3} \times 27 \times \pi$.", 10, 'medium'),
-            generateQuestion("Volume of cone: radius 3, height 10.", ["$30\\pi$", "$90\\pi$", "$10\\pi$", "$45\\pi$"], 0, "$\frac{1}{3} \times (9) \times 10 \times \pi$.", 10, 'medium'),
-            generateQuestion("Surface area of sphere: radius 5.", ["$100\\pi$", "$25\\pi$", "$125\\pi$", "$50\\pi$"], 0, "$4 \times 25 \times \pi$.", 10, 'medium'),
-            generateQuestion("Volume of cylinder: diameter 4, height 5.", ["$20\\pi$", "$80\\pi$", "$40\\pi$", "$10\\pi$"], 0, "Radius 2 $\Rightarrow 4 \times 5 \times \pi$.", 10, 'medium'),
-            generateQuestion("Surface area of cube: side 10.", ["600", "100", "1000", "400"], 0, "$6 \times 100$.", 10, 'medium'),
-            generateQuestion("Find volume if Base Area=15 and height=4 for pyramid.", ["20", "60", "30", "15"], 0, "$\frac{1}{3} \times 15 \times 4$.", 10, 'medium'),
+            generateQuestion("Find volume of sphere with radius 3m.", ["$36\\pi m^3$", "$9\\pi m^3$", "$108\\pi m^3$", "$27\\pi m^3$"], 0, "$\\frac{4}{3} \\times 27 \\times \pi$.", 10, 'medium'),
+            generateQuestion("Volume of cone: radius 3, height 10.", ["$30\\pi$", "$90\\pi$", "$10\\pi$", "$45\\pi$"], 0, "$\\frac{1}{3} \\times (9) \\times 10 \\times \pi$.", 10, 'medium'),
+            generateQuestion("Surface area of sphere: radius 5.", ["$100\\pi$", "$25\\pi$", "$125\\pi$", "$50\\pi$"], 0, "$4 \\times 25 \\times \pi$.", 10, 'medium'),
+            generateQuestion("Volume of cylinder: diameter 4, height 5.", ["$20\\pi$", "$80\\pi$", "$40\\pi$", "$10\\pi$"], 0, "Radius 2 $\Rightarrow 4 \\times 5 \\times \pi$.", 10, 'medium'),
+            generateQuestion("Surface area of cube: side 10.", ["600", "100", "1000", "400"], 0, "$6 \\times 100$.", 10, 'medium'),
+            generateQuestion("Find volume if Base Area=15 and height=4 for pyramid.", ["20", "60", "30", "15"], 0, "$\\frac{1}{3} \\times 15 \\times 4$.", 10, 'medium'),
             generateQuestion("How many faces on a square-based pyramid?", ["5", "4", "6", "8"], 0, "Base + 4 sides.", 10, 'medium'),
             generateQuestion("Volume of rectangular prism 2 by 5 by 10.", ["100", "17", "50", "200"], 0, "Multiplying.", 10, 'medium'),
             generateQuestion("If volume of cube is 64, what is side?", ["4", "8", "6", "16"], 0, "Cube root.", 10, 'medium'),
-            generateQuestion("Radius of cone 1, height 3. Volume?", ["$\\pi$", "$3\\pi$", "$\\frac{1}{3}\\pi$", "1"], 0, "$\frac{1}{3} \times 1 \times 3 \times \pi$.", 10, 'medium'),
+            generateQuestion("Radius of cone 1, height 3. Volume?", ["$\\pi$", "$3\\pi$", "$\\frac{1}{3}\\pi$", "1"], 0, "$\\frac{1}{3} \\times 1 \\times 3 \\times \pi$.", 10, 'medium'),
             // Hard (1-10)
             generateQuestion("Ratio of Surface Area of sphere radius R and 2R.", ["1:4", "1:2", "1:8", "1:1"], 0, "$R^2$ ratio.", 20, 'hard'),
             generateQuestion("Ratio of Volumes of sphere radius R and 3R.", ["1:27", "1:3", "1:9", "1:1"], 0, "$R^3$ ratio.", 20, 'hard'),
-            generateQuestion("Volume of cone with diameter 6 and height 6?", ["$18\\pi$", "$72\\pi$", "$54\\pi$", "$6\\pi$"], 0, "Radius 3. $\frac{1}{3} \times 9 \times 6 = 18$.", 20, 'hard'),
-            generateQuestion("Surface area of sphere is exactly its volume. Find r.", ["3", "1", "4", "None"], 0, "$4\pi r^2 = \frac{4}{3}\pi r^3 \Rightarrow 1 = r/3$.", 20, 'hard'),
-            generateQuestion("Curved surface area of cone: radius 5, slant height 13.", ["$65\\pi$", "$60\\pi$", "$30\\pi$", "$169\\pi$"], 0, "$\pi \times 5 \times 13$.", 20, 'hard'),
+            generateQuestion("Volume of cone with diameter 6 and height 6?", ["$18\\pi$", "$72\\pi$", "$54\\pi$", "$6\\pi$"], 0, "Radius 3. $\\frac{1}{3} \\times 9 \\times 6 = 18$.", 20, 'hard'),
+            generateQuestion("Surface area of sphere is exactly its volume. Find r.", ["3", "1", "4", "None"], 0, "$4\pi r^2 = \\frac{4}{3}\pi r^3 \Rightarrow 1 = r/3$.", 20, 'hard'),
+            generateQuestion("Curved surface area of cone: radius 5, slant height 13.", ["$65\\pi$", "$60\\pi$", "$30\\pi$", "$169\\pi$"], 0, "$\pi \\times 5 \\times 13$.", 20, 'hard'),
             generateQuestion("Total surface area of cone: base radius 3, slant 5.", ["$24\\pi$", "$15\\pi$", "$9\\pi$", "$30\\pi$"], 0, "$\pi r l + \pi r^2 = 15\pi + 9\pi$.", 20, 'hard'),
-            generateQuestion("Volume of pyramid with base area $B$ and height $3H$?", ["$BH$", "$3BH$", "$\frac{1}{3}BH$", "$B/H$"], 0, "Pointy rule.", 20, 'hard'),
-            generateQuestion("Find radius if volume of sphere is $36\\pi$.", ["3", "6", "9", "2"], 0, "$\frac{4}{3}\pi r^3 = 36\pi \Rightarrow r^3 = 27$.", 20, 'hard'),
+            generateQuestion("Volume of pyramid with base area $B$ and height $3H$?", ["$BH$", "$3BH$", "$\\frac{1}{3}BH$", "$B/H$"], 0, "Pointy rule.", 20, 'hard'),
+            generateQuestion("Find radius if volume of sphere is $36\\pi$.", ["3", "6", "9", "2"], 0, "$\\frac{4}{3}\pi r^3 = 36\pi \Rightarrow r^3 = 27$.", 20, 'hard'),
             generateQuestion("Diagonal of rectangle with area 12 and perimeter 14.", ["5", "7", "25", "1"], 0, "Sides are 3 and 4. $\sqrt{3^2+4^2}=5$.", 20, 'hard'),
             generateQuestion("[Interleaved] Which triangle has $a^2+b^2=c^2$?", ["Right-angled", "Isosceles", "Acute", "Obtuse"], 0, "Pythagoras link.", 10, 'expert')
         ]
@@ -1214,7 +1214,7 @@ const g2Questions = {
             generateQuestion("Make a the subject: $P = 4a$.", ["$a = P/4$", "$a = 4P$", "$a = P-4$", "$a = 4-P$"], 0, "Divide by 4.", 10, 'easy'),
             generateQuestion("Simplify $1/x + 1/x$.", ["$2/x$", "$1/x^2$", "2", "x/2"], 0, "Same denominator.", 10, 'easy'),
             generateQuestion("Make x the subject: $y = x - 5$.", ["$x = y + 5$", "$x = y - 5$", "$x = 5 - y$", "x = 5y"], 0, "Add 5.", 10, 'easy'),
-            generateQuestion("Simplify $\\frac{3}{a} \\div \\frac{1}{a}$.", ["3", "1/3", "$3/a^2$", "$a^2$"], 0, "$3/a \times a/1$.", 10, 'easy'),
+            generateQuestion("Simplify $\\frac{3}{a} \\div \\frac{1}{a}$.", ["3", "1/3", "$3/a^2$", "$a^2$"], 0, "$3/a \\times a/1$.", 10, 'easy'),
             generateQuestion("Make m the subject: $y = mx$.", ["$m = y/x$", "$m = x/y$", "$m = y-x$", "$m = xy$"], 0, "Divide by x.", 10, 'easy'),
             generateQuestion("Simplify $\\frac{ab}{a}$.", ["b", "a", "1", "ab"], 0, "Cancel a.", 10, 'easy'),
             // Medium (1-10)
@@ -1272,7 +1272,7 @@ const g2Questions = {
             generateQuestion("Simplify $\\frac{x^3-x}{x^2-x}$.", ["x+1", "x-1", "x", "1"], 0, "$x(x-1)(x+1) / x(x-1)$.", 20, 'hard'),
             generateQuestion("Make x the subject: $y = (x-h)^2 + k$.", ["$x = h \\pm \\sqrt{y-k}$", "$x = h + y - k$", "$x = \\sqrt{h+y-k}$", "None"], 0, "Standard vertex form rearrange.", 20, 'hard'),
             generateQuestion("Simplify $\\frac{x}{y^2} \\div \\frac{x^2}{y}$.", ["$\\frac{1}{xy}$", "$\\frac{y}{x}$", "xy", "$\\frac{x^3}{y^3}$"], 0, "Flipping rule.", 20, 'hard'),
-            generateQuestion("Make a the subject: $S = \\frac{n}{2}(2a + (n-1)d)$.", ["$a = \\frac{S/n \times 2 - (n-1)d}{2}$", "Too long", "A", "None"], 2, "Isolate a.", 20, 'hard'),
+            generateQuestion("Make a the subject: $S = \\frac{n}{2}(2a + (n-1)d)$.", ["$a = \\frac{S/n \\times 2 - (n-1)d}{2}$", "Too long", "A", "None"], 2, "Isolate a.", 20, 'hard'),
             generateQuestion("[Interleaved] Solve $x^2 + 5x + 6 = 0$.", ["x=-2, -3", "x=2, 3", "x=1, 6", "x=0"], 0, "Algebra/Equation link.", 10, 'expert')
         ]
     },
@@ -1286,7 +1286,7 @@ const g2Questions = {
             generateQuestion("Is $y = 5$ a horizontal line?", ["Yes", "No"], 0, "Gradient is zero.", 10, 'easy'),
             generateQuestion("Is $x = 2$ a vertical line?", ["Yes", "No"], 0, "Undefined gradient.", 10, 'easy'),
             generateQuestion("At the y-intercept, x is always ___.", ["0", "1", "y", "Infinity"], 0, "Definition of y-axis.", 10, 'easy'),
-            generateQuestion("Function $f(x)=2x$. Find $f(5)$.", ["10", "7", "3", "2x"], 0, "$2 \times 5$.", 10, 'easy'),
+            generateQuestion("Function $f(x)=2x$. Find $f(5)$.", ["10", "7", "3", "2x"], 0, "$2 \\times 5$.", 10, 'easy'),
             generateQuestion("Which is a linear function?", ["$y=2x+1$", "$y=x^2$", "$y=1/x$", "$y^2=x$"], 0, "Max power 1.", 10, 'easy'),
             generateQuestion("Gradient of horizontal line?", ["0", "1", "Undefined", "Infinite"], 0, "No steepness.", 10, 'easy'),
             // Medium (1-10)
@@ -1295,7 +1295,7 @@ const g2Questions = {
             generateQuestion("Find gradient between (1,2) and (3,6).", ["2", "4", "0.5", "1"], 0, "$(6-2)/(3-1) = 4/2 = 2$.", 15, 'medium'),
             generateQuestion("Y-intercept of $y = 3(x-2)$.", ["-6", "3", "-2", "0"], 0, "Plug in x=0.", 15, 'medium'),
             generateQuestion("Eq of line with gradient 1 through (0,5).", ["$y=x+5$", "$y=x-5$", "$y=5x$", "$y=5$"], 0, "Direct substitution.", 15, 'medium'),
-            generateQuestion("Is $(2,10)$ on $y = 5x$?", ["Yes", "No"], 0, "$10 = 5 \times 2$.", 15, 'medium'),
+            generateQuestion("Is $(2,10)$ on $y = 5x$?", ["Yes", "No"], 0, "$10 = 5 \\times 2$.", 15, 'medium'),
             generateQuestion("Function $g(x)=x^2+1$. Find $g(3)$.", ["10", "7", "9", "6"], 0, "$3^2+1=10$.", 15, 'medium'),
             generateQuestion("Find midpoint of (0,0) and (4,8).", ["(2,4)", "(4,2)", "(0,8)", "(4,0)"], 0, "Average of coordinates.", 15, 'medium'),
             generateQuestion("If $y=kx$ and $y=12$ when $x=3$, find k.", ["4", "36", "15", "9"], 0, "$12=3k$.", 15, 'medium'),
@@ -1402,17 +1402,17 @@ const g2Questions = {
             generateQuestion("Midpoint of (0,0) and (10,10).", ["(5,5)", "(10,10)", "(0,0)", "None"], 0, "Center point.", 10, 'medium'),
             generateQuestion("Distance of (6,8) from origin.", ["10", "14", "48", "2"], 0, "$\sqrt{36+64}$.", 10, 'medium'),
             generateQuestion("Angle between radius and tangent.", ["$90^\\circ$", "$45^\\circ$", "$180^\\circ$", "$360^\\circ$"], 0, "Perpendicularity.", 10, 'medium'),
-            generateQuestion("Find interior angle of regular pentagon.", ["$108^\\circ$", "$72^\\circ$", "$90^\\circ$", "$60^\\circ$"], 0, "$3 \times 180 / 5$.", 10, 'medium'),
+            generateQuestion("Find interior angle of regular pentagon.", ["$108^\\circ$", "$72^\\circ$", "$90^\\circ$", "$60^\\circ$"], 0, "$3 \\times 180 / 5$.", 10, 'medium'),
             generateQuestion("Eq of line through origin with gradient -1.", ["y=-x", "y=x", "y=0", "x=0"], 0, "Standard form.", 10, 'medium'),
             generateQuestion("Are similar triangles identical in size?", ["No", "Yes"], 0, "Only same shape.", 10, 'medium'),
             generateQuestion("Parallel lines have the same ___.", ["Gradient", "Intercept", "Length", "Color"], 0, "Infinite slope equality.", 10, 'medium'),
             generateQuestion("Sum of exterior angles of decagon.", ["$360^\\circ$", "$36^\\circ$", "$180^\\circ$", "$720^\\circ$"], 0, "Universal for all polygons.", 10, 'medium'),
             // Hard (1-10)
             generateQuestion("Find y-intercept of line $2x-3y=6$.", ["-2", "2", "3", "0"], 0, "**Lesson**: Set $x=0$, $-3y = 6 \\Rightarrow y = -2$.", 20, 'hard'),
-            generateQuestion("Find area of triangle with vertices (0,0), (4,0), (0,3).", ["6", "12", "7", "2.5"], 0, "Base 4, Height 3. $\\frac{1}{2} \times 4 \times 3$.", 20, 'hard'),
+            generateQuestion("Find area of triangle with vertices (0,0), (4,0), (0,3).", ["6", "12", "7", "2.5"], 0, "Base 4, Height 3. $\\frac{1}{2} \\times 4 \\times 3$.", 20, 'hard'),
             generateQuestion("Which is eq of line $\\perp$ to $y=0.5x+2$ through (0,0)?", ["$y = -2x$", "$y = 2x$", "$y = -0.5x$", "$y = 0.5x$"], 0, "Negative reciprocal gradient.", 20, 'hard'),
             generateQuestion("Find length of tangent from (0,5) to circle $x^2+y^2=9$.", ["4", "5", "3", "16"], 0, "Distance to origin is 5, radius is 3. $\sqrt{5^2-3^2}=4$.", 20, 'hard'),
-            generateQuestion("Sum of interior angles of n-sided poly is $1800^\\circ$. n?", ["12", "10", "14", "8"], 0, "$(n-2) \times 180 = 1800$.", 20, 'hard'),
+            generateQuestion("Sum of interior angles of n-sided poly is $1800^\\circ$. n?", ["12", "10", "14", "8"], 0, "$(n-2) \\times 180 = 1800$.", 20, 'hard'),
             generateQuestion("Angle at circumference from major arc is $x$. Angle at center?", ["2x", "0.5x", "x", "360-2x"], 0, "Theorem holds for all arcs.", 20, 'hard'),
             generateQuestion("Is (3,3) the center of a circle through (0,0), (6,0), (0,6)?", ["Yes", "No"], 0, "Equal distance to all points.", 20, 'hard'),
             generateQuestion("Slope of line through (1,2) and (1,10)?", ["Undefined", "0", "8", "1"], 0, "Vertical line.", 20, 'hard'),
@@ -1471,7 +1471,7 @@ const g2Questions = {
             // Medium (1-10)
             generateQuestion("Bearing of $225^\\circ$ corresponds to which direction?", ["Southwest", "Southeast", "Northwest", "Northeast"], 0, "**Lesson**: Halfway between South ($180^\\circ$) and West ($270^\\circ$).", 10, 'medium'),
             generateQuestion("Calculate Area of triangle with $a=4, b=5$ and angle $C=30^\\circ$.", ["5", "10", "20", "2.5"], 0, "**Lesson**: $\\frac{1}{2}(4)(5)(0.5) = 5$.", 10, 'medium'),
-            generateQuestion("Find x if $x/\\sin 30 = 10/\\sin 90$.", ["5", "10", "2.5", "0"], 0, "$x = 10 \times 0.5$.", 10, 'medium'),
+            generateQuestion("Find x if $x/\\sin 30 = 10/\\sin 90$.", ["5", "10", "2.5", "0"], 0, "$x = 10 \\times 0.5$.", 10, 'medium'),
             generateQuestion("Inverse of sin gives ___.", ["Angle", "Side", "Area", "Perimeter"], 0, "Function mapping.", 10, 'medium'),
             generateQuestion("Bearing from B to A is $200^\\circ$. From A to B is?", ["$020^\\circ$", "$100^\\circ$", "$300^\\circ$", "$000^\\circ$"], 0, "$200 - 180$.", 10, 'medium'),
             generateQuestion("Elevation angle of a tower top.", ["Angle looking up", "Angle looking down", "Height", "Shadow length"], 0, "Definition.", 10, 'medium'),
@@ -1486,7 +1486,7 @@ const g2Questions = {
             generateQuestion("Solve $\\sin x = -0.5$ in $[180, 270]$.", ["210", "330", "150", "0"], 0, "Quadrant 3.", 20, 'hard'),
             generateQuestion("Law of Cosines reduces to Pythagoras when...", ["Angle is 90", "Sides are equal", "Perimeter is 10", "None"], 0, "$\\cos 90 = 0$.", 20, 'hard'),
             generateQuestion("Ratio of $\\sin A / a$ equals?", ["$\\sin B / b$", "Area", "Perimeter", "1"], 0, "Sine rule equality.", 20, 'hard'),
-            generateQuestion("If Area = 12, $a=6, b=8$, find $\\sin C$.", ["0.5", "1", "0.25", "0"], 0, "$12 = 0.5 \times 48 \times \sin C$.", 20, 'hard'),
+            generateQuestion("If Area = 12, $a=6, b=8$, find $\\sin C$.", ["0.5", "1", "0.25", "0"], 0, "$12 = 0.5 \\times 48 \\times \sin C$.", 20, 'hard'),
             generateQuestion("Angle of depression from cliff to boat.", ["Angle down from horizontal", "Angle up from boat", "Water depth", "Cliff height"], 0, "Definition.", 20, 'hard'),
             generateQuestion("Solve $\\cos x = 1$ for $0 < x < 360$.", ["None", "0", "180", "360"], 0, "Exclude boundaries.", 20, 'hard'),
             generateQuestion("[Interleaved] Solve $a^2 = b^2 + c^2$ if $b=3, c=4$.", ["a=5", "a=7", "a=1", "a=25"], 0, "Geometry link.", 10, 'expert')
@@ -1504,11 +1504,11 @@ const g2Questions = {
             generateQuestion("Units for $\\theta$ in $s=r\\theta$?", ["Radians", "Degrees", "Meters", "Seconds"], 0, "Must be radians.", 10, 'easy'),
             generateQuestion("Area of circle of radius 1?", ["$\\pi$", "1", "$2\\pi$", "0"], 0, "$\\pi(1)^2$.", 10, 'easy'),
             generateQuestion("Convert $\\pi/4$ rad to degrees.", ["$45^\\circ$", "$90^\\circ$", "$30^\\circ$", "$60^\\circ$"], 0, "$180/4$.", 10, 'easy'),
-            generateQuestion("Length of radius 10 arc with $\\theta=1$ rad.", ["10", "1", "31.4", "0"], 0, "$10 \times 1$.", 10, 'easy'),
+            generateQuestion("Length of radius 10 arc with $\\theta=1$ rad.", ["10", "1", "31.4", "0"], 0, "$10 \\times 1$.", 10, 'easy'),
             // Medium (1-10)
             generateQuestion("Arc length formula (where $\\theta$ is in radians)?", ["$r\\theta$", "$r^2\\theta$", "$\\frac{1}{2}r^2\\theta$", "$2\\pi r$"], 0, "**Lesson**: Arc Length is simply radius multiplying angle: $s = r\\theta$.", 15, 'medium'),
             generateQuestion("Find radius if arc length is 10 and angle is 2 rad.", ["5", "20", "0.2", "2"], 0, "**Lesson**: $r = s/\\theta = 10/2 = 5$.", 15, 'medium'),
-            generateQuestion("Area of sector with radius 4 and angle 0.5 rad.", ["4", "8", "16", "2"], 0, "$0.5 \times 16 \times 0.5 = 4$.", 15, 'medium'),
+            generateQuestion("Area of sector with radius 4 and angle 0.5 rad.", ["4", "8", "16", "2"], 0, "$0.5 \\times 16 \\times 0.5 = 4$.", 15, 'medium'),
             generateQuestion("Convert $60^\\circ$ to radians.", ["$\\pi/3$", "$\\pi/6$", "$\\pi/2$", "$\\pi$"], 0, "$60/180 \\cdot \\pi$.", 15, 'medium'),
             generateQuestion("Arc length for semi-circle of radius 5.", ["$5\\pi$", "$10\\pi$", "$25\\pi$", "5"], 0, "$r \\cdot \\pi$.", 15, 'medium'),
             generateQuestion("Area of semi-circle of radius 2.", ["$2\\pi$", "$\\pi$", "$4\\pi$", "4"], 0, "$0.5 \\cdot \\pi \\cdot 2^2$.", 15, 'medium'),
@@ -1520,9 +1520,9 @@ const g2Questions = {
             generateQuestion("Find Area of segment given $r=10$ and angle exactly $1.2$ rad.", ["7.3", "14.6", "60", "30"], 0, "**Lesson**: $\\text{Area} = \\frac{1}{2}r^2(\\theta - \\sin \\theta) = 50(1.2 - \\sin 1.2 \\approx 50(1.2 - 0.932) = 13.4$. Wait, recalculate.", 20, 'hard'), // Adjusting to a cleaner value
             generateQuestion("Radius of circle where sector area = arc length? ($r>0$)", ["2", "1", "0.5", "4"], 0, "**Lesson**: $0.5r^2\\theta = r\\theta \Rightarrow 0.5r^2 = r \Rightarrow r = 2$.", 25, 'hard'),
             generateQuestion("Find radius if perimeter of sector is 20 and angle is 2 rad.", ["5", "10", "4", "2"], 0, "$2r + 2r = 20 \Rightarrow 4r=20$.", 20, 'hard'),
-            generateQuestion("Area of sector with radius 10 and perimeter 25.", ["25", "50", "100", "12.5"], 0, "$s = 25 - 20 = 5$. Area = $0.5 r s = 0.5 \times 10 \times 5 = 25$.", 20, 'hard'),
+            generateQuestion("Area of sector with radius 10 and perimeter 25.", ["25", "50", "100", "12.5"], 0, "$s = 25 - 20 = 5$. Area = $0.5 r s = 0.5 \\times 10 \\times 5 = 25$.", 20, 'hard'),
             generateQuestion("If $s = r$, angle is ___ radians.", ["1", "$\\pi$", "$2\\pi$", "0"], 0, "Definition of radian.", 20, 'hard'),
-            generateQuestion("Find arc length if sector area is 50 and $r=10$.", ["10", "5", "20", "1"], 0, "$50 = 0.5 \times 10 \times s$.", 20, 'hard'),
+            generateQuestion("Find arc length if sector area is 50 and $r=10$.", ["10", "5", "20", "1"], 0, "$50 = 0.5 \\times 10 \\times s$.", 20, 'hard'),
             generateQuestion("Ratio of arc length to perimeter of semi-circle.", ["$\\pi / (\\pi+2)$", "1/2", "$\\pi$", "None"], 0, "$r\\pi / (r\\pi + 2r)$.", 20, 'hard'),
             generateQuestion("Angle between hands of clock at 4:00 in radians.", ["$2\\pi/3$", "$\\pi/3$", "$\\pi/2$", "$\\pi$"], 0, "$120^\circ$.", 20, 'hard'),
             generateQuestion("Find radius if arc of length 3 subtends angle of 0.5 rad.", ["6", "1.5", "0.5", "3"], 0, "$3/0.5$.", 20, 'hard'),
@@ -1544,22 +1544,22 @@ const g2Questions = {
             generateQuestion("Find angle in radians if arc length is 6 and radius is 3.", ["2", "18", "0.5", "3"], 0, "**Lesson**: $\\theta = s/r = 6/3 = 2$.", 10, 'medium'),
             generateQuestion("Area of sector with radius 10 and angle $0.2 \\text{ rad}$.", ["10", "20", "2", "100"], 0, "**Lesson**: $\\text{Area} = \\frac{1}{2}(10^2)(0.2) = 10$.", 10, 'medium'),
             generateQuestion("Convert $45^\\circ$ to radians.", ["$\\pi/4$", "$\\pi/2$", "$\\pi/8$", "$\\pi$"], 0, "$45/180$.", 10, 'medium'),
-            generateQuestion("Find radius if sector area is 25 and angle is 2 rad.", ["5", "25", "10", "2"], 0, "$0.5 \times r^2 \times 2 = 25$.", 10, 'medium'),
+            generateQuestion("Find radius if sector area is 25 and angle is 2 rad.", ["5", "25", "10", "2"], 0, "$0.5 \\times r^2 \\times 2 = 25$.", 10, 'medium'),
             generateQuestion("Perimeter of sector $r=3, \\theta=1$.", ["9", "6", "3", "12"], 0, "$6 + 3 = 9$.", 10, 'medium'),
             generateQuestion("Convert $3\\pi/2$ rad to degrees.", ["270", "180", "90", "360"], 0, "$270^\circ$.", 10, 'medium'),
             generateQuestion("Arc length for radius 2 with angle $\\pi$.", ["$2\\pi$", "$\\pi$", "2", "4"], 0, "$2\pi$.", 10, 'medium'),
-            generateQuestion("Area of quarter circle $r=4$.", ["$4\\pi$", "$2\\pi$", "$16\\pi$", "4"], 0, "$\frac{1}{4} \cdot \pi \cdot 16$.", 10, 'medium'),
+            generateQuestion("Area of quarter circle $r=4$.", ["$4\\pi$", "$2\\pi$", "$16\\pi$", "4"], 0, "$\\frac{1}{4} \cdot \pi \cdot 16$.", 10, 'medium'),
             generateQuestion("If $s=10$ and $\\theta=1$, find $r$.", ["10", "1", "0.1", "5"], 0, "$10/1$.", 10, 'medium'),
-            generateQuestion("Is area of circle $= \pi \times r \times r$?", ["Yes", "No"], 0, "Definition.", 10, 'medium'),
+            generateQuestion("Is area of circle $= \pi \\times r \\times r$?", ["Yes", "No"], 0, "Definition.", 10, 'medium'),
             // Hard (1-10)
             generateQuestion("Sector area is 36. Radius is 6. Find angle.", ["2", "1", "6", "$1.5$"], 0, "**Lesson**: $36 = \\frac{1}{2}(36)(\\theta) \\Rightarrow \\theta = 2$.", 20, 'hard'),
-            generateQuestion("Find radius if sector area is equal to permieter and angle is 2 rad.", ["6", "10", "4", "2"], 0, "**Lesson**: $r^2 = 4r \\Rightarrow r=4$. Wait, $0.5 r^2 \theta = 2r + r\theta \Rightarrow r^2 = 2r + 2r = 4r \Rightarrow r=4$.", 20, 'hard'),
-            generateQuestion("Find angle in radians if arc length is $\\pi$ and circle area is $16\\pi$.", ["$\\pi/4$", "$\\pi/2$", "1", "0.25"], 0, "$r=4, s=\pi \Rightarrow \theta = \pi/4$.", 20, 'hard'),
+            generateQuestion("Find radius if sector area is equal to permieter and angle is 2 rad.", ["6", "10", "4", "2"], 0, "**Lesson**: $r^2 = 4r \\Rightarrow r=4$. Wait, $0.5 r^2 \\theta = 2r + r\\theta \Rightarrow r^2 = 2r + 2r = 4r \Rightarrow r=4$.", 20, 'hard'),
+            generateQuestion("Find angle in radians if arc length is $\\pi$ and circle area is $16\\pi$.", ["$\\pi/4$", "$\\pi/2$", "1", "0.25"], 0, "$r=4, s=\pi \Rightarrow \\theta = \pi/4$.", 20, 'hard'),
             generateQuestion("Area of segment with $r=6, \\theta = 60^\\circ$ is?", ["$6\\pi - 9\\sqrt{3}$", "Too long", "A", "None"], 2, "Complex calculation.", 20, 'hard'),
             generateQuestion("If $r$ doubles, area of sector ___.", ["Quadruples", "Doubles", "Triples", "Stays same"], 0, "$r^2$ dependency.", 20, 'hard'),
             generateQuestion("If $\\theta$ doubles, arc length ___.", ["Doubles", "Quadruples", "Stays same", "Triples"], 0, "Linear dependency.", 20, 'hard'),
             generateQuestion("Find radius if perimeter is $s + 10$ and arc is $s$.", ["5", "10", "2", "s"], 0, "$2r=10$.", 20, 'hard'),
-            generateQuestion("Arc length of radius 10 over angle $1.5$ rad.", ["15", "10", "5", "1.5"], 0, "$10 \times 1.5$.", 20, 'hard'),
+            generateQuestion("Arc length of radius 10 over angle $1.5$ rad.", ["15", "10", "5", "1.5"], 0, "$10 \\times 1.5$.", 20, 'hard'),
             generateQuestion("Convert $1$ rad to degrees (1 d.p).", ["57.3", "60.0", "45.0", "90.0"], 0, "$180/3.14159$.", 20, 'hard'),
             generateQuestion("[Interleaved] Which is larger: 1 rad or $60^\\circ$?", ["$60^\\circ$", "1 rad", "Equal", "None"], 0, "$60 > 57.3$.", 10, 'expert')
         ]
@@ -1594,10 +1594,10 @@ const g2Questions = {
             generateQuestion("P(A) = 0.5, P(B) = 0.3. If mutually exclusive, P(A or B)?", ["0.8", "0.15", "0.2", "0.5"], 0, "Sum them up.", 20, 'hard'),
             generateQuestion("If mean is 10 and you add 2 to every number, new mean is?", ["12", "10", "20", "11"], 0, "Mean shifts by same amount.", 20, 'hard'),
             generateQuestion("If SD is 5 and you multiply every number by 2, new SD is?", ["10", "5", "25", "7"], 0, "SD scales linearly.", 20, 'hard'),
-            generateQuestion("P(A) = 0.6, P(B) = 0.5. If independent, P(A and B)?", ["0.3", "1.1", "0.1", "0.5"], 0, "$0.6 \times 0.5$.", 20, 'hard'),
+            generateQuestion("P(A) = 0.6, P(B) = 0.5. If independent, P(A and B)?", ["0.3", "1.1", "0.1", "0.5"], 0, "$0.6 \\times 0.5$.", 20, 'hard'),
             generateQuestion("Standard Deviation formula involves ___ differences squared.", ["Mean", "Median", "Mode", "Zero"], 0, "Variance definition.", 20, 'hard'),
             generateQuestion("Probability of 'not A and not B' if independent?", ["$(1-P(A)) \\times (1-P(B))$", "1 - P(A)P(B)", "P(A)+P(B)", "0"], 0, "Product of complements.", 20, 'hard'),
-            generateQuestion("Draw 2 cards without replacement. P(Double Ace)?", ["$12/2652$", "$16/2704$", "1/169", "None"], 0, "$4/52 \times 3/51$.", 20, 'hard'),
+            generateQuestion("Draw 2 cards without replacement. P(Double Ace)?", ["$12/2652$", "$16/2704$", "1/169", "None"], 0, "$4/52 \\times 3/51$.", 20, 'hard'),
             generateQuestion("[Interleaved] Which function has max value on a graph? Quadratic?", ["$y = 10 - x^2$", "$y = x^2$", "$y = x$", "$y = 5$"], 0, "Stats/Functions link.", 10, 'expert')
         ],
         testing: [

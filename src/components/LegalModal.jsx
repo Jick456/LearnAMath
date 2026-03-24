@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FormatMathText } from './FormatMathText';
+import FormatMathText from './FormatMathText';
 
 const LegalModal = ({ show, onClose, type }) => {
     if (!show) return null;

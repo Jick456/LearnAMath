@@ -16,14 +16,14 @@ export default defineConfig({
         theme_color: '#0a0a0c',
         icons: [
           {
-            src: 'vite.svg',
+            src: 'favicon.ico',
             sizes: '192x192',
-            type: 'image/svg+xml'
+            type: 'image/x-icon'
           },
           {
-            src: 'vite.svg',
+            src: 'apple-touch-icon.png',
             sizes: '512x512',
-            type: 'image/svg+xml',
+            type: 'image/png',
             purpose: 'any maskable'
           }
         ]

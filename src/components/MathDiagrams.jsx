@@ -68,20 +68,20 @@ export default function MathDiagram({ type }) {
             <svg width="250" height="250" viewBox="0 0 250 250" style={svgStyle}>
                 {/* Axes */}
                 <line x1="20" y1="180" x2="230" y2="180" stroke={textColor} strokeWidth="2" strokeOpacity="0.5" />
-                <line x1="80" y1="40" x2="80" y2="230" stroke={textColor} strokeWidth="2" strokeOpacity="0.5" />
-                {/* Parabola curve */}
-                <path d="M 60,60 Q 140,380 220,60" fill="none" stroke={strokeColor} strokeWidth="3" strokeLinecap="round" />
-                {/* Turning point */}
-                <circle cx="140" cy="220" r="5" fill={accentColor} />
-                <text x="140" y="240" fill={accentColor} fontSize="14" textAnchor="middle" fontFamily="sans-serif">Peak (3, -2)</text>
-                {/* Roots */}
-                <circle cx="100" cy="180" r="4" fill={strokeColor} />
-                <circle cx="180" cy="180" r="4" fill={strokeColor} />
-                <text x="100" y="195" fill={textColor} fontSize="12" textAnchor="middle" fontFamily="sans-serif">(1, 0)</text>
-                <text x="180" y="195" fill={textColor} fontSize="12" textAnchor="middle" fontFamily="sans-serif">(5, 0)</text>
+                <line x1="80" y1="20" x2="80" y2="230" stroke={textColor} strokeWidth="2" strokeOpacity="0.5" />
+                {/* Parabola curve — perfectly symmetric with vertex at (140, 200) */}
+                <path d="M 40,60 Q 140,340 240,60" fill="none" stroke={strokeColor} strokeWidth="3" strokeLinecap="round" />
+                {/* Turning point (vertex) exactly hitting the curve bottom */}
+                <circle cx="140" cy="200" r="5" fill={accentColor} />
+                <text x="140" y="220" fill={accentColor} fontSize="12" textAnchor="middle" fontFamily="sans-serif">Vertex</text>
+                {/* Roots where curve meets x-axis (y=180) */}
+                <circle cx="102.2" cy="180" r="4" fill={strokeColor} />
+                <circle cx="177.8" cy="180" r="4" fill={strokeColor} />
+                <text x="102.2" y="196" fill={textColor} fontSize="11" textAnchor="middle" fontFamily="sans-serif">x₁</text>
+                <text x="177.8" y="196" fill={textColor} fontSize="11" textAnchor="middle" fontFamily="sans-serif">x₂</text>
                 {/* Y-intercept */}
-                <circle cx="80" cy="130" r="4" fill={strokeColor} />
-                <text x="65" y="135" fill={textColor} fontSize="12" textAnchor="end" fontFamily="sans-serif">(0, 2.5)</text>
+                <circle cx="80" cy="149.6" r="4" fill={strokeColor} />
+                <text x="65" y="107" fill={textColor} fontSize="11" textAnchor="end" fontFamily="sans-serif">(0, c)</text>
             </svg>
         );
     } else if (type === 'cylinder') {
@@ -269,6 +269,36 @@ export default function MathDiagram({ type }) {
 
                 {/* Point Label */}
                 <text x="110" y="95" fill={accentColor} fontSize="14" textAnchor="middle" fontWeight="bold">Sol (2, 3)</text>
+            </svg>
+        );
+    } else if (type === 'circle-coord') {
+        content = (
+            <svg width="250" height="250" viewBox="0 0 250 250" style={svgStyle}>
+                {/* Coordinate Grid Background */}
+                <line x1="20" y1="125" x2="230" y2="125" stroke={textColor} strokeWidth="1" strokeOpacity="0.3" />
+                <line x1="125" y1="20" x2="125" y2="230" stroke={textColor} strokeWidth="1" strokeOpacity="0.3" />
+                {/* Circle on Plane */}
+                <circle cx="155" cy="95" r="60" fill="rgba(96, 165, 250, 0.2)" stroke="#60a5fa" strokeWidth="3" />
+                <circle cx="155" cy="95" r="4" fill={accentColor} />
+                <text x="155" y="85" fill={accentColor} fontSize="12" textAnchor="middle" fontWeight="bold">(h, k)</text>
+                <line x1="155" y1="95" x2="210" y2="70" stroke={accentColor} strokeWidth="2" strokeDasharray="3,3" />
+                <text x="185" y="75" fill={accentColor} fontSize="14" fontWeight="bold">r</text>
+                <text x="125" y="245" fill={textColor} fontSize="12" textAnchor="middle" opacity="0.6">(x-h)² + (y-k)² = r²</text>
+            </svg>
+        );
+    } else if (type === 'circle-proof') {
+        content = (
+            <svg width="250" height="250" viewBox="0 0 250 250" style={svgStyle}>
+                <circle cx="125" cy="110" r="80" fill="none" stroke={strokeColor} strokeWidth="3" />
+                {/* External Point Tangents */}
+                <circle cx="230" cy="110" r="4" fill={accentColor} />
+                <text x="235" y="105" fill={accentColor} fontSize="12">P</text>
+                <line x1="230" y1="110" x2="173" y2="53" stroke={strokeColor} strokeWidth="2" />
+                <line x1="230" y1="110" x2="173" y2="167" stroke={strokeColor} strokeWidth="2" />
+                {/* Alternate Segment chord/triangle */}
+                <polygon points="45,110 125,190 125,30" fill="rgba(244, 114, 182, 0.1)" stroke="#f472b6" strokeWidth="2" />
+                <path d="M 45,150 L 45,70" stroke="#f472b6" strokeWidth="2" /> {/* Tangent at A */}
+                <text x="125" y="230" fill={textColor} fontSize="12" textAnchor="middle" fontWeight="bold">Circle Theorems Audit</text>
             </svg>
         );
     } else if (type === 'angle') {

@@ -64,7 +64,7 @@
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-.light-mode {
+.dark-mode {
   /* This actually acts as the 'Abyssal' dark mode for the Genshin theme */
   --bg-main: #05080f;
   --bg-gradient: radial-gradient(circle at center, #1a1f35 0%, #05080f 100%);
@@ -77,7 +77,7 @@
   --text-dark: #ffffff;
 }
 
-:root:not(.light-mode) {
+:root:not(.dark-mode) {
   /* Default 'Celestial' light mode but with glassmorphism */
   --bg-main: #f0f4f8;
   --secondary: #b89a68;
@@ -89,7 +89,7 @@
   --bg-gradient: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
 }
 
-.light-mode.theme-forest {
+.dark-mode.theme-forest {
   --bg-gradient: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
 }
 
@@ -97,7 +97,7 @@
   --bg-gradient: linear-gradient(135deg, #0c4a6e 0%, #082f49 100%);
 }
 
-.light-mode.theme-glacier {
+.dark-mode.theme-glacier {
   --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
 }
 
@@ -105,7 +105,7 @@
   --bg-gradient: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
 }
 
-.light-mode.theme-abyss {
+.dark-mode.theme-abyss {
   --bg-gradient: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
 }
 
@@ -113,7 +113,7 @@
   --bg-gradient: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
 }
 
-.light-mode.theme-volcano {
+.dark-mode.theme-volcano {
   --bg-gradient: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
 }
 
@@ -121,7 +121,7 @@
   --bg-gradient: linear-gradient(135deg, #4c1d95 0%, #2e1065 100%);
 }
 
-.light-mode.theme-sky {
+.dark-mode.theme-sky {
   --bg-gradient: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
 }
 
@@ -145,7 +145,7 @@ img {
 
 body {
   font-family: var(--font-body);
-  background-image: url('/src/assets/images/genshin_bg.png');
+  
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -368,7 +368,7 @@ a {
   transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.light-mode .progress-fill {
+.dark-mode .progress-fill {
   background: linear-gradient(90deg, #a78bfa, #c084fc);
   box-shadow: 0 0 10px #a78bfa;
 }

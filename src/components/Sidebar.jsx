@@ -9,7 +9,7 @@ const Sidebar = () => {
         activeLevel, setActiveLevel,
         difficulty, setDifficulty,
         unlockedCharacters, activeCharacter, setActiveCharacter,
-        user
+        user, userStream, setUserStream
     } = useUserProgress();
 
     const navigate = useNavigate();
@@ -19,6 +19,7 @@ const Sidebar = () => {
     if (!user) return null;
 
     const chapters = ['Sec 1', 'Sec 2', 'Sec 3', 'Sec 4', 'Add Math'];
+    const streams = ['G1', 'G2', 'G3'];
     const difficulties = [
         { id: 'easy', label: 'Light Brew', desc: 'Apprentice', color: '#22c55e' },
         { id: 'medium', label: 'Balanced', desc: 'Journeyman', color: '#f59e0b' },
@@ -73,6 +74,20 @@ const Sidebar = () => {
                             exit={{ opacity: 0, x: 20 }}
                             className="tea-list"
                         >
+                            <h3 className="tea-section-title mb-2">🎓 Select Course</h3>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                                {streams.map(stream => (
+                                    <div 
+                                        key={stream}
+                                        className={`tea-item ${userStream === stream ? 'active' : ''}`}
+                                        style={{ padding: '0.5rem', justifyContent: 'center', fontSize: '0.85rem' }}
+                                        onClick={() => setUserStream(stream)}
+                                    >
+                                        <span style={{ margin: 0 }}>{stream}</span>
+                                    </div>
+                                ))}
+                            </div>
+
                             <h3 className="tea-section-title">📜 Select Domain</h3>
                             {chapters.map((lvl) => (
                                 <div 

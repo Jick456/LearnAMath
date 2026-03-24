@@ -132,7 +132,7 @@ const addMathTopics = [
         id: 'am-geom-coord', level: 'Add Math', title: 'Coordinate Geometry',
         description: 'Perpendicular lines, Area of polygons, Circles.', color: '#38bdf8', emoji: '🎯',
         location: 'The Circle Citadel', storyline: 'Find the centre radius to unlock the gates.', themeClass: 'theme-sky',
-        crashCourse: `[DIAGRAM: circle]
+        crashCourse: `[DIAGRAM: circle-coord]
 
 **Shoelace Area Formula**
 - To forcefully find the area of ANY polygon, list its vertices securely anti-clockwise:
@@ -150,7 +150,7 @@ const addMathTopics = [
         id: 'am-geom-proofs', level: 'Add Math', title: 'Geometry Proofs',
         description: 'Plane geometry, similar triangles, tangents.', color: '#fb923c', emoji: '⭕',
         location: 'The Proof Plaza', storyline: 'Prove tangents and angles flawlessly!', themeClass: 'theme-desert',
-        crashCourse: `[DIAGRAM: circle]
+        crashCourse: `[DIAGRAM: circle-proof]
 
 **Critical Circle Theorems**
 - **Alternate Segment Theorem**: The exact angle forged between a magical Tangent and a rigid Chord strictly equals the angle swimming inside the alternate segment of the circle. This theorem is heavily tested!
@@ -406,7 +406,7 @@ const addMathQuestions = {
         learning: [
             // Easy (1-10)
             generateQuestion("Remainder Theorem: If $P(x)$ is divided by $(x-a)$, the remainder is:", ["$P(a)$", "$P(-a)$", "0", "$a$"], 0, "**Lesson**: Simply evaluating the polynomial at $x=a$ gives the remainder directly.", 10, 'easy'),
-            generateQuestion("Factor Theorem: If $(x-a)$ is a factor of $P(x)$, then:", ["$P(a) = 0$", "$P(a) = \text{rem}$", "$P(-a) = 0$", "$P(0) = a$"], 0, "**Lesson**: A perfect factor leaves exactly zero remainder.", 10, 'easy'),
+            generateQuestion("Factor Theorem: If $(x-a)$ is a factor of $P(x)$, then:", ["$P(a) = 0$", "$P(a) = \\text{rem}$", "$P(-a) = 0$", "$P(0) = a$"], 0, "**Lesson**: A perfect factor leaves exactly zero remainder.", 10, 'easy'),
             generateQuestion("Remainder when $x^2 + 5x + 6$ is divided by $(x-1)$?", ["12", "0", "6", "2"], 0, "$1^2 + 5(1) + 6 = 12$.", 10, 'easy'),
             generateQuestion("If $P(2) = 0$, which of these is a factor?", ["$(x-2)$", "$(x+2)$", "$x$", "2"], 0, "Evaluate root 2 gives $(x-2)$.", 10, 'easy'),
             generateQuestion("Partial Fraction setup for $\\frac{1}{(x-1)(x-2)}$?", ["$\\frac{A}{x-1} + \\frac{B}{x-2}$", "$\\frac{A}{(x-1)(x-2)}$", "$\\frac{A}{x-1} + \\frac{Bx+C}{x-2}$", "$\\frac{Ax+B}{(x-1)(x-2)}$"], 0, "Distinct linear factors.", 10, 'easy'),
@@ -446,7 +446,7 @@ const addMathQuestions = {
             generateQuestion("PF type for $\\frac{x}{(x-3)(x+4)}$?", ["Distinct linear", "Repeated linear", "Quadratic", "Improper"], 0, "Denominator degree 2 > Top 1.", 10, 'easy'),
             generateQuestion("Can $\\frac{1}{x-1}$ be decomposed into partial fractions?", ["No", "Yes"], 0, "Already as simple as possible.", 10, 'easy'),
             generateQuestion("If $P(x)$ has degree 5, and $D(x)$ has degree 2, the quotient $Q(x)$ has degree:", ["3", "7", "2.5", "5"], 0, "$5 - 2 = 3$.", 10, 'easy'),
-            generateQuestion("$P(x) = x^2$. Factor $(x-1)$?", ["No", "Yes"], 0, "$1^2 \ne 0$.", 10, 'easy'),
+            generateQuestion("$P(x) = x^2$. Factor $(x-1)$?", ["No", "Yes"], 0, "$1^2 \\ne 0$.", 10, 'easy'),
             generateQuestion("Long division: $x$ goes into $x^3$ how many times?", ["$x^2$", "$x^3$", "$3$", "$1$"], 0, "Basic step.", 10, 'easy'),
             generateQuestion("Evaluate $P(x) = 2x - 3$ at $x=4$.", ["5", "8", "11", "1"], 0, "Plug in.", 10, 'easy'),
             generateQuestion("Is $x^3 + 1$ a quadratic?", ["No", "Yes"], 0, "It is cubic.", 10, 'easy'),
@@ -478,7 +478,7 @@ const addMathQuestions = {
         learning: [
             // Easy (1-10)
             generateQuestion("Symbol $\\binom{n}{r}$ or $nCr$ represents:", ["Combinations", "Permutations", "Multiplication", "Addition"], 0, "**Lesson**: It counts how many ways to pick $r$ items from $n$.", 10, 'easy'),
-            generateQuestion("Calculate $\\binom{4}{2}$.", ["6", "4", "12", "24"], 0, "$\\frac{4 \times 3}{2 \times 1} = 6$.", 10, 'easy'),
+            generateQuestion("Calculate $\\binom{4}{2}$.", ["6", "4", "12", "24"], 0, "$\\frac{4 \\times 3}{2 \\times 1} = 6$.", 10, 'easy'),
             generateQuestion("Value of $\\binom{n}{0}$?", ["1", "0", "n", "Infinite"], 0, "Only one way to pick zero items.", 10, 'easy'),
             generateQuestion("Value of $\\binom{n}{n}$?", ["1", "0", "n", "Infinite"], 0, "Only one way to pick all items.", 10, 'easy'),
             generateQuestion("Sum of powers in each term of $(a+b)^n$ is:", ["n", "n+1", "2n", "0"], 0, "The total count of factors is always n.", 10, 'easy'),
@@ -488,13 +488,13 @@ const addMathQuestions = {
             generateQuestion("Coefficient of $x^n$ in $(1+x)^n$?", ["1", "n", "0", "n!"], 0, "Last term is always $1x^n$.", 10, 'easy'),
             generateQuestion("Pattern of powers in $(a+b)^n$: a power ___ and b power ___.", ["Decreases, Increases", "Increases, Decreases", "Increases, Increases", "Decreases, Decreases"], 0, "Starts with $a^n b^0$.", 10, 'easy'),
             // Medium (1-10)
-            generateQuestion("Coefficient of $x^2$ in $(1+2x)^4$?", ["24", "6", "12", "4"], 0, "$\\binom{4}{2} (1)^2 (2x)^2 = 6 \times 4 = 24$.", 15, 'medium'),
+            generateQuestion("Coefficient of $x^2$ in $(1+2x)^4$?", ["24", "6", "12", "4"], 0, "$\\binom{4}{2} (1)^2 (2x)^2 = 6 \\times 4 = 24$.", 15, 'medium'),
             generateQuestion("Find the middle term of $(a+b)^4$.", ["$6a^2b^2$", "$4a^3b$", "$4ab^3$", "$a^4$"], 0, "3rd term ($r=2$): $\\binom{4}{2} a^2 b^2 = 6a^2b^2$.", 15, 'medium'),
-            generateQuestion("Find the coefficient of $x^3$ in $(1-x)^6$.", ["-20", "20", "15", "-15"], 0, "$\\binom{6}{3} (1)^3 (-x)^3 = 20 \times (-1) = -20$.", 15, 'medium'),
+            generateQuestion("Find the coefficient of $x^3$ in $(1-x)^6$.", ["-20", "20", "15", "-15"], 0, "$\\binom{6}{3} (1)^3 (-x)^3 = 20 \\times (-1) = -20$.", 15, 'medium'),
             generateQuestion("First 3 terms of $(1+x)^5$?", ["$1+5x+10x^2$", "$1+x+x^2$", "$1+5x+5x^2$", "$5+5x+5x^2$"], 0, "$\\binom{5}{0}, \\binom{5}{1}, \\binom{5}{2}$.", 15, 'medium'),
-            generateQuestion("Calculate $\\binom{7}{3}$.", ["35", "21", "70", "15"], 0, "$(7 \times 6 \times 5) / (3 \times 2 \times 1) = 35$.", 15, 'medium'),
+            generateQuestion("Calculate $\\binom{7}{3}$.", ["35", "21", "70", "15"], 0, "$(7 \\times 6 \\times 5) / (3 \\times 2 \\times 1) = 35$.", 15, 'medium'),
             generateQuestion("Is $\\binom{n}{r} = \\binom{n}{n-r}$ always true?", ["Yes", "No"], 0, "Symmetry of Pascal's triangle.", 15, 'medium'),
-            generateQuestion("Coefficient of $x$ in $(1+3x)^5$?", ["15", "5", "1", "405"], 0, "$\\binom{5}{1} (1)^4 (3x) = 5 \times 3 = 15$.", 15, 'medium'),
+            generateQuestion("Coefficient of $x$ in $(1+3x)^5$?", ["15", "5", "1", "405"], 0, "$\\binom{5}{1} (1)^4 (3x) = 5 \\times 3 = 15$.", 15, 'medium'),
             generateQuestion("Constant term in expansion of $(x + 1/x)^2$?", ["2", "1", "0", "x"], 0, "$x^2 + 2x(1/x) + 1/x^2 = x^2 + 2 + 1/x^2$.", 15, 'medium'),
             generateQuestion("Find power of x in $T_{r+1}$ of $(x^2 + 1/x)^n$.", ["$2n-3r$", "$2n-2r$", "$n-r$", "$3r$"], 0, "$(x^2)^{n-r} (x^{-1})^r = x^{2n-2r-r}$.", 15, 'medium'),
             generateQuestion("Find $\\binom{5}{2}$ using Pascal's triangle row 1 4 6 4 1.", ["10", "5", "6", "1"], 0, "Next row: 1 5 10 10 5 1. Index 2 is 10.", 15, 'medium'),
@@ -502,9 +502,9 @@ const addMathQuestions = {
             generateQuestion("Term independent of $x$ in $(x^2 + \\frac{1}{x})^6$?", ["15", "20", "6", "1"], 0, "$12-3r=0 \Rightarrow r=4$. Coeff $= \\binom{6}{4} = 15$.", 20, 'hard'),
             generateQuestion("Coefficient of $x$ in $(1+x)(1-x)^5$?", ["-4", "4", "5", "-5"], 0, "$(1-x)^5 = 1 - 5x + \dots$. Product is $(1+x)(1-5x) = 1 - 5x + x = 1 - 4x$.", 20, 'hard'),
             generateQuestion("If coefficient of $x^2$ in $(1+kx)^6$ is 60, find positive $k$.", ["2", "4", "1", "$\\sqrt{2}$"], 0, "$\\binom{6}{2} k^2 = 60 \Rightarrow 15k^2 = 60 \Rightarrow k^2=4 \Rightarrow k=2$.", 20, 'hard'),
-            generateQuestion("Term independent of $x$ in $(x - \\frac{2}{x})^8$.", ["1120", "20", "64", "120"], 0, "$8-2r=0 \Rightarrow r=4$. $\\binom{8}{4} (1)^4 (-2)^4 = 70 \times 16 = 1120$.", 20, 'hard'),
+            generateQuestion("Term independent of $x$ in $(x - \\frac{2}{x})^8$.", ["1120", "20", "64", "120"], 0, "$8-2r=0 \Rightarrow r=4$. $\\binom{8}{4} (1)^4 (-2)^4 = 70 \\times 16 = 1120$.", 20, 'hard'),
             generateQuestion("Coefficient of $x^3$ in $(x^2 - 1/x)^6$?", ["-20", "20", "15", "-15"], 0, "$12-3r=3 \Rightarrow 3r=9 \Rightarrow r=3$. $\\binom{6}{3}(-1)^3 = -20$.", 20, 'hard'),
-            generateQuestion("Expansion of $(1+x+x^2)^4$. Coefficient of $x^2$?", ["10", "4", "6", "8"], 0, "$...+4x+4x^2 + (4 \times 3 / 2)x^2 = 10x^2$.", 20, 'hard'),
+            generateQuestion("Expansion of $(1+x+x^2)^4$. Coefficient of $x^2$?", ["10", "4", "6", "8"], 0, "$...+4x+4x^2 + (4 \\times 3 / 2)x^2 = 10x^2$.", 20, 'hard'),
             generateQuestion("Find $n$ if coeff of $x^2$ in $(1+x)^n$ is 21.", ["7", "6", "5", "8"], 0, "$n(n-1)/2 = 21 \Rightarrow n^2-n-42=0 \Rightarrow (n-7)(n+6)=0 \Rightarrow 7$.", 20, 'hard'),
             generateQuestion("Max coefficient in $(1+x)^{10}$ is?", ["$\\binom{10}{5}$", "$\\binom{10}{4}$", "10", "1"], 0, "Middle coefficient is always the greatest.", 20, 'hard'),
             generateQuestion("Find $k$ if $x^2$ coeff in $(1-kx)^4$ is 24.", ["2", "4", "1", "0"], 0, "$4C2 * (-k)^2 = 24 \Rightarrow 6k^2 = 24 \Rightarrow k=2$.", 20, 'hard'),
@@ -529,7 +529,7 @@ const addMathQuestions = {
             generateQuestion("First 3 terms of $(1-x)^4$?", ["$1-4x+6x^2$", "$1+4x+6x^2$", "$1-4x-6x^2$", "$1-x+x^2$"], 0, "Alternating signs.", 15, 'medium'),
             generateQuestion("Value of $\\binom{8}{3}$.", ["56", "28", "8", "3"], 0, "8*7*6 / 3*2*1.", 15, 'medium'),
             generateQuestion("Coefficient of $x^4$ in $(1+x)^{10}$?", ["210", "120", "45", "10"], 0, "10C4 = 210.", 15, 'medium'),
-            generateQuestion("Constant term of $(2x + 1/x)^2$?", ["4", "2", "1", "x"], 0, "$4x^2 + 4x(1/x) \times 2$ (Wait, $2ab = 4$). Result 4.", 15, 'medium'),
+            generateQuestion("Constant term of $(2x + 1/x)^2$?", ["4", "2", "1", "x"], 0, "$4x^2 + 4x(1/x) \\times 2$ (Wait, $2ab = 4$). Result 4.", 15, 'medium'),
             generateQuestion("Power of x in $T_{r+1}$ of $(x^3 + 1/x^2)^5$.", ["$15-5r$", "$15-2r$", "15", "0"], 0, "$3(5-r) - 2r = 15-3r-2r$.", 15, 'medium'),
             generateQuestion("If term independent of x is found, x power is?", ["0", "1", "n", "r"], 0, "$x^0 = 1$.", 15, 'medium'),
             generateQuestion("Coefficient of $x$ in $(1+2x)^5$?", ["10", "5", "80", "1"], 0, "5C1 * 2 = 10.", 15, 'medium'),
@@ -665,7 +665,7 @@ const addMathQuestions = {
             generateQuestion("$\cos(-\\theta) = $?", ["$\\cos \\theta$", "$-\\cos \\theta$", "1", "0"], 0, "Cosine is even function.", 10, 'easy'),
             generateQuestion("$\sin(180-\\theta) = $?", ["$\\sin \\theta$", "$-\\sin \\theta$", "$\\cos \\theta$", "0"], 0, "Quadrant 2 property.", 10, 'easy'),
             generateQuestion("$\cos(180-\\theta) = $?", ["$-\\cos \\theta$", "$\\cos \\theta$", "0", "1"], 0, "Quadrant 2 cosine is neg.", 10, 'easy'),
-            generateQuestion("$\tan(180-\\theta) = $?", ["$-\\tan \\theta$", "$\\tan \\theta$", "1", "0"], 0, "Quadrant 2 tan is neg.", 10, 'easy')
+            generateQuestion("$\\tan(180-\\theta) = $?", ["$-\\tan \\theta$", "$\\tan \\theta$", "1", "0"], 0, "Quadrant 2 tan is neg.", 10, 'easy')
         ]
     },
     'am-geom-coord': {
@@ -701,7 +701,7 @@ const addMathQuestions = {
             generateQuestion("Equation of circle with center $(2,3)$ touching x-axis?", ["$(x-2)^2 + (y-3)^2 = 9$", "$(x-2)^2 + (y-3)^2 = 4$", "... = 13", "... = 5"], 0, "Radius must be vertical distance to axis = 3.", 20, 'hard'),
             generateQuestion("Find k if area of triangle $(0,0), (2,0), (1,k)$ is 5.", ["5 or -5", "10", "2.5", "1"], 0, "$0.5 |2k| = 5 \Rightarrow |k|=5$.", 20, 'hard'),
             generateQuestion("Normal to $(x-1)^2 + (y-2)^2 = 5$ at $(2,4)$ always passes through:", ["(1,2)", "(0,0)", "(2,4)", "(1,1)"], 0, "Normal to any circle always passes through the center.", 20, 'hard'),
-            generateQuestion("Eq of line thru $(1,2)$ making angle $45^\circ$ with x-axis?", ["$y=x+1$", "$y=2x$", "$y=x+2$", "$y=-x+3$"], 0, "$m = \tan 45^\circ = 1$. $y-2=1(x-1) \Rightarrow y=x+1$.", 20, 'hard'),
+            generateQuestion("Eq of line thru $(1,2)$ making angle $45^\circ$ with x-axis?", ["$y=x+1$", "$y=2x$", "$y=x+2$", "$y=-x+3$"], 0, "$m = \\tan 45^\circ = 1$. $y-2=1(x-1) \Rightarrow y=x+1$.", 20, 'hard'),
             generateQuestion("[Interleaved] Expand $(x+1)^2$.", ["$x^2+2x+1$", "$x^2+1$", "$x^2+2x-1$", "2x+2"], 0, "Algebra link.", 10, 'expert')
         ],
         testing: [
@@ -766,7 +766,7 @@ const addMathQuestions = {
             generateQuestion("If $PA$ and $PB$ are tangents from $P$ to circle center $O$, then $PAOB$ is:", ["Cyclic quadrilateral", "Rectangle", "Rhombus", "Parallelogram"], 0, "Opposite angles $90+90=180$.", 20, 'hard'),
             generateQuestion("Intersecting Secants: $PA \cdot PB = PC \cdot PD$. P is ___.", ["Outside circle", "Inside circle", "On circle", "Center"], 0, "Secants from external point.", 20, 'hard'),
             generateQuestion("In triangle $ABC$, if $AB^2+BC^2=AC^2$, $\angle ABC$ is:", ["$90^\circ$", "$60^\circ$", "Obtuse", "Acute"], 0, "Converse of Pythagoras.", 20, 'hard'),
-            generateQuestion("Angle between 2 chords $AB$ and $CD$ intersecting at $P$ inside circle is:", ["$0.5(\text{Arc } AC + \text{Arc } BD)$", "90", "Equal to arc", "Sum of arcs"], 0, "External angle of triangle proof.", 20, 'hard'),
+            generateQuestion("Angle between 2 chords $AB$ and $CD$ intersecting at $P$ inside circle is:", ["$0.5(\\text{Arc } AC + \\text{Arc } BD)$", "90", "Equal to arc", "Sum of arcs"], 0, "External angle of triangle proof.", 20, 'hard'),
             generateQuestion("Ptolemy's Theorem for cyclic quad $ABCD$: $AC \cdot BD = $?", ["$AB \cdot CD + BC \cdot AD$", "$AB+BC+CD+AD$", "Area", "1"], 0, "Magnificent identity for product of diagonals.", 20, 'hard'),
             generateQuestion("Simson's Line relates a point on circle to:", ["Feet of perpendiculars to sides", "Center", "Tangent", "Shoelace"], 0, "Advanced geometry property.", 20, 'hard'),
             generateQuestion("Condition for triangle side lengths 3, 4, x to exist?", ["$1 < x < 7$", "$x=5$", "$x<7$", "$x>1$"], 0, "Sum of two sides > Third side.", 20, 'hard'),
