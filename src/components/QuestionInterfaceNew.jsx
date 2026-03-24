@@ -10,7 +10,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import MathDiagram from './MathDiagrams';
 
 // Robust parser to handle inline ($ $) and block ($$ $$) math, as well as escaped variants and diagrams
-const FormatMathText = ({ text }) => {
+export const FormatMathText = ({ text }) => {
     if (!text) return null;
 
     // Split the text by Diagram tags first to keep them at the top level
@@ -108,15 +108,11 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         if (phase === 'review' || phase === 'difficulty-select') return [];
         const rawList = isWeaknessMode ? questionsObj : (questionsObj ? (questionsObj[phase] || []) : []);
 
-        // If a difficulty is selected, filter by it
         if (difficulty && !isWeaknessMode) {
             const filtered = rawList.filter(q => q.difficulty === difficulty);
-            // If we have at least 5 questions for this difficulty, use it. 
-            // Otherwise fallback to showing all but weighted by proximity.
             if (filtered.length > 0) return filtered;
         }
 
-        // Default: Sort by difficulty: easy -> medium -> hard
         const weight = { 'easy': 1, 'medium': 2, 'hard': 3 };
         return [...rawList].sort((a, b) => (weight[a.difficulty] || 2) - (weight[b.difficulty] || 2));
     };
@@ -131,48 +127,44 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
 
     if (phase === 'difficulty-select' && !isWeaknessMode) {
         return (
-            <div className="flex flex-col items-center gap-8 w-full max-w-[800px] mx-auto" style={{ animation: 'fadeIn 0.5s ease' }}>
-                <h2 className="glow-text" style={{ fontSize: '2.5rem' }}>Choose Your Tier</h2>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-6)', width: '100%' }}>
+            <div className="flex flex-col items-center gap-12 w-full max-w-[1000px] mx-auto pb-12">
+                <div className="text-center">
+                  <h2 className="glow-text" style={{ fontSize: '3.5rem', fontWeight: 900, textTransform: 'uppercase' }}>Select Your Domain</h2>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem' }}>Choose the severity of the mathematical dissonance.</p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
                     {[
-                        { id: 'easy', label: 'Apprentice', color: 'var(--accent-success)', desc: 'Fundamental concepts & simple proofs.' },
-                        { id: 'medium', label: 'Journeyman', color: 'var(--accent-warning)', desc: 'Complex logic & multi-step variables.' },
-                        { id: 'hard', label: 'Grandmaster', color: 'var(--accent-error)', desc: 'Recursive challenges & abstract axioms.' }
+                        { id: 'easy', label: 'Apprentice', color: 'var(--emerald-green)', icon: '🌱', desc: 'Fundamental concepts & simple proofs.' },
+                        { id: 'medium', label: 'Journeyman', color: 'var(--geo-gold)', icon: '⛰️', desc: 'Complex logic & multi-step variables.' },
+                        { id: 'hard', label: 'Grandmaster', color: 'var(--pyro-red)', icon: '🔥', desc: 'Recursive challenges & abstract axioms.' }
                     ].map(tier => (
-                        <Card
+                        <motion.div
                             key={tier.id}
-                            style={{
-                                padding: 'var(--space-6)',
-                                borderTop: `6px solid ${tier.color}`,
-                                cursor: 'pointer',
-                                transition: 'transform 0.2s ease',
-                                height: '100%',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'space-between'
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="glass-panel p-8 text-center cursor-pointer transition-all flex flex-col items-center"
+                            style={{ 
+                              borderTop: `8px solid ${tier.color}`,
+                              boxShadow: `0 0 30px ${tier.color}22`
                             }}
-                            className="glass-panel"
                             onClick={() => handleStartDifficulty(tier.id)}
-                            hoverEffect
                         >
-                            <div>
-                                <h3 style={{ color: tier.color, marginBottom: 'var(--space-2)' }}>{tier.label}</h3>
-                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{tier.desc}</p>
-                            </div>
-                            <Button style={{ marginTop: 'var(--space-4)', width: '100%', backgroundColor: tier.color }}>
-                                Select {tier.id}
-                            </Button>
-                        </Card>
+                            <span style={{ fontSize: '4rem', marginBottom: 'var(--space-4)' }}>{tier.icon}</span>
+                            <h3 style={{ color: tier.color, fontSize: '1.8rem', fontWeight: 800, marginBottom: 'var(--space-2)' }}>{tier.label}</h3>
+                            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: 1.6, flexGrow: 1, marginBottom: '2rem' }}>{tier.desc}</p>
+                            <button className="genshin-btn w-full" style={{ borderColor: tier.color, color: tier.color }}>
+                                Select Tier
+                            </button>
+                        </motion.div>
                     ))}
                 </div>
             </div>
         );
     }
 
-    // Handle empty or exhausted question lists
     if (!questionsList || questionsList.length === 0) {
         if (phase === 'learning' && !isWeaknessMode) {
-            // Auto-transition to testing phase if learning phase is empty but object exists
             if (questionsObj && questionsObj['testing'] && questionsObj['testing'].length > 0) {
                 setPhase('testing');
                 setCurrentIndex(0);
@@ -181,16 +173,16 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         }
         if (phase !== 'review') {
             return (
-                <Card style={{ textAlign: 'center', padding: 'var(--space-8)', maxWidth: '600px', margin: '0 auto' }}>
-                    <h3 className="glow-text">Module Complete!</h3>
-                    <Button onClick={() => onComplete(null)} style={{ marginTop: 'var(--space-6)' }}>Return to Menu</Button>
-                </Card>
+                <div className="glass-panel p-12 text-center max-w-[600px] mx-auto">
+                    <h3 className="glow-text" style={{ fontSize: '2.5rem' }}>Domain Conquered!</h3>
+                    <p className="mt-4 text-muted">The mathematical flows has been restored to this region.</p>
+                    <button className="genshin-btn mt-8" onClick={() => onComplete(null)}>Return to World Map</button>
+                </div>
             );
         }
     }
 
     const question = questionsList[currentIndex];
-    // Protect against undefined questions
     if (!question) return null;
 
     const isCorrect = selectedOption === question.correctAnswer;
@@ -199,39 +191,19 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         if (hasAnswered) return;
         setSelectedOption(index);
 
-        // In testing phase, we don't show instant feedback, we just record and move on
         if (phase === 'testing') {
             const isAnsCorrect = index === question.correctAnswer;
-
             analytics.trackQuestionResult(question.topicId || 'unknown', question.id, question.difficulty, isAnsCorrect);
-
-            setTestAnswers(prev => [...prev, {
-                question,
-                selectedOption: index,
-                isCorrect: isAnsCorrect
-            }]);
-
-            if (isAnsCorrect) {
-                onGainXp(question.xpReward * 2); // Double XP for testing!
-            } else {
-                if (onMissedQuestion) onMissedQuestion(question);
-            }
-
-            // Short delay then next question
-            setTimeout(() => {
-                handleNext();
-            }, 800);
+            setTestAnswers(prev => [...prev, { question, selectedOption: index, isCorrect: isAnsCorrect }]);
+            if (isAnsCorrect) onGainXp(question.xpReward * 2);
+            else if (onMissedQuestion) onMissedQuestion(question);
+            setTimeout(() => { handleNext(); }, 600);
         } else {
-            // Learning phase: show immediate feedback
             const isAnsCorrect = index === question.correctAnswer;
             analytics.trackQuestionResult(question.topicId || 'unknown', question.id, question.difficulty, isAnsCorrect);
-
             setHasAnswered(true);
-            if (isAnsCorrect) {
-                onGainXp(question.xpReward);
-            } else {
-                if (onMissedQuestion) onMissedQuestion(question);
-            }
+            if (isAnsCorrect) onGainXp(question.xpReward);
+            else if (onMissedQuestion) onMissedQuestion(question);
         }
     };
 
@@ -239,7 +211,6 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         const timeSpent = Math.round((Date.now() - startTime) / 1000);
         const correctCount = testAnswers.filter(a => a.isCorrect).length;
         const totalCount = testAnswers.length || 1;
-
         analytics.trackTopicCompletion(question.topicId || 'unknown', timeSpent, (correctCount / totalCount) * 100);
         onComplete(weaknessId);
     };
@@ -250,7 +221,6 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
             setSelectedOption(null);
             setHasAnswered(false);
         } else {
-            // Completed current array
             if (phase === 'learning' && !isWeaknessMode) {
                 setPhase('testing');
                 setCurrentIndex(0);
@@ -267,161 +237,146 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
     if (phase === 'review') {
         const correctCount = testAnswers.filter(a => a.isCorrect).length;
         return (
-            <div className="flex flex-col items-center gap-6 w-full max-w-[800px] mx-auto" style={{ animation: 'fadeIn 0.5s ease' }}>
-                <h2 className="gradient-text" style={{ fontSize: '2.5rem' }}>Test Results Review</h2>
-                <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)' }}>You scored {correctCount} out of {testAnswers.length}</p>
+            <div className="flex flex-col items-center gap-10 w-full max-w-[900px] mx-auto pb-12">
+                <div className="text-center">
+                  <h2 className="glow-text" style={{ fontSize: '3rem' }}>Domain Evaluation</h2>
+                  <p style={{ fontSize: '1.4rem', color: 'var(--geo-gold)', fontWeight: 700 }}>Mastery Ratio: {correctCount} / {testAnswers.length}</p>
+                </div>
 
-                <div className="flex flex-col gap-6 w-full">
+                <div className="flex flex-col gap-8 w-full">
                     {testAnswers.map((item, idx) => (
-                        <Card key={idx} style={{ padding: 'var(--space-6)', borderLeft: `6px solid ${item.isCorrect ? 'var(--accent-success)' : 'var(--accent-error)'}` }}>
-                            <div style={{ marginBottom: 'var(--space-4)', fontSize: '1.25rem' }}>
-                                <strong>Q{idx + 1}:</strong> <FormatMathText text={item.question.text} />
+                        <div key={idx} className="glass-panel p-8" style={{ borderLeft: `8px solid ${item.isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)'}` }}>
+                            <div className="text-sm font-bold uppercase tracking-widest mb-4 opacity-50" style={{ color: item.isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)' }}>
+                              Node {idx + 1} - {item.isCorrect ? 'Resonance Achieved' : 'Dissonance Detected'}
+                            </div>
+                            <div style={{ marginBottom: 'var(--space-6)', fontSize: '1.4rem', fontWeight: 600 }}>
+                                <FormatMathText text={item.question.text} />
                             </div>
 
-                            <div style={{ padding: 'var(--space-3)', backgroundColor: 'var(--surface-hover)', borderRadius: 'var(--radius-sm)', marginBottom: 'var(--space-4)' }}>
-                                <div style={{ color: item.isCorrect ? 'var(--accent-success)' : 'var(--accent-error)', fontWeight: 'bold', marginBottom: 'var(--space-2)' }}>
-                                    Your Answer: <FormatMathText text={item.question.options[item.selectedOption]} />
+                            <div className="p-4 mb-6 rounded-xl bg-white/5 border border-white/10">
+                                <div style={{ color: item.isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)', fontWeight: 'bold', marginBottom: 'var(--space-2)' }}>
+                                    Arithmancer Input: <FormatMathText text={item.question.options[item.selectedOption]} />
                                 </div>
                                 {!item.isCorrect && (
-                                    <div style={{ color: 'var(--accent-success)' }}>
-                                        Correct Answer: <FormatMathText text={item.question.options[item.question.correctAnswer]} />
+                                    <div style={{ color: 'var(--geo-gold)' }}>
+                                        Correct Formula: <FormatMathText text={item.question.options[item.question.correctAnswer]} />
                                     </div>
                                 )}
                             </div>
 
-                            <div style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)', padding: 'var(--space-4)', borderRadius: 'var(--radius-md)', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
-                                <h4 style={{ color: 'var(--accent-info)', marginBottom: 'var(--space-2)' }}>Full Working / Explanation:</h4>
+                            <div className="p-6 bg-blue-500/5 rounded-2xl border border-blue-500/20">
+                                <h4 style={{ color: 'var(--celestial-blue)', fontSize: '1.1rem', marginBottom: 'var(--space-2)', fontWeight: 800, textTransform: 'uppercase' }}>Celestial Insight:</h4>
                                 <FormatMathText text={item.question.explanation} />
                             </div>
-                        </Card>
+                        </div>
                     ))}
                 </div>
 
-                <Button size="lg" onClick={() => handleFinalComplete(null)} style={{ marginTop: 'var(--space-6)', minWidth: '200px' }}>
-                    Finish Module
-                </Button>
+                <button className="genshin-btn px-12 py-4 text-xl" onClick={() => handleFinalComplete(null)}>
+                    Finish Domain
+                </button>
             </div>
         );
     }
 
+    const progressPercent = ((currentIndex + 1) / questionsList.length) * 100;
+
     return (
-        <div className="flex flex-col items-center gap-6 w-full max-w-[800px] mx-auto" style={{ animation: 'fadeIn 0.5s ease' }}>
-            <div className="w-full flex justify-between items-center" style={{ fontSize: '1.25rem' }}>
-                <span style={{
-                    color: phase === 'learning' ? 'var(--primary-hover)' : 'var(--accent-error)',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px'
-                }}>
-                    {isWeaknessMode ? 'Weakness Review' : (phase === 'learning' ? '📘 Learning Phase' : '📝 Final Testing Phase')}
-                </span>
-                <span style={{ color: 'var(--text-muted)' }}>
-                    Q {currentIndex + 1} / {questionsList.length}
-                </span>
+        <div className="flex flex-col items-center gap-8 w-full max-w-[900px] mx-auto pb-12">
+            <div className="w-full flex flex-col gap-2">
+              <div className="flex justify-between items-end">
+                  <span className="glow-text text-xl font-black uppercase tracking-widest" style={{
+                      color: phase === 'learning' ? 'var(--celestial-blue)' : 'var(--geo-gold)',
+                  }}>
+                      {isWeaknessMode ? '🔥 Distortion Cleansing' : (phase === 'learning' ? '📘 Initial Resonance' : '⚡ Final Ascension')}
+                  </span>
+                  <span className="font-bold opacity-70" style={{ fontSize: '1.2rem' }}>
+                      Node {currentIndex + 1} of {questionsList.length}
+                  </span>
+              </div>
+              <div className="progress-container">
+                <div className="progress-fill" style={{ width: `${progressPercent}%` }} />
+              </div>
             </div>
 
-            {phase === 'testing' && !isWeaknessMode && (
-                <div style={{ color: 'var(--accent-warning)', fontSize: '1rem', marginBottom: '-1rem', textAlign: 'center' }}>
-                    ⚠️ <strong>Testing Phase:</strong> No instant explanations. Correct answers yield <strong>Double XP!</strong>
-                </div>
-            )}
+            <div className="glass-panel w-full p-10 md:p-14 relative overflow-visible">
+                {/* Decorative Frame */}
+                <div className="absolute top-[-10px] left-[-10px] w-20 h-20 border-t-4 border-l-4 border-btn shadow-2xl opacity-40" />
+                <div className="absolute bottom-[-10px] right-[-10px] w-20 h-20 border-b-4 border-r-4 border-btn shadow-2xl opacity-40" />
 
-            <Card style={{ width: '100%', padding: 'clamp(var(--space-4), 5vw, var(--space-8))' }}>
-                <div className="question-text" style={{ marginBottom: 'var(--space-6)', fontSize: 'clamp(1.2rem, 5vw, 1.75rem)' }}>
+                <div className="question-text mb-12" style={{ fontSize: 'clamp(1.25rem, 4vw, 2.1rem)', fontWeight: 700, lineHeight: 1.4 }}>
                     <FormatMathText text={question.text} />
                 </div>
 
-                <div className="flex flex-col gap-4">
+                <div className="grid grid-cols-1 gap-5">
                     {question.options.map((option, idx) => {
-                        let btnClass = "btn option-btn";
-                        let animStyle = {};
-
+                        let btnStyle = { textAlign: 'left', justifyContent: 'flex-start', padding: '1.25rem 2rem' };
+                        let labelColor = 'var(--text-muted)';
+                        
                         if (phase === 'learning' && hasAnswered) {
                             if (idx === question.correctAnswer) {
-                                animStyle = { backgroundColor: 'var(--accent-success)', color: 'white', borderColor: 'var(--accent-success)', boxShadow: '0 0 15px var(--accent-success)' };
+                                btnStyle = { ...btnStyle, background: 'var(--emerald-green)', color: 'white', borderColor: 'var(--emerald-green)', boxShadow: '0 0 25px var(--emerald-green)88' };
+                                labelColor = 'white';
                             } else if (idx === selectedOption) {
-                                animStyle = { backgroundColor: 'var(--accent-error)', color: 'white', borderColor: 'var(--accent-error)', opacity: 0.7 };
+                                btnStyle = { ...btnStyle, background: 'var(--pyro-red)', color: 'white', borderColor: 'var(--pyro-red)', opacity: 0.8 };
+                                labelColor = 'white';
                             } else {
-                                animStyle = { opacity: 0.5 };
+                                btnStyle = { ...btnStyle, opacity: 0.4, grayscale: 1 };
                             }
                         } else if (idx === selectedOption) {
-                            btnClass = "btn option-btn option-btn-active";
+                            btnStyle = { ...btnStyle, borderColor: 'var(--celestial-blue)', background: 'var(--celestial-blue)11', transform: 'scale(1.02)' };
                         }
 
                         return (
                             <button
                                 key={idx}
-                                className={btnClass}
-                                style={{ width: '100%', padding: 'clamp(var(--space-3), 4vw, var(--space-4))', fontSize: 'clamp(1rem, 4vw, 1.25rem)', justifyContent: 'flex-start', textAlign: 'left', borderRadius: 'var(--radius-lg)', ...animStyle }}
+                                className="genshin-btn w-full flex items-center group transition-all"
+                                style={btnStyle}
                                 onClick={() => handleSelectOption(idx)}
                                 disabled={hasAnswered && phase === 'learning'}
                             >
-                                <div style={{ display: 'flex', alignItems: 'center' }}>
-                                    <span style={{ marginRight: 'var(--space-4)', fontWeight: 'bold', opacity: 0.7 }}>
-                                        {String.fromCharCode(65 + idx)}.
-                                    </span>
-                                    <div style={{ flex: 1 }}>
-                                        <FormatMathText text={option} />
-                                    </div>
+                                <span className="mr-6 font-black text-2xl transition-colors" style={{ color: labelColor, opacity: 0.5 }}>
+                                    {String.fromCharCode(65 + idx)}
+                                </span>
+                                <div className="flex-1 font-semibold text-lg">
+                                    <FormatMathText text={option} />
                                 </div>
                             </button>
                         );
                     })}
                 </div>
 
-
                 {phase === 'learning' && hasAnswered && (
-                    <div className="flex gap-4" style={{ marginTop: 'var(--space-8)' }}>
-                        <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            style={{ fontSize: '4rem' }}
-                        >
-                            {isCorrect ? '✨' : '😅'}
-                        </motion.div>
-                        <div style={{
-                            flex: 1,
-                            padding: 'var(--space-6)',
-                            borderRadius: 'var(--radius-md)',
-                            backgroundColor: isCorrect ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-                            borderLeft: `4px solid ${isCorrect ? 'var(--accent-success)' : 'var(--accent-error)'}`,
-                            animation: 'fadeIn 0.5s ease'
-                        }}>
-                            <h4 style={{ color: isCorrect ? 'var(--accent-success)' : 'var(--accent-error)', marginBottom: 'var(--space-2)', fontSize: '1.25rem' }}>
-                                {isCorrect ? '✨ Excellent! (XP gained)' : 'Not quite right. Let\'s review!'}
-                            </h4>
-                            <div style={{ lineHeight: 1.6, fontSize: '1.125rem' }}>
-                                <FormatMathText text={question.explanation} />
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </Card>
-
-            {/* Pet Feedback Overlay */}
-            <AnimatePresence>
-                {hasAnswered && (
-                    <motion.div
-                        initial={{ x: 100, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: 100, opacity: 0 }}
-                        style={{ position: 'fixed', bottom: '20px', right: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                    <motion.div 
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mt-12 p-8 rounded-3xl relative overflow-hidden" 
+                      style={{ 
+                        background: isCorrect ? 'var(--emerald-green)11' : 'var(--pyro-red)11',
+                        border: `2px solid ${isCorrect ? 'var(--emerald-green)33' : 'var(--pyro-red)33'}`
+                      }}
                     >
-                        <div className="glass-panel" style={{ padding: 'var(--space-3)', marginBottom: 'var(--space-2)', fontSize: '0.9rem', maxWidth: '150px' }}>
-                            {isCorrect ? "Yay! You got it!" : "Don't give up! Look at the explanation."}
+                        <h4 style={{ color: isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)', marginBottom: 'var(--space-2)', fontSize: '1.4rem', fontWeight: 900, textTransform: 'uppercase' }}>
+                            {isCorrect ? '✨ Resonance Established' : '⚠️ Sigil Misaligned'}
+                        </h4>
+                        <div className="font-medium" style={{ lineHeight: 1.7, fontSize: '1.15rem' }}>
+                            <FormatMathText text={question.explanation} />
                         </div>
-                        <div style={{ fontSize: '5rem' }}>{activeCharacter?.emoji}</div>
                     </motion.div>
                 )}
-            </AnimatePresence>
+            </div>
 
             {phase === 'learning' && hasAnswered && (
-                <Button size="lg" onClick={handleNext} style={{ minWidth: '200px', animation: 'scaleUp 0.3s ease' }}>
-                    {currentIndex < questionsList.length - 1 ? 'Next Question' : 'Proceed to Testing Phase'}
-                </Button>
+                <button 
+                  className="genshin-btn px-16 py-4 text-xl" 
+                  style={{ animation: 'pulse-glow 2s infinite' }}
+                  onClick={handleNext} 
+                >
+                    {currentIndex < questionsList.length - 1 ? 'Continue Domain Path' : 'Initiate Final Ascension'}
+                </button>
             )}
         </div>
     );
 }
 
-export { FormatMathText };
+

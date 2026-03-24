@@ -11,56 +11,71 @@ export default function CrashCourse({ topic, onSkip, onContinue }) {
     return (
         <AnimatePresence>
             <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: -20 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="w-full flex justify-center"
+                exit={{ opacity: 0, scale: 0.8 }}
+                className="w-full flex justify-center pb-20"
             >
-                <Card className="flex flex-col items-center text-left max-w-[650px] w-full mx-auto" style={{ padding: 'var(--space-8)', background: 'rgba(17, 24, 39, 0.85)', boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)" }}>
-                    <div className="flex w-full justify-between items-center mb-6">
-                        <h2 className="gradient-text" style={{ fontSize: '2.5rem', margin: 0, filter: 'drop-shadow(0 0 10px rgba(139, 92, 246, 0.3))' }}>{topic.title}</h2>
+                <div className="glass-panel p-10 md:p-14 max-w-[800px] w-full text-center relative overflow-visible" style={{ border: `3px solid ${topic.color || 'var(--geo-gold)'}` }}>
+                    {/* Celestial Corner Motifs */}
+                    <div className="absolute top-[-15px] left-[-15px] w-12 h-12 transform rotate-45 flex items-center justify-center bg-surface border-2 border-geo-gold rounded-lg shadow-xl" style={{ borderColor: topic.color }}>
+                        <span style={{ transform: 'rotate(-45deg)', fontSize: '1.5rem' }}>✨</span>
+                    </div>
+                    <div className="absolute bottom-[-15px] right-[-15px] w-12 h-12 transform rotate-45 flex items-center justify-center bg-surface border-2 border-geo-gold rounded-lg shadow-xl" style={{ borderColor: topic.color }}>
+                        <span style={{ transform: 'rotate(-45deg)', fontSize: '1.5rem' }}>📖</span>
+                    </div>
+
+                    <div className="mb-10 flex flex-col items-center">
                         <div style={{
-                            fontSize: '4rem',
-                            animation: 'float 4s ease-in-out infinite',
-                            filter: 'drop-shadow(0 0 20px rgba(255,255,255,0.4))'
+                            fontSize: '6rem',
+                            marginBottom: 'var(--space-4)',
+                            filter: `drop-shadow(0 0 25px ${topic.color}88)`,
+                            animation: 'float 4s ease-in-out infinite'
                         }}>
                             {topic.emoji}
                         </div>
+                        <h2 className="glow-text mt-4" style={{ fontSize: '3.5rem', fontWeight: 900, textTransform: 'uppercase', color: 'var(--text-dark)' }}>{topic.title}</h2>
+                        <div className="w-24 h-1 mt-2 rounded-full" style={{ background: topic.color }} />
                     </div>
 
-                    <div style={{ width: '100%', borderBottom: '1px solid var(--surface-border)', marginBottom: 'var(--space-6)' }} />
-
-                    <h3 style={{ fontSize: '1.5rem', marginBottom: 'var(--space-4)', color: 'var(--primary-hover)', alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ fontSize: '1.8rem' }}>🧠</span> Visual Concept
-                    </h3>
-
-                    <ConceptVisualizer topicId={topic.id} emoji={topic.emoji} />
-
-                    <div style={{
-                        background: 'rgba(255, 255, 255, 0.03)',
-                        padding: 'var(--space-6)',
-                        borderRadius: 'var(--radius-lg)',
-                        borderLeft: "4px solid " + topic.color,
-                        marginBottom: 'var(--space-8)',
-                        fontSize: '1.15rem',
-                        lineHeight: 1.8,
-                        width: '100%',
-                        boxShadow: 'inset 0 0 20px rgba(0,0,0,0.2)'
-                    }}>
-                        {/* Ensures the Crash Course content is rendered correctly through the fixed parser */}
-                        <FormatMathText text={topic.crashCourse} />
+                    <div className="mb-10 text-left">
+                        <h3 className="flex items-center gap-3 mb-6" style={{ fontSize: '1.6rem', fontWeight: 800, color: topic.color }}>
+                            <span style={{ fontSize: '2rem' }}>👁️</span> Essential Visualization
+                        </h3>
+                        <ConceptVisualizer topicId={topic.id} emoji={topic.emoji} />
                     </div>
 
-                    <div style={{ width: '100%', padding: 'var(--space-4)', backgroundColor: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: 'var(--radius-md)', marginBottom: 'var(--space-6)', textAlign: 'center', fontSize: '1.1rem' }}>
-                        ⚠️ <strong>Note:</strong> Modules are extended. You will go through a guided <span style={{ color: 'var(--primary-hover)' }}>Learning Phase</span> followed by a strict <span style={{ color: 'var(--accent-error)' }}>Testing Phase</span>!
+                    <div className="p-8 md:p-10 mb-12 text-left rounded-3xl bg-white/5 border border-white/10" style={{ boxShadow: 'inset 0 0 40px rgba(0,0,0,0.05)' }}>
+                        <h4 className="mb-6 opacity-60 uppercase tracking-widest text-xs font-black">Celestial Principles</h4>
+                        <div style={{ fontSize: '1.3rem', lineHeight: 1.8, color: 'var(--text-main)', fontWeight: 500 }}>
+                            <FormatMathText text={topic.crashCourse} />
+                        </div>
                     </div>
 
-                    <div className="flex gap-4 w-full justify-center mt-4">
-                        <Button variant="secondary" size="lg" onClick={onSkip} style={{ width: '180px' }}>Skip Intro</Button>
-                        <Button variant="primary" size="lg" onClick={onContinue} style={{ width: '250px', backgroundColor: topic.color, boxShadow: "0 0 20px " + topic.color + "66" }}>Start Learning</Button>
+                    <div className="flex flex-col sm:flex-row gap-6 w-full justify-center">
+                        <button 
+                            className="genshin-btn px-8 py-3 text-lg" 
+                            style={{ opacity: 0.7, borderColor: 'var(--text-muted)', color: 'var(--text-muted)' }} 
+                            onClick={onSkip}
+                        >
+                            Skip Intro
+                        </button>
+                        <button 
+                            className="genshin-btn px-16 py-4 text-xl" 
+                            style={{ borderColor: topic.color, color: topic.color }} 
+                            onClick={onContinue}
+                        >
+                            Accept Trial
+                        </button>
                     </div>
-                </Card>
+
+                    <style jsx>{`
+                        @keyframes float {
+                            0%, 100% { transform: translateY(0) rotate(0); }
+                            50% { transform: translateY(-15px) rotate(2deg); }
+                        }
+                    `}</style>
+                </div>
             </motion.div>
         </AnimatePresence>
     );

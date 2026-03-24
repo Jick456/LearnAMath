@@ -1,7 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Card from './Card';
-import Button from './Button';
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -42,106 +40,98 @@ export default function TopicSelector({ topics = [], activeLevel, onLevelChange,
     });
 
     return (
-        <div className="flex flex-col gap-6 w-full max-w-[900px] mx-auto relative">
-            {/* Background Constellation Decoration */}
-            <div style={{ position: 'absolute', top: '10%', left: '5%', width: '300px', height: '300px', background: 'radial-gradient(circle, var(--primary-glow) 0%, transparent 60%)', filter: 'blur(50px)', opacity: 0.4, zIndex: -1, pointerEvents: 'none' }} />
-            <div style={{ position: 'absolute', bottom: '10%', right: '5%', width: '400px', height: '400px', background: 'radial-gradient(circle, var(--secondary-glow) 0%, transparent 60%)', filter: 'blur(60px)', opacity: 0.3, zIndex: -1, pointerEvents: 'none' }} />
-
-            <motion.h2
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                style={{ fontSize: '3rem', textAlign: 'center', fontWeight: 800, letterSpacing: '1px' }}
-                className="glow-text"
-            >
-                Path of Mastery
-            </motion.h2>
+        <div className="flex flex-col gap-10 w-full max-w-[1200px] mx-auto relative pb-12 px-4 text-center">
+            {/* Background Decorations */}
+            <div className="absolute top-[10%] left-[5%] w-[300px] h-[300px] bg-blue-500 blur-[100px] opacity-10 pointer-events-none" />
+            
+            <div className="text-center relative mb-6">
+              <motion.h2
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="glow-text text-5xl md:text-7xl font-black uppercase tracking-[4px] mb-2"
+              >
+                  Path of Mastery
+              </motion.h2>
+              <p className="text-xl md:text-2xl opacity-60 font-medium">Ascend through the celestial branches of Mathematics</p>
+            </div>
 
             {weaknessCount > 0 && (
-                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}>
-                    <Card style={{
-                        background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(245, 158, 11, 0.15) 100%)',
-                        borderColor: 'var(--accent-warning)',
-                        textAlign: 'center',
-                        animation: 'pulse-glow 3s infinite',
-                        padding: 'var(--space-6)',
-                        boxShadow: '0 0 30px rgba(245, 158, 11, 0.2)'
-                    }}>
-                        <h3 style={{ fontSize: '1.75rem', color: 'var(--accent-warning)', marginBottom: 'var(--space-2)' }}>
-                            ⚠️ Weakness Review
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
+                    <div className="glass-panel p-10 text-center border-2 border-dashed border-red-500/40 bg-red-500/[0.03]">
+                        <h3 className="text-3xl font-black text-red-500 mb-4 flex items-center justify-center gap-4">
+                            <span className="animate-pulse">🔥</span> Distortion Detected
                         </h3>
-                        <p style={{ color: 'var(--text-muted)', marginBottom: 'var(--space-4)', fontSize: '1.1rem' }}>
-                            You have {weaknessCount} node{weaknessCount > 1 ? 's' : ''} out of alignment. Review to restore mastery!
+                        <p className="text-lg opacity-80 mb-8 max-w-[600px] mx-auto">
+                            {weaknessCount} nodes of knowledge have been obscured by the Abyssal Fog. Restore their brilliance to continue your journey.
                         </p>
-                        <Button variant="primary" onClick={() => onSelect('weaknesses')} style={{ backgroundColor: 'var(--accent-error)', padding: '12px 30px', fontSize: '1.2rem' }}>
-                            Restore Alignment
-                        </Button>
-                    </Card>
+                        <button 
+                            className="genshin-btn px-12 py-4" 
+                            style={{ borderColor: '#ef4444', color: '#ef4444' }} 
+                            onClick={() => onSelect('weaknesses')}
+                        >
+                            Purify Resonance
+                        </button>
+                    </div>
                 </motion.div>
             )}
 
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="flex justify-center gap-3 flex-wrap"
-                style={{ marginBottom: 'var(--space-4)' }}
-            >
+            <div className="flex justify-center gap-4 flex-wrap z-10 mb-8">
                 {['Sec 1', 'Sec 2', 'Sec 3', 'Sec 4', 'Add Math'].map(level => (
-                    <Button
+                    <button
                         key={level}
-                        variant={activeLevel === level ? "primary" : "secondary"}
+                        className={`genshin-btn min-w-[140px] px-8 py-3 transition-all duration-300 ${activeLevel === level ? 'active-level' : 'opacity-60 hover:opacity-100'}`}
                         onClick={() => onLevelChange(level)}
-                        style={{ width: '130px', fontSize: '1.1rem', padding: '10px' }}
                     >
                         {level}
-                    </Button>
+                    </button>
                 ))}
-            </motion.div>
+            </div>
 
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
-                style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-6)', position: 'relative' }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left"
             >
                 {filteredTopics.map((topic, index) => (
-                    <motion.div key={topic.id} variants={itemVariants} style={{ position: 'relative', zIndex: 1 }}>
-                        <Card
-                            className="flex flex-col items-center text-center glass-panel"
-                            style={{
-                                padding: 'clamp(var(--space-4), 5vw, var(--space-8))',
-                                borderTop: "4px solid " + topic.color
-                            }}
+                    <motion.div key={topic.id} variants={itemVariants} className="h-full">
+                        <div 
+                          className="glass-panel h-full flex flex-col items-center text-center p-10 hover:scale-[1.03] transition-all cursor-pointer group"
+                          style={{ borderBottom: `4px solid ${topic.color || '#fbbf24'}` }}
+                          onClick={() => onSelect(topic.id)}
                         >
-                            <div style={{
-                                fontSize: 'clamp(3rem, 15vw, 4.5rem)',
-                                marginBottom: 'var(--space-4)',
-                                filter: "drop-shadow(0 0 20px " + topic.color + "88)",
-                                animation: index % 2 === 0 ? 'float 4s ease-in-out infinite' : 'float 5s ease-in-out infinite reverse'
-                            }}>
-                                {topic.emoji}
+                            <div className="relative mb-8">
+                                <div 
+                                  className="absolute inset-0 blur-3xl opacity-30 rounded-full group-hover:opacity-60 transition-opacity" 
+                                  style={{ background: topic.color }} 
+                                />
+                                <div 
+                                  style={{ fontSize: '6rem', animation: `float ${5 + (index % 3)}s ease-in-out infinite` }}
+                                  className="relative drop-shadow-2xl filter saturate-[1.2]"
+                                >
+                                    {topic.emoji}
+                                </div>
                             </div>
-                            <h3 style={{ fontSize: 'clamp(1.3rem, 5vw, 1.6rem)', color: topic.color, marginBottom: 'var(--space-2)' }}>{topic.title}</h3>
-                            <p style={{ color: 'var(--text-muted)', lineHeight: '1.6', fontSize: 'clamp(0.9rem, 3vw, 1rem)' }}>{topic.description}</p>
-                            <Button
-                                onClick={() => onSelect(topic.id)}
-                                style={{ marginTop: 'var(--space-6)', width: '100%', backgroundColor: topic.color, color: '#fff', boxShadow: "0 0 15px " + topic.color + "66" }}
-                            >
-                                Enter Module
-                            </Button>
-                        </Card>
-                    </motion.div >
-                ))
-                }
 
-                {
-                    filteredTopics.length === 0 && (
-                        <div style={{ textAlign: 'center', gridColumn: '1 / -1', padding: 'var(--space-8)' }}>
-                            <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem' }}>This path is currently enshrouded in mountain mist.</p>
+                            <h3 className="text-2xl font-black mb-3 group-hover:text-blue-500 transition-colors uppercase tracking-wider">{topic.title}</h3>
+                            <p className="opacity-70 leading-relaxed mb-auto italic font-medium">{topic.description}</p>
+                            
+                            <button
+                                className="genshin-btn mt-10 w-full font-black tracking-[2px]"
+                                style={{ borderColor: topic.color, color: topic.color }}
+                            >
+                                Enter Domain
+                            </button>
                         </div>
-                    )
-                }
-            </motion.div >
-        </div >
+                    </motion.div>
+                ))}
+
+                {filteredTopics.length === 0 && (
+                    <div className="col-span-full glass-panel p-20 text-center">
+                        <p className="text-2xl opacity-40 italic font-medium">This path is currently enshrouded in the mists of Celestia.</p>
+                    </div>
+                )}
+            </motion.div>
+        </div>
     );
 }

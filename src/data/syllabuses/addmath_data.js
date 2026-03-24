@@ -617,15 +617,55 @@ const addMathQuestions = {
             generateQuestion("[Interleaved] Remainder of $P(x)$ divided by $(x-a)$?", ["$P(a)$", "$P(-a)$", "0", "a"], 0, "Polynomial link.", 10, 'expert')
         ]
     },
-    // --- GEOM & TRIG ---
     'am-geom-trig': {
         learning: [
-            generateQuestion("Identify the core foundational identity that bravely links Tangent directly to Sine and Cosine.", ["$\\tan x = \\sin x / \\cos x$", "$\\tan x = \\cos x / \\sin x$", "$\\tan x = 1 / \\sin x$", "$\\tan x = \\sin^2 x$"], 0, "**Lesson**: Tan is fundamentally the steep ratio of Opposite over Adjacent, which is cleanly Sine strictly divided by Cosine.", 10, 'easy'),
-            generateQuestion("Which exact formula universally halves the Double Angle $\\sin(2A)$ perfectly down?", ["$2\\sin A \\cos A$", "$\\cos^2 A - \\sin^2 A$", "$1 - 2\\sin^2 A$", "$2\\sin A$"], 0, "**Lesson**: $\\sin(2A) = 2 \\sin A \\cos A$. The ultimate double angle splitting manipulation!", 15, 'easy')
+            // Easy (1-10)
+            generateQuestion("Identity: $\\tan x$ equivalent?", ["$\\sin x / \\cos x$", "$\\cos x / \\sin x$", "$1/\\sin x$", "$\\sin x$"], 0, "Basic tan definition.", 10, 'easy'),
+            generateQuestion("Identity: $\\sin^2 x + \\cos^2 x = ?$", ["1", "0", "2", "$\\tan x$"], 0, "Pythagorean identity.", 10, 'easy'),
+            generateQuestion("Identity: $1 + \\tan^2 x = ?$", ["$\\sec^2 x$", "$\\csc^2 x$", "1", "$\\cot^2 x$"], 0, "Second Pythagorean identity.", 10, 'easy'),
+            generateQuestion("Identity: $1 + \\cot^2 x = ?$", ["$\\csc^2 x$", "$\\sec^2 x$", "0", "1"], 0, "Third Pythagorean identity.", 10, 'easy'),
+            generateQuestion("Reciprocal: $1/\\sin x = ?$", ["$\\csc x$", "$\\sec x$", "$\\cot x$", "$\\cos x$"], 0, "Cosecant is inverse sine.", 10, 'easy'),
+            generateQuestion("Reciprocal: $1/\\cos x = ?$", ["$\\sec x$", "$\\csc x$", "$\\tan x$", "$\\sin x$"], 0, "Secant is inverse cosine.", 10, 'easy'),
+            generateQuestion("Sine of $90^\\circ$?", ["1", "0", "0.5", "$\\infty$"], 0, "Max value of sine wave.", 10, 'easy'),
+            generateQuestion("Cosine of $90^\\circ$?", ["0", "1", "-1", "0.5"], 0, "Min value of positive cos wave.", 10, 'easy'),
+            generateQuestion("Tangent of $45^\\circ$?", ["1", "$\\sqrt{3}$", "$\\sqrt{3}/3$", "0"], 0, "Opposite equals adjacent.", 10, 'easy'),
+            generateQuestion("Sign of Sine in 2nd Quadrant?", ["Positive", "Negative", "Zero"], 0, "ASTC rule: Sine is pos in Q2.", 10, 'easy'),
+            // Medium (1-10)
+            generateQuestion("Double Angle: $\\sin 2x = ?$", ["$2\\sin x \\cos x$", "$\\cos^2 x - \\sin^2 x$", "$\\sin x$", "$2\\sin x$"], 0, "Sin double angle formula.", 15, 'medium'),
+            generateQuestion("Double Angle: $\\cos 2x$ using only cos?", ["$2\\cos^2 x - 1$", "$1 - 2\\sin^2 x$", "$\\cos^2 x - \\sin^2 x$", "$2\\cos x$"], 0, "Cos double angle version 2.", 15, 'medium'),
+            generateQuestion("Double Angle: $\\cos 2x$ using only sin?", ["$1 - 2\\sin^2 x$", "$2\\cos^2 x - 1$", "$2\\sin^2 x - 1$", "$2\\sin x$"], 0, "Cos double angle version 3.", 15, 'medium'),
+            generateQuestion("Solve $\\sin x = 0.5$ for $0 < x < 180$.", ["$30, 150$", "$30, 210$", "$30$", "150"], 0, "$x=30$ and $180-30 = 150$.", 15, 'medium'),
+            generateQuestion("Period of $\\sin(4x)$?", ["$90^\\circ$", "$360^\\circ$", "$180^\\circ$", "$45^\\circ$"], 0, "$360/4 = 90$.", 15, 'medium'),
+            generateQuestion("Amplitude of $3\\cos(x) + 2$?", ["3", "2", "5", "1"], 0, "Coefficient of cos.", 15, 'medium'),
+            generateQuestion("Maximum value of $5\\sin x - 1$?", ["4", "5", "6", "-1"], 0, "$5 - 1 = 4$.", 15, 'medium'),
+            generateQuestion("R-formula: $3\\sin x + 4\\cos x = R\\sin(x+\\alpha)$. Find $R$.", ["5", "7", "1", "25"], 0, "$R = \\sqrt{3^2 + 4^2} = 5$.", 15, 'medium'),
+            generateQuestion("Find $\\tan \\alpha$ for previous question.", ["4/3", "3/4", "12", "0.5"], 0, "$\\tan \\alpha = 4/3$ (coeff of cos / coeff of sin).", 15, 'medium'),
+            generateQuestion("Solve $\\cos x = -1$ for $0 \\le x \\le 360$.", ["$180$", "$0, 360$", "$90, 270$", "0"], 0, "Lowest point of cos wave.", 15, 'medium'),
+            // Hard (1-10)
+            generateQuestion("Identify $\\cos(A+B)$ formula.", ["$\\cos A \\cos B - \\sin A \\sin B$", "$\\cos A \\cos B + \\sin A \\sin B$", "$\\sin A \\cos B + \\cos A \\sin B$", "..."], 0, "Addition formula for Cosine.", 20, 'hard'),
+            generateQuestion("Identify $\\sin(A-B)$ formula.", ["$\\sin A \\cos B - \cos A \\sin B$", "$\\sin A \\sin B$", "...", "..."], 0, "Addition formula for Sine.", 20, 'hard'),
+            generateQuestion("Express $\\tan 2x$ in terms of $\\tan x$.", ["$\\frac{2\\tan x}{1-\\tan^2 x}$", "$\\frac{2\\tan x}{1+\\tan^2 x}$", "$2\\tan x$", "$\\tan^2 x$"], 0, "Tan double angle.", 20, 'hard'),
+            generateQuestion("Simplify $\\sin(x) \\cot(x)$.", ["$\\cos x$", "$\\sin^2 x$", "$\\tan x$", "1"], 0, "$\\sin x \\times (\\cos x / \\sin x) = \\cos x$.", 20, 'hard'),
+            generateQuestion("Solve $2\\cos^2 x + \sin x - 1 = 0$ for $0 < x < 360$.", ["$90, 210, 330$", "$90, 180$", "$210, 330$", "270"], 0, "$2(1-\\sin^2 x) + \\sin x - 1 = 0 \\Rightarrow 2\\sin^2 x - \\sin x - 1 = 0 \\Rightarrow (2\\sin x + 1)(\\sin x - 1) = 0$.", 20, 'hard'),
+            generateQuestion("Find EXACT value of $\\sin(75^\\circ)$.", ["$\\frac{\\sqrt{6}+\\sqrt{2}}{4}$", "$\\frac{\\sqrt{6}-\\sqrt{2}}{4}$", "$\\frac{\\sqrt{3}}{2}$", "0.5"], 0, "$\\sin(45+30) = \\sin 45 \\cos 30 + \\cos 45 \\sin 30$.", 20, 'hard'),
+            generateQuestion("Find EXACT value of $\\cos(75^\\circ)$.", ["$\\frac{\\sqrt{6}-\\sqrt{2}}{4}$", "$\\frac{\\sqrt{6}+\\sqrt{2}}{4}$", "$\\frac{1}{2}$", "0"], 0, "$\\cos(45+30) = \\cos 45 \\cos 30 - \\sin 45 \\sin 30$.", 20, 'hard'),
+            generateQuestion("Simplify $\\frac{\\sin x}{1 + \\cos x} + \\frac{1 + \\cos x}{\\sin x}$.", ["$2\\csc x$", "$2\\sec x$", "$2\\tan x$", "$2$"], 0, "$\\frac{\\sin^2 x + 1 + 2\\cos x + \\cos^2 x}{\\sin x(1+\\cos x)} = \\frac{2+2\\cos x}{\\sin x(1+\\cos x)} = 2/\\sin x$.", 20, 'hard'),
+            generateQuestion("Period of $|\\tan x|$?", ["$180^\\circ$", "$360^\\circ$", "$90^\\circ$", "None"], 0, "Absolute tan matches tan period.", 20, 'hard'),
+            generateQuestion("Solve $3\\cos x + 4\\sin x = 5$. Find smallest positive $x$.", ["$53.1^\\circ$", "$36.9^\\circ$", "$90^\\circ$", "$0^\\circ$"], 0, "$5\\sin(x+36.9) = 5 \\Rightarrow x+36.9 = 90 \\Rightarrow x=53.1$.", 20, 'hard'),
+            generateQuestion("[Interleaved] Which log property is $\\log(AB)$?", ["$\\log A + \\log B$", "$\\log A - \\log B$", "$B\\log A$", "AB"], 0, "Expert algebra link.", 10, 'expert')
         ],
         testing: [
-            generateQuestion("Prove or simplify exactly: $\\frac{1 - \\cos^2 x}{\\cos x}$ cleanly to a single clean function.", ["$\\tan x \\sin x$", "$\\tan^2 x$", "$\\cot x$", "$\\sin x$"], 0, "**Lesson**: $1 - \\cos^2 x$ is the master disguise for $\\sin^2 x$. Then $\\sin^2 x / \\cos x = \\sin x (\\sin x / \\cos x) = \\sin x \\tan x$.", 20, 'medium'),
-            generateQuestion("Solve $\\cos(2x) = 0.5$ for $0^\\circ \\le x \\le 180^\\circ$. What are the ONLY exact valid solutions?", ["$30^\\circ, 150^\\circ$", "$60^\\circ, 120^\\circ$", "$30^\\circ, 330^\\circ$", "$60^\\circ, 300^\\circ$"], 0, "**Lesson**: Domain becomes $0^\\circ \\le 2x \\le 360^\\circ$. $2x = 60^\\circ$ or $300^\\circ$. Dividing by 2 yields $30^\\circ$ and $150^\\circ$.", 30, 'hard')
+            // Extra tests for Trigo
+            generateQuestion("Reflex angle for $x=200^\\circ$?", ["$160^\\circ$", "$200^\\circ$", "$20^\\circ$", "$340^\\circ$"], 0, "Actually 200 is already reflex (>180).", 10, 'easy'),
+            generateQuestion("Secant is reciprocal of?", ["Cosine", "Sine", "Tangent", "None"], 0, "Core vocab.", 10, 'easy'),
+            generateQuestion("Formula for area of triangle with 2 sides a, b and angle C?", ["$0.5ab \\sin C$", "$0.5ab \\cos C$", "ab", "$0.5bh$"], 0, "Trig area formula.", 10, 'easy'),
+            generateQuestion("Identify Sine rule.", ["$a/\\sin A = b/\\sin B$", "$c^2 = a^2+b^2$", "Both", "None"], 0, "Ratio logic.", 10, 'easy'),
+            generateQuestion("Identify Cosine rule.", ["$a^2 = b^2+c^2 - 2bc\\cos A$", "...", "...", "..."], 0, "Extension of Pythagoras.", 10, 'easy'),
+            generateQuestion("$\sin(-\\theta) = $?", ["$-\\sin \\theta$", "$\\sin \\theta$", "$\cos \\theta$", "0"], 0, "Sine is odd function.", 10, 'easy'),
+            generateQuestion("$\cos(-\\theta) = $?", ["$\\cos \\theta$", "$-\\cos \\theta$", "1", "0"], 0, "Cosine is even function.", 10, 'easy'),
+            generateQuestion("$\sin(180-\\theta) = $?", ["$\\sin \\theta$", "$-\\sin \\theta$", "$\\cos \\theta$", "0"], 0, "Quadrant 2 property.", 10, 'easy'),
+            generateQuestion("$\cos(180-\\theta) = $?", ["$-\\cos \\theta$", "$\\cos \\theta$", "0", "1"], 0, "Quadrant 2 cosine is neg.", 10, 'easy'),
+            generateQuestion("$\tan(180-\\theta) = $?", ["$-\\tan \\theta$", "$\\tan \\theta$", "1", "0"], 0, "Quadrant 2 tan is neg.", 10, 'easy')
         ]
     },
     'am-geom-coord': {

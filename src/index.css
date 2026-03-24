@@ -1,42 +1,47 @@
 :root {
-  /* Color Palette - Serene Mountain Tea */
-  --bg-dark: #fbf9f4;
-  /* Warm ivory/rice paper */
-  --bg-gradient: linear-gradient(135deg, #fbf9f4 0%, #eef0e5 100%);
-  /* Soft misty morning */
+  /* Genshin Color Palette - Elemental & Celestial */
+  --celestial-blue: #3b82f6;
+  --primogem-purple: #a855f7;
+  --emerald-green: #10b981;
+  --geo-gold: #fbbf24;
+  --pyro-red: #ef4444;
+  
+  /* Backgrounds & Surfaces */
+  --bg-main: #f0f4f8;
+  --bg-gradient: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+  
+  /* Premium Glassmorphism 2.0 (Genshin Style) */
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-hover: rgba(255, 255, 255, 0.88);
+  --surface-border: rgba(251, 191, 36, 0.3); /* Gold border trace */
+  --surface-glow: rgba(251, 191, 36, 0.15);
 
-  /* Soft frosted glass */
-  --surface: rgba(255, 255, 255, 0.75);
-  --surface-hover: rgba(255, 255, 255, 0.9);
-  --surface-border: rgba(200, 210, 190, 0.4);
+  /* Primary Aesthetics */
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-glow: rgba(79, 70, 229, 0.4);
 
-  --primary: #8cb369;
-  /* Matcha Green */
-  --primary-hover: #7b995b;
-  --primary-glow: rgba(140, 179, 105, 0.4);
+  --secondary: #d97706; /* Ornate amber */
+  --secondary-glow: rgba(217, 119, 6, 0.4);
 
-  --secondary: #d4b88a;
-  /* Bamboo Gold */
-  --secondary-glow: rgba(212, 184, 138, 0.4);
+  --accent-success: #10b981;
+  --accent-warning: #f59e0b;
+  --accent-error: #ef4444;
+  --accent-info: #0ea5e9;
 
-  --accent-success: #6ba867;
-  /* Soft Sage */
-  --accent-warning: #eab308;
-  /* Warm honey */
-  --accent-error: #e07a5f;
-  /* Soft terra-cotta pink */
-  --accent-info: #7da2a9;
-  /* Misty mountain lake */
-
-  --text-main: #1a2622;
-  /* Darker tea leaf for better contrast */
-  --text-muted: #54635d;
-  /* Darker muted text for WCAG compliance */
-  --text-dark: #0d1a15;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --text-dark: #0f172a;
 
   /* Typography */
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
+
+  /* Border Radii (Genshin style: slightly large but controlled) */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.85rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
 
   /* Spacing */
   --space-1: 0.25rem;
@@ -52,35 +57,31 @@
   --font-size-h1: clamp(2.5rem, 8vw, 4.5rem);
   --font-size-h2: clamp(2rem, 6vw, 3rem);
   --font-size-h3: clamp(1.4rem, 4vw, 1.8rem);
+
+  /* Effects */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 .light-mode {
-  /* This acts as Dark Mode for the Serene theme to invert it beautifully */
-  --bg-dark: #121815;
-  /* Deep forest night */
-  --bg-gradient: linear-gradient(135deg, #121815 0%, #1e2825 100%);
-  --surface: rgba(30, 40, 35, 0.65);
-  --surface-hover: rgba(40, 55, 48, 0.85);
-  --surface-border: rgba(140, 179, 105, 0.15);
-
-  --text-main: #f8faf9;
-  --text-muted: #b0bfb8;
-  /* Slightly brighter for dark theme contrast */
-
-  --secondary: #e2c9a1;
-  /* Brighter gold for dark background */
-  --accent-warning: #fbbf24;
-
-  --primary-glow: rgba(140, 179, 105, 0.2);
-  --secondary-glow: rgba(212, 184, 138, 0.2);
+  /* This actually acts as the 'Abyssal' dark mode for the Genshin theme */
+  --bg-main: #05080f;
+  --bg-gradient: radial-gradient(circle at center, #1a1f35 0%, #05080f 100%);
+  --surface: rgba(15, 23, 42, 0.6);
+  --surface-hover: rgba(30, 41, 59, 0.8);
+  --surface-border: rgba(251, 191, 36, 0.2);
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dark: #ffffff;
 }
 
 :root:not(.light-mode) {
-  /* Only apply to the default light theme (Matcha Ivory) */
+  /* Default 'Celestial' light mode but with glassmorphism */
+  --bg-main: #f0f4f8;
   --secondary: #b89a68;
-  /* Darkened bamboo for light bg */
   --accent-warning: #947119;
-  /* Darkened honey for light bg */
 }
 
 /* Thematic Background Classes */
@@ -134,14 +135,48 @@
 
 body {
   font-family: var(--font-body);
-  background: var(--bg-gradient);
+  background-image: url('/src/assets/images/genshin_bg.png');
+  background-size: cover;
+  background-position: center;
   background-attachment: fixed;
   color: var(--text-main);
   min-height: 100vh;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  transition: background 0.5s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: var(--font-size-base);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-gradient);
+  z-index: -1;
+}
+
+/* Floating Petals / Motes Animation */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+              radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+  pointer-events: none;
+  animation: floating-motes 20s infinite alternate linear;
+  z-index: 0;
+}
+
+@keyframes floating-motes {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(20px, 40px) scale(1.1); }
 }
 
 h1 {
@@ -227,14 +262,105 @@ a {
   width: 100%;
 }
 
-/* Glassmorphism Utilities */
+/* Glassmorphism Utilities (Genshin Enhanced) */
 .glass-panel {
+  position: relative;
   background: var(--surface);
-  backdrop-filter: blur(24px) saturate(120%);
-  -webkit-backdrop-filter: blur(24px) saturate(120%);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-xl);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.08),
+    inset 0 0 15px rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 4px solid transparent;
+  border-radius: calc(var(--radius-xl) + 4px);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), transparent, rgba(251, 191, 36, 0.1)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.glass-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Ornate Genshin Buttons */
+.genshin-btn {
+  position: relative;
+  padding: 0.85rem 2.2rem;
+  background: var(--surface);
+  border: 1.5px solid var(--geo-gold);
+  border-radius: 999px;
+  color: var(--text-dark);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.genshin-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--geo-gold);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+.genshin-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+.genshin-btn:hover::after {
+  width: 300%;
+  height: 300%;
+}
+
+/* Progress Bars with Elemental Flair */
+.progress-container {
+  height: 12px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--celestial-blue), var(--emerald-green));
+  box-shadow: 0 0 10px var(--celestial-blue);
+  transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.light-mode .progress-fill {
+  background: linear-gradient(90deg, #a78bfa, #c084fc);
+  box-shadow: 0 0 10px #a78bfa;
 }
 
 /* Animations & Effects */
@@ -248,6 +374,38 @@ a {
   background-clip: text;
   color: transparent;
   display: inline-block;
+}
+
+/* Custom Utility Classes */
+.active-level {
+  border-color: var(--celestial-blue) !important;
+  box-shadow: 0 0 25px var(--celestial-blue)44 !important;
+  transform: scale(1.05);
+  background: var(--surface-hover) !important;
+  color: var(--celestial-blue) !important;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 10px var(--geo-gold)33;
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 30px var(--geo-gold)66;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes scaleUp { 
+  from { transform: scale(0.9) translateY(20px); opacity: 0; } 
+  to { transform: scale(1) translateY(0); opacity: 1; } 
 }
 
 /* Responsive Grid Overrides */

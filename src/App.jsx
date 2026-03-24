@@ -7,6 +7,7 @@ import Button from './components/Button';
 import GachaPull from './components/GachaPull';
 import LoginScreen from './components/LoginScreen';
 import AccountSetup from './components/AccountSetup';
+import GuideCompanion from './components/GuideCompanion';
 import { topics, questions } from './data/questions';
 
 // Lazy loaded components for better performance
@@ -19,6 +20,7 @@ import LegalModal from './components/LegalModal';
 
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from './utils/router';
 import { useUserProgress, UserProgressProvider } from './context/UserProgressContext';
+import ErrorBoundary from './components/ErrorBoundary';
 
 import 'katex/dist/katex.min.css';
 
@@ -114,69 +116,104 @@ function MainApp() {
   return (
     <div className="container" style={{ paddingBottom: 'var(--space-12)' }}>
       {user && (
-        <header className="flex justify-between items-center" style={{ padding: 'var(--space-6) 0', borderBottom: '1px solid var(--surface-border)', marginBottom: 'var(--space-8)' }}>
-          <h1 className="gradient-text" style={{ cursor: 'pointer', margin: 0, display: 'flex', alignItems: 'center', gap: '10px', fontSize: 'clamp(1.25rem, 4vw, 2.5rem)' }} onClick={() => navigate('/home')}>
-            LearnAMath
-          </h1>
-          <div className="flex gap-2 sm:gap-4 items-center flex-wrap justify-end">
-            <Button variant="secondary" onClick={toggleTheme} style={{ padding: '6px', borderRadius: '50%', minWidth: '40px', height: '40px' }}>
+        <header className="flex justify-between items-center py-6 px-10 relative z-[2000]" style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)' }}>
+          <div className="flex items-center gap-4 cursor-pointer" onClick={() => navigate('/home')}>
+            <span className="glow-text font-black text-2xl tracking-[4px] uppercase">Realm of Axiom</span>
+          </div>
+          
+          <div className="flex gap-4 items-center">
+            <button 
+              className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all"
+              onClick={toggleTheme}
+            >
               {theme === 'dark' ? '☀️' : '🌙'}
-            </Button>
+            </button>
 
-            <div className="flex items-center gap-3 glass-panel" style={{ padding: '4px 12px 4px 6px', borderRadius: 'var(--radius-full)' }}>
-              {user.picture ? (
-                <img src={user.picture} alt={user.name} style={{ width: '32px', height: '32px', borderRadius: '50%', border: '2px solid var(--primary)' }} />
-              ) : (
-                <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '12px' }}>
-                  {user.name?.[0] || 'A'}
+            <div className="flex items-center gap-4 px-4 py-2 bg-black/40 rounded-2xl border border-white/10">
+              <div className="relative">
+                {user.picture ? (
+                  <img src={user.picture} alt={user.name} className="w-9 h-9 rounded-full border-2 border-geo-gold" />
+                ) : (
+                  <div className="w-9 h-9 rounded-full bg-geo-gold flex items-center justify-center font-black text-sm text-black">
+                    {user.name?.[0]?.toUpperCase() || 'A'}
+                  </div>
+                )}
+                <div className="absolute -bottom-1 -right-1 bg-geo-gold text-[10px] px-1 rounded-sm font-bold text-black border border-white/40">
+                  Lvl {level}
                 </div>
-              )}
-              <div className="flex items-center gap-2 text-sm">
-                <span style={{ fontWeight: 600, color: 'var(--accent-warning)' }}>Lvl {level}</span>
               </div>
-              <button
-                onClick={handleLogout}
-                style={{ fontSize: '0.8rem', color: 'var(--accent-error)', marginLeft: '4px', textDecoration: 'underline', border: 'none', background: 'none', cursor: 'pointer' }}
-                title="Sign Out"
-              >
-                Logout
-              </button>
+              <div className="hidden md:block">
+                <div className="text-sm font-bold opacity-90">{user.name}</div>
+                <button
+                  onClick={handleLogout}
+                  className="text-[10px] uppercase tracking-widest font-black text-red-400 hover:text-red-300 transition-colors"
+                >
+                  Dissolve Link
+                </button>
+              </div>
             </div>
           </div>
         </header>
       )}
 
       <main className="flex flex-col items-center justify-center gap-6" style={{ minHeight: '70vh' }}>
-        <Suspense fallback={<div className="flex justify-center items-center h-full"><div className="glow-text" style={{ fontSize: '1.5rem' }}>Loading Axioms...</div></div>}>
-          <Routes>
-            <Route path="/" element={<LoginScreen onLogin={handleLogin} />} />
+        <ErrorBoundary>
+          <Suspense fallback={<div className="flex justify-center items-center h-full"><div className="glow-text" style={{ fontSize: '1.5rem' }}>Loading Axioms...</div></div>}>
+            <Routes>
+              <Route path="/" element={<LoginScreen onLogin={handleLogin} />} />
 
             <Route path="/setup" element={<AccountSetup onComplete={handleAccountSetupComplete} />} />
 
             <Route path="/home" element={
-              <div className="flex flex-col items-center gap-8 w-full max-w-[800px] text-center" style={{ animation: 'fadeIn 0.5s ease' }}>
-                <h2 className="glow-text" style={{ lineHeight: 1.1 }}>Conquer MOE Maths</h2>
-                <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto' }}>
-                  Elevate your math skills with syllabus-backed interactive modules. Grow your companion collection, earn rewards, and secure that A1!
-                </p>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: 'var(--space-8)' }}>
-                  <Avatar
-                    level={level}
-                    xp={xp}
-                    maxXp={maxXp}
-                    activeCharacter={activeCharacter}
-                    unlockedCharacters={unlockedCharacters}
-                    onSelectCharacter={setActiveCharacter}
-                  />
-                  <div style={{ textAlign: 'center' }}>
-                    {unlockedCharacters.length > 1 && (
-                      <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Click your companion to swap characters!</p>
-                    )}
+              <div className="flex flex-col items-center gap-12 w-full max-w-[1000px] py-10" style={{ animation: 'fadeIn 0.7s ease' }}>
+                <div className="text-center relative">
+                  <h2 className="glow-text" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', fontWeight: 900, textTransform: 'uppercase', lineHeight: 1 }}>Grasp Your Destiny</h2>
+                  <p className="mt-4 opacity-70" style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '1rem auto 0 auto' }}>
+                    The shattered islands of mathematics awaits your resonance. Bond with celestial companions and mend the dissonant flows through pure logic.
+                  </p>
+                </div>
+
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-16 w-full">
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-geo-gold/20 blur-[100px] rounded-full group-hover:bg-geo-gold/40 transition-all duration-700" />
+                    <Avatar
+                      level={level}
+                      xp={xp}
+                      maxXp={maxXp}
+                      activeCharacter={activeCharacter}
+                      unlockedCharacters={unlockedCharacters}
+                      onSelectCharacter={setActiveCharacter}
+                    />
                   </div>
 
-                  <Button size="lg" onClick={() => navigate('/selector')} style={{ fontSize: '1.5rem', padding: 'var(--space-4) var(--space-8)', marginTop: 'var(--space-4)', animation: 'pulse-glow 2s infinite' }}>
-                    Start Learning
-                  </Button>
+                  <div className="glass-panel p-10 max-w-[450px] w-full text-center flex flex-col gap-8" style={{ border: '2px solid var(--geo-gold)' }}>
+                    <div className="flex flex-col gap-2">
+                       <span className="opacity-50 font-black uppercase tracking-[5px] text-xs">Arithmancer Status</span>
+                       <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>Ascension Rank {level}</h3>
+                    </div>
+
+                    <div className="w-full flex flex-col gap-2">
+                      <div className="flex justify-between text-xs font-black uppercase tracking-widest opacity-70">
+                        <span>Axiom Resonance</span>
+                        <span>{xp} / {maxXp}</span>
+                      </div>
+                      <div className="progress-container h-3" style={{ background: 'rgba(255,255,255,0.05)' }}>
+                        <div className="progress-fill" style={{ width: `${(xp / maxXp) * 100}%`, background: 'var(--celestial-blue)' }} />
+                      </div>
+                    </div>
+
+                    <button 
+                      className="genshin-btn w-full text-2xl py-6" 
+                      onClick={() => navigate('/selector')}
+                      style={{ animation: 'pulse-glow 3s infinite' }}
+                    >
+                      Begin Voyage
+                    </button>
+                    
+                    {unlockedCharacters.length > 1 && (
+                      <p className="opacity-40 text-xs italic">Axiom companions wait in the resonance pool.</p>
+                    )}
+                  </div>
                 </div>
               </div>
             } />
@@ -227,40 +264,33 @@ function MainApp() {
                 </div>
               ) : <div />
             } />
-          </Routes>
-        </Suspense>
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </main>
 
-      <footer style={{ marginTop: 'auto', padding: 'var(--space-8) 0', borderTop: '1px solid var(--surface-border)', textAlign: 'center', opacity: 0.6, fontSize: '0.85rem' }}>
-        <p>© 2026 LearnAMath. All rights reserved.</p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-4)', marginTop: 'var(--space-2)' }}>
-          <button onClick={() => setLegalType('terms')} style={{ background: 'none', border: 'none', color: 'inherit', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}>Terms of Service</button>
-          <button onClick={() => setLegalType('privacy')} style={{ background: 'none', border: 'none', color: 'inherit', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}>Privacy Policy</button>
+      <footer className="mt-auto py-12 border-t border-white/10 text-center opacity-40 text-xs font-bold uppercase tracking-[4px]">
+        <p>© 2026 Realm of Axiom | Masters of Mathematics</p>
+        <div className="flex justify-center gap-8 mt-4">
+          <button onClick={() => setLegalType('terms')} className="hover:text-geo-gold transition-colors underline cursor-pointer">Decree of Axiom</button>
+          <button onClick={() => setLegalType('privacy')} className="hover:text-geo-gold transition-colors underline cursor-pointer">Veil of Shadows</button>
         </div>
       </footer>
 
-      <RewardModal show={showReward} onClose={() => setShowReward(false)} title={rewardData.title} rewardText={rewardData.text} rewardEmoji={rewardData.emoji} />
+      <RewardModal show={showReward} onClose={() => setShowReward(false)} title={rewardData.title} rewardText={rewardData.text} rewardImage={rewardData.image} />
       <LegalModal show={!!legalType} type={legalType} onClose={() => setLegalType(null)} />
       {showGacha && <GachaPull unlockedCharIds={unlockedCharacters.map(c => c.id)} onClaim={handleGachaClaim} />}
 
-      {/* Floating Active Pet Companion */}
-      {user && activeCharacter && viewMode !== '/' && viewMode !== '/setup' && viewMode !== '/home' && (
-        <motion.div
-          style={{
-            position: 'fixed', bottom: '20px', right: '20px', zIndex: 1500,
-            filter: "drop-shadow(0 0 15px " + activeCharacter.color + "66)",
-            cursor: 'pointer',
-            transform: 'scale(clamp(0.7, 5vw, 1))'
-          }}
-          animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          onClick={() => navigate('/home')}
-          title="Go Home"
-        >
-          <div style={{ fontSize: 'clamp(2.5rem, 10vw, 3.5rem)', userSelect: 'none' }}>
-            {activeCharacter.emoji}
-          </div>
-        </motion.div>
+      {/* Floating Active Pet Companion (Original) or Arithmancer Guide */}
+      {user && viewMode !== '/' && viewMode !== '/setup' && (
+        <GuideCompanion 
+          message={
+            viewMode === '/home' ? `Welcome back, Arithmancer ${user.name}! Ready to ascend?` :
+            viewMode === '/selector' ? "Choose your domain wisely. Each node holds ancient secrets." :
+            viewMode === '/questions' ? "Focus your mind. The proof is within your reach!" :
+            null
+          }
+        />
       )}
 
       <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`}</style>

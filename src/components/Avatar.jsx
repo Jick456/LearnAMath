@@ -4,7 +4,6 @@ import ProgressBar from './ProgressBar';
 import { getCharacterStage } from '../data/characters';
 
 export default function Avatar({ level = 1, xp = 0, maxXp = 100, activeCharacter, unlockedCharacters = [], onSelectCharacter }) {
-    const progress = (xp / maxXp) * 100;
     const [isOptionsOpen, setIsOptionsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
 
@@ -14,112 +13,96 @@ export default function Avatar({ level = 1, xp = 0, maxXp = 100, activeCharacter
     const petName = currentStage?.name || activeCharacter?.name || 'Companion';
 
     return (
-        <div className="flex flex-col items-center gap-4">
-            {/* Avatar Display */}
+        <div className="flex flex-col items-center gap-6 relative">
+            {/* Avatar Display with Elemental Glow */}
             <div
-                className="avatar-container"
+                className="relative cursor-pointer transition-all duration-500 ease-out"
                 onClick={() => unlockedCharacters.length > 1 && setIsOptionsOpen(!isOptionsOpen)}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 style={{
-                    cursor: unlockedCharacters.length > 1 ? 'pointer' : 'default',
-                    transition: 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                    transform: isHovered ? 'scale(1.1) translateY(-5px)' : 'scale(1)',
-                    position: 'relative'
+                    transform: isHovered ? 'scale(1.1) translateY(-10px)' : 'scale(1)',
                 }}
-                title={unlockedCharacters.length > 1 ? `Click to change ${petName}!` : petName}
             >
-                <div style={{
-                    width: '120px',
-                    height: '120px',
-                    filter: `drop-shadow(0 0 20px ${activeCharacter?.color || 'rgba(139, 92, 246, 0.6)'})`,
+                {/* Aura Glow */}
+                <div 
+                  className="absolute inset-0 blur-[60px] opacity-30 rounded-full animate-pulse" 
+                  style={{ background: activeCharacter?.color || 'var(--geo-gold)' }} 
+                />
+
+                <div className="relative" style={{
+                    width: 'clamp(160px, 40vw, 240px)',
                     animation: 'float 6s ease-in-out infinite'
                 }}>
-                    {petImage ? (
-                        <img src={petImage} alt={petName} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-                    ) : (
-                        <div style={{ fontSize: '5rem' }}>🦊</div>
-                    )}
+                    <img 
+                      src={petImage} 
+                      alt={petName} 
+                      className="w-full h-auto object-contain drop-shadow-2xl" 
+                    />
                 </div>
-                <div className="level-badge" style={{ backgroundColor: activeCharacter?.color }}>
+
+                {/* Level Badge - Paimon Style */}
+                <div 
+                  className="absolute -bottom-2 -right-2 w-14 h-14 rounded-full flex items-center justify-center font-black text-xl border-4 border-white/20 shadow-xl"
+                  style={{ 
+                    background: activeCharacter?.color || 'var(--geo-gold)',
+                    color: 'rgba(0,0,0,0.8)'
+                  }}
+                >
                     {level}
                 </div>
 
-                {isHovered && (
-                    <div style={{
-                        position: 'absolute',
-                        top: '-30px',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        backgroundColor: 'var(--surface-card)',
-                        padding: '4px 12px',
-                        borderRadius: '20px',
-                        fontSize: '0.8rem',
-                        whiteSpace: 'nowrap',
-                        border: `1px solid ${activeCharacter?.color}`,
-                        animation: 'fadeIn 0.2s ease',
-                        boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
-                    }}>
-                        {petName}
-                    </div>
-                )}
+                <AnimatePresence>
+                  {isHovered && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute -top-12 left-1/2 -translate-x-1/2 py-2 px-6 bg-black/60 backdrop-blur-md rounded-full border border-white/20 text-white font-bold whitespace-nowrap shadow-2xl z-20"
+                      >
+                          {petName}
+                      </motion.div>
+                  )}
+                </AnimatePresence>
             </div>
 
-            {/* XP Bar */}
-            <div style={{ width: '220px' }}>
-                <ProgressBar
-                    progress={progress}
-                    label={`XP: ${xp}/${maxXp}`}
-                    color={activeCharacter?.color}
-                />
-            </div>
-
-            {/* Companion Selection Popover */}
-            {isOptionsOpen && unlockedCharacters.length > 1 && (
-                <div className="card glass-panel" style={{
-                    position: 'absolute',
-                    zIndex: 100,
-                    marginTop: '10px',
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'center',
-                    maxWidth: '300px',
-                    gap: 'var(--space-2)',
-                    padding: 'var(--space-3)',
-                    animation: 'fadeIn 0.3s ease',
-                    transform: 'translateY(190px)',
-                    border: '1px solid var(--surface-border)',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.5)'
-                }}>
-                    {unlockedCharacters.map(char => (
-                        <div
-                            key={char.id}
-                            onClick={() => {
-                                onSelectCharacter(char);
-                                setIsOptionsOpen(false);
-                            }}
-                            className="companion-option"
-                            style={{
-                                fontSize: '2.5rem',
-                                cursor: 'pointer',
-                                padding: 'var(--space-2)',
-                                borderRadius: 'var(--radius-md)',
-                                background: activeCharacter?.id === char.id ? 'var(--surface-hover)' : 'transparent',
-                                border: activeCharacter?.id === char.id ? `2px solid ${char.color}` : '2px solid transparent',
-                                transition: 'all 0.2s ease'
-                            }}
-                            title={getCharacterStage(char, level)?.name}
-                        >
-                            {/* Show the currently unlocked stage image */}
-                            {getCharacterStage(char, level)?.image ? (
-                                <img src={getCharacterStage(char, level).image} alt={char.name} style={{ width: '50px', height: '50px', objectFit: 'contain' }} />
-                            ) : (
-                                <div>{getCharacterStage(char, level)?.emoji}</div>
-                            )}
+            {/* Companion Selection Grid */}
+            <AnimatePresence>
+                {isOptionsOpen && unlockedCharacters.length > 1 && (
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                        className="glass-panel absolute top-[110%] p-6 z-[500] w-[350px] shadow-[0_30px_100px_rgba(0,0,0,0.5)]"
+                        style={{ border: '2px solid rgba(255,255,255,0.1)' }}
+                    >
+                        <h4 className="text-[10px] uppercase tracking-[4px] font-black opacity-40 mb-4 text-center">Bonded Companions</h4>
+                        <div className="grid grid-cols-4 gap-4">
+                            {unlockedCharacters.map(char => {
+                                const charStage = getCharacterStage(char, level);
+                                const isSelected = activeCharacter?.id === char.id;
+                                return (
+                                    <div
+                                        key={char.id}
+                                        onClick={() => {
+                                            onSelectCharacter(char);
+                                            setIsOptionsOpen(false);
+                                        }}
+                                        className={`cursor-pointer p-2 rounded-xl transition-all hover:bg-white/10 ${isSelected ? 'ring-2 ring-offset-2 ring-offset-black' : ''}`}
+                                        style={{ ringColor: char.color }}
+                                    >
+                                        <img 
+                                          src={charStage?.image} 
+                                          alt={char.name} 
+                                          className={`w-full h-12 object-contain ${isSelected ? 'scale-110' : 'opacity-60 grayscale hover:grayscale-0 hover:opacity-100'}`} 
+                                        />
+                                    </div>
+                                );
+                            })}
                         </div>
-                    ))}
-                </div>
-            )}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

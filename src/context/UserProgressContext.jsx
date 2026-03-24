@@ -25,6 +25,7 @@ export function UserProgressProvider({ children }) {
     const [xp, setXp] = useState(() => Number(localStorage.getItem('learnamath_xp')) || 0);
     const [level, setLevel] = useState(() => Number(localStorage.getItem('learnamath_level')) || 1);
     const [weaknesses, setWeaknesses] = useState(() => JSON.parse(localStorage.getItem('learnamath_weaknesses') || '[]'));
+    const [gachaPity, setGachaPity] = useState(() => Number(localStorage.getItem('learnamath_gachaPity')) || 0);
 
     // Settings & Preferences
     const [activeLevel, setActiveLevel] = useState(() => localStorage.getItem('learnamath_activeLevel') || 'Sec 1');
@@ -60,7 +61,8 @@ export function UserProgressProvider({ children }) {
         localStorage.setItem('learnamath_theme', theme);
         localStorage.setItem('learnamath_unlocked', JSON.stringify(unlockedCharacters));
         localStorage.setItem('learnamath_activeCharId', activeCharacter.id);
-    }, [user, xp, level, weaknesses, activeLevel, userStream, theme, unlockedCharacters, activeCharacter]);
+        localStorage.setItem('learnamath_gachaPity', gachaPity);
+    }, [user, xp, level, weaknesses, activeLevel, userStream, theme, unlockedCharacters, activeCharacter, gachaPity]);
 
     useEffect(() => {
         if (theme === 'light') {
@@ -84,8 +86,8 @@ export function UserProgressProvider({ children }) {
         let newLevel = level;
         let hasLeveledUp = false;
 
-        if (newXp >= maxXp) {
-            newXp = newXp - maxXp;
+        while (newXp >= newLevel * 100) {
+            newXp -= newLevel * 100;
             newLevel += 1;
             hasLeveledUp = true;
         }
@@ -145,7 +147,8 @@ export function UserProgressProvider({ children }) {
         userStream, setUserStream,
         theme, toggleTheme,
         unlockedCharacters, activeCharacter, setActiveCharacter, claimCharacter,
-        showReward, setShowReward, rewardData, setRewardData
+        showReward, setShowReward, rewardData, setRewardData,
+        gachaPity, setGachaPity
     };
 
     return (

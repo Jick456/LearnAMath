@@ -6,7 +6,6 @@ import Button from './Button';
 export default function StoryAnimation({ topic, pet, onComplete }) {
     const [step, setStep] = useState(0);
 
-    // Use specific story segments if they exist, otherwise fallback to generic
     const dialogs = topic.storySegments || [
         { text: `Welcome to ${topic.location}, Arithmancer!`, character: pet.name },
         { text: topic.storyline, character: pet.name },
@@ -22,67 +21,89 @@ export default function StoryAnimation({ topic, pet, onComplete }) {
     };
 
     return (
-        <div style={{ width: '100%', maxWidth: '800px', margin: '0 auto', padding: 'var(--space-8)' }}>
-            <div style={{ position: 'relative', height: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' }}>
-
-                {/* The Pet */}
+        <div className="w-full flex justify-center items-center pb-20" style={{ minHeight: '600px' }}>
+            <div className="relative w-full max-w-[900px] flex flex-col items-center">
+                
+                {/* Floating Pet with Magical Glow */}
                 <motion.div
                     animate={{
-                        y: [0, -15, 0],
-                        scale: [1, 1.05, 1],
+                        y: [0, -25, 0],
+                        scale: [1, 1.02, 1],
                     }}
                     transition={{
-                        duration: 3,
+                        duration: 4,
                         repeat: Infinity,
                         ease: "easeInOut"
                     }}
-                    style={{ zIndex: 2, marginBottom: '-20px' }}
+                    style={{ 
+                      zIndex: 10, 
+                      filter: `drop-shadow(0 0 35px ${topic.color}66)`,
+                      marginBottom: '-40px' 
+                    }}
                 >
                     <img
                         src={pet.image}
                         alt={pet.name}
-                        style={{
-                            width: 'clamp(150px, 40vw, 250px)',
-                            filter: "drop-shadow(0 0 20px " + topic.color + "88)"
-                        }}
+                        className="w-[200px] md:w-[300px] h-auto object-contain"
                     />
                 </motion.div>
 
-                {/* The Dialog Box */}
+                {/* Cinematic Dialogue Box */}
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={step}
-                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                        transition={{ duration: 0.4 }}
-                        className="glass-panel"
+                        initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        className="glass-panel w-full p-10 md:p-14 text-center relative overflow-visible"
                         style={{
-                            width: '100%',
-                            padding: 'var(--space-6)',
-                            border: `2px solid ${topic.color}`,
-                            boxShadow: `0 0 20px ${topic.color}44`,
-                            position: 'relative',
-                            textAlign: 'center',
-                            zIndex: 3
+                            border: `3px solid ${topic.color}`,
+                            boxShadow: `0 0 50px ${topic.color}22`,
+                            borderRadius: '32px'
                         }}
                     >
-                        <div style={{ position: 'absolute', top: '-15px', left: '20px', backgroundColor: topic.color, padding: '2px 12px', borderRadius: 'full', fontSize: '0.8rem', fontWeight: 'bold' }}>
+                        {/* Speaker Name Tag */}
+                        <div 
+                          className="absolute top-[-25px] left-10 py-2 px-8 font-black uppercase tracking-widest text-sm shadow-xl"
+                          style={{ 
+                            backgroundColor: topic.color || 'var(--geo-gold)', 
+                            color: 'white', 
+                            borderRadius: '12px',
+                            border: '2px solid rgba(255,255,255,0.3)'
+                          }}
+                        >
                             {dialogs[step].character}
                         </div>
 
-                        <p style={{ fontSize: '1.4rem', lineHeight: 1.5, minHeight: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        {/* Corner Accents */}
+                        <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 opacity-30" style={{ borderColor: topic.color }} />
+                        <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 opacity-30" style={{ borderColor: topic.color }} />
+
+                        <p className="font-medium mb-10" style={{ 
+                          fontSize: 'clamp(1.4rem, 4vw, 2rem)', 
+                          lineHeight: 1.6, 
+                          color: 'var(--text-main)',
+                          minHeight: '120px',
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          justifyContent: 'center' 
+                        }}>
                             {dialogs[step].text}
                         </p>
 
-                        <Button
-                            onClick={handleNext}
-                            style={{ marginTop: 'var(--space-4)', backgroundColor: topic.color }}
-                        >
-                            {step === dialogs.length - 1 ? "Let's Begin!" : "Next"}
-                        </Button>
+                        <div className="flex justify-center">
+                            <button
+                                className="genshin-btn px-16 py-4 text-xl"
+                                onClick={handleNext}
+                                style={{ borderColor: topic.color, color: topic.color }}
+                            >
+                                {step === dialogs.length - 1 ? "Initiate Mastery Trial" : "Continue Resonance"}
+                            </button>
+                        </div>
                     </motion.div>
                 </AnimatePresence>
+
+                {/* Ambient Particles Layer (using pseudo-element style if needed, but handled by index.css) */}
             </div>
         </div>
     );
