@@ -13,7 +13,54 @@ import MathDiagram from './MathDiagrams';
 export const FormatMathText = ({ text }) => {
     if (!text) return null;
 
-    // Split the text by Diagram tags first to keep them at the top level
+    const renderTokens = (str) => {
+        if (!str.trim()) return null;
+        // Split by Block Math first
+        const blockRegex = /(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\\\\[[\s\S]*?\\\\\])/g;
+        const blocks = str.split(blockRegex);
+        
+        return blocks.map((block, i) => {
+            if (i % 2 === 1) { // It's block math
+                let mathStr = block.replace(/^(\$\$|\\\[|\\\\\[)|(\$\$|\\\]|\\\\\])$/g, '');
+                // Clean up escaped slashes if any
+                mathStr = mathStr.replace(/\\\\\\\\/g, '\\\\').replace(/\\\\/g, '\\');
+                try {
+                    return <div key={i} className="math-block"><BlockMath math={mathStr} /></div>;
+                } catch (e) {
+                    return <div key={i} style={{ color: 'var(--accent-error)' }}>[Math Error: {mathStr}]</div>;
+                }
+            }
+            
+            // It's text, split by inline math
+            const inlineRegex = /(\$[\s\S]*?\$|\\\([\s\S]*?\\\)|\\\\\([\s\S]*?\\\\\))/g;
+            const inlines = block.split(inlineRegex);
+            
+            return inlines.map((inline, j) => {
+                if (j % 2 === 1) { // It's inline math
+                    let mathStr = inline.replace(/^(\$|\\\(|\\\\\()|(\$|\\\)|\\\\\))$/g, '');
+                    mathStr = mathStr.replace(/\\\\\\\\/g, '\\\\').replace(/\\\\/g, '\\');
+                    try {
+                        return <span key={`${i}-${j}`} className="math-span"><InlineMath math={mathStr} /></span>;
+                    } catch (e) {
+                        return <span key={`${i}-${j}`} style={{ color: 'var(--accent-error)' }}>[Math Error: {mathStr}]</span>;
+                    }
+                }
+                
+                // Regular text
+                if (!inline) return null;
+                return (
+                    <span
+                        key={`${i}-${j}`}
+                        className="text-span"
+                        dangerouslySetInnerHTML={{
+                            __html: DOMPurify.sanitize(inline.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'))
+                        }}
+                    />
+                );
+            });
+        });
+    };
+
     const diagramParts = text.split(/\[DIAGRAM:\s*(.*?)\]/g);
 
     return (
@@ -27,65 +74,13 @@ export const FormatMathText = ({ text }) => {
                 }
 
                 // Even indices are regular text blocks containing math
-                const blocks = diagramPart.split('\n');
-
-                return blocks.map((block, idx) => {
-                    if (!block.trim()) return null;
-
-                    // Split by Block Math first `$$ ... $$` or `\\[ ... \\]` (escaped and unescaped)
-                    const blockParts = block.split(/(?:\$\$(.*?)\$\$|\\\[(.*?)\\\]|\\\\\[(.*?)\\\\\])/g);
-
+                const lines = diagramPart.split('\n');
+                return lines.map((line, idx) => {
+                    const parsed = renderTokens(line);
+                    if (!parsed) return null;
                     return (
-                        <p key={idx} style={{ margin: 0, lineHeight: 1.6 }}>
-                            {blockParts.map((part, i) => {
-                                if (part === undefined) return null;
-
-                                // Even indices are text (which could contain inline math), odd indices are block math
-                                if (i % 4 === 0) {
-                                    // Now split this text part by Inline Math `$ ... $` or `\( ... \)`
-                                    const inlineParts = part.split(/(?:\$(.*?)\$|\\\((.*?)\\\)|\\\\(\(.*?)\\\\\))/g);
-
-                                    return inlineParts.map((inlinePart, j) => {
-                                        if (inlinePart === undefined) return null;
-
-                                        if (j % 4 === 0) { // Normal text
-                                            return (
-                                                <span
-                                                    key={`inline-text-${i}-${j}`}
-                                                    className="text-span"
-                                                    dangerouslySetInnerHTML={{
-                                                        __html: DOMPurify.sanitize(inlinePart.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'))
-                                                    }}
-                                                />
-                                            );
-                                        } else { // Inline Math
-                                            try {
-                                                const mathStr = inlinePart.replace(/\\\\\\\\/g, '\\\\').replace(/\\\\/g, '\\');
-                                                return (
-                                                    <span key={`inline-math-${i}-${j}`} className="math-span">
-                                                        <InlineMath math={mathStr} />
-                                                    </span>
-                                                );
-                                            } catch (e) {
-                                                return <span key={`inline-math-${i}-${j}`} style={{ color: 'var(--accent-error)' }}>[Math Error: {inlinePart}]</span>;
-                                            }
-                                        }
-                                    });
-                                } else if (part.trim() !== '') {
-                                    // Block Math
-                                    try {
-                                        const mathStr = part.replace(/\\\\\\\\/g, '\\\\').replace(/\\\\/g, '\\');
-                                        return (
-                                            <div key={`block-math-${i}`} className="math-block">
-                                                <BlockMath math={mathStr} />
-                                            </div>
-                                        );
-                                    } catch (e) {
-                                        return <div key={`block-math-${i}`} style={{ color: 'var(--accent-error)', textAlign: 'center' }}>[Math Error: {part}]</div>;
-                                    }
-                                }
-                                return null;
-                            })}
+                        <p key={`line-${diagramIdx}-${idx}`} style={{ margin: 0, lineHeight: 1.6 }}>
+                            {parsed}
                         </p>
                     );
                 });

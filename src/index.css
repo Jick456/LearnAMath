@@ -133,6 +133,16 @@
   padding: 0;
 }
 
+/* Perfect Image Formatting Constraint */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+
 body {
   font-family: var(--font-body);
   background-image: url('/src/assets/images/genshin_bg.png');
@@ -306,8 +316,8 @@ a {
   background: var(--surface);
   border: 1.5px solid var(--geo-gold);
   border-radius: 999px;
-  color: var(--text-dark);
-  font-weight: 600;
+  color: var(--text-main);
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
