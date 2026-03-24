@@ -73,15 +73,15 @@ export default function MathDiagram({ type }) {
                 <path d="M 60,60 Q 140,380 220,60" fill="none" stroke={strokeColor} strokeWidth="3" strokeLinecap="round" />
                 {/* Turning point */}
                 <circle cx="140" cy="220" r="5" fill={accentColor} />
-                <text x="140" y="240" fill={accentColor} fontSize="14" textAnchor="middle" fontFamily="sans-serif">Turning Point</text>
+                <text x="140" y="240" fill={accentColor} fontSize="14" textAnchor="middle" fontFamily="sans-serif">Peak (3, -2)</text>
                 {/* Roots */}
                 <circle cx="100" cy="180" r="4" fill={strokeColor} />
                 <circle cx="180" cy="180" r="4" fill={strokeColor} />
-                <text x="100" y="195" fill={textColor} fontSize="12" textAnchor="middle" fontFamily="sans-serif">Root</text>
-                <text x="180" y="195" fill={textColor} fontSize="12" textAnchor="middle" fontFamily="sans-serif">Root</text>
+                <text x="100" y="195" fill={textColor} fontSize="12" textAnchor="middle" fontFamily="sans-serif">(1, 0)</text>
+                <text x="180" y="195" fill={textColor} fontSize="12" textAnchor="middle" fontFamily="sans-serif">(5, 0)</text>
                 {/* Y-intercept */}
                 <circle cx="80" cy="130" r="4" fill={strokeColor} />
-                <text x="65" y="135" fill={textColor} fontSize="12" textAnchor="end" fontFamily="sans-serif">y-int</text>
+                <text x="65" y="135" fill={textColor} fontSize="12" textAnchor="end" fontFamily="sans-serif">(0, 2.5)</text>
             </svg>
         );
     } else if (type === 'cylinder') {
@@ -114,7 +114,7 @@ export default function MathDiagram({ type }) {
                 ))}
                 {/* Arrow jumping from -2 to 1 (+3) */}
                 <path d="M 66.6,50 Q 121.6,10 176.4,50" fill="none" stroke={accentColor} strokeWidth="2" strokeDasharray="4,4" />
-                <polygon points="176.4,50 169.8,45 171.8,40" fill={accentColor} transform="rotate(30 176.4 50)" />
+                <polygon points="176.4,50 167,46 170,40" fill={accentColor} transform="rotate(35 176.4 50)" />
                 <text x="121.6" y="25" fill={accentColor} fontSize="14" textAnchor="middle" fontFamily="sans-serif">+3</text>
             </svg>
         );
@@ -269,6 +269,18 @@ export default function MathDiagram({ type }) {
 
                 {/* Point Label */}
                 <text x="110" y="95" fill={accentColor} fontSize="14" textAnchor="middle" fontWeight="bold">Sol (2, 3)</text>
+            </svg>
+        );
+    } else if (type === 'angle') {
+        content = (
+            <svg width="200" height="200" viewBox="0 0 200 200" style={svgStyle}>
+                {/* Two rays meeting at vertex (50, 150) */}
+                <line x1="50" y1="150" x2="180" y2="150" stroke={strokeColor} strokeWidth="3" strokeLinecap="round" />
+                <line x1="50" y1="150" x2="150" y2="50" stroke={strokeColor} strokeWidth="3" strokeLinecap="round" />
+                {/* Angle arc */}
+                <path d="M 90,150 A 40,40 0 0,0 78.3,121.7" fill="none" stroke={accentColor} strokeWidth="2" />
+                <text x="95" y="135" fill={accentColor} fontSize="18" fontWeight="bold">θ</text>
+                <text x="50" y="170" fill={textColor} fontSize="14" textAnchor="middle">Vertex</text>
             </svg>
         );
     } else {

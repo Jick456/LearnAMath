@@ -55,6 +55,31 @@ const AlgebraVisualizer = () => {
     );
 };
 
+const MensurationVisualizer = () => {
+    return (
+        <div style={{ width: '100%', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <svg width="200" height="150" viewBox="0 0 200 150">
+                <motion.path
+                    d="M 50 120 L 150 120 L 170 80 L 70 80 Z"
+                    fill="rgba(59, 130, 246, 0.2)"
+                    stroke="var(--primary)"
+                    strokeWidth="2"
+                    animate={{ fillOpacity: [0.2, 0.5, 0.2] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                />
+                <motion.path
+                    d="M 50 120 L 50 60 L 150 60 L 150 120 M 50 60 L 70 20 L 170 20 L 150 60 M 170 20 L 170 80"
+                    fill="none"
+                    stroke="var(--primary)"
+                    strokeWidth="2"
+                    strokeDasharray="4,4"
+                />
+                <text x="100" y="140" fill="var(--text-muted)" fontSize="12" textAnchor="middle">Volume = Base × Height</text>
+            </svg>
+        </div>
+    );
+};
+
 const DefaultVisualizer = ({ emoji }) => (
     <motion.div
         animate={{ y: [0, -20, 0], rotate: [0, 10, -10, 0] }}
@@ -66,8 +91,10 @@ const DefaultVisualizer = ({ emoji }) => (
 );
 
 export default function ConceptVisualizer({ topicId, emoji }) {
-    if (topicId?.includes('trig')) return <TrigonometryVisualizer />;
-    if (topicId?.includes('algebra')) return <AlgebraVisualizer />;
+    const tid = topicId?.toLowerCase() || '';
+    if (tid.includes('trig') || tid.includes('pythagoras')) return <TrigonometryVisualizer />;
+    if (tid.includes('algebra') || tid.includes('quad') || tid.includes('eq')) return <AlgebraVisualizer />;
+    if (tid.includes('mensuration') || tid.includes('geom')) return <MensurationVisualizer />;
 
     return <DefaultVisualizer emoji={emoji} />;
 }

@@ -30,6 +30,7 @@ export function UserProgressProvider({ children }) {
     // Settings & Preferences
     const [activeLevel, setActiveLevel] = useState(() => localStorage.getItem('learnamath_activeLevel') || 'Sec 1');
     const [userStream, setUserStream] = useState(() => localStorage.getItem('learnamath_userStream') || 'G3');
+    const [difficulty, setDifficulty] = useState(() => localStorage.getItem('learnamath_difficulty') || 'medium');
     const [theme, setTheme] = useState(() => localStorage.getItem('learnamath_theme') || 'dark');
 
     // Inventory State
@@ -61,8 +62,9 @@ export function UserProgressProvider({ children }) {
         localStorage.setItem('learnamath_theme', theme);
         localStorage.setItem('learnamath_unlocked', JSON.stringify(unlockedCharacters));
         localStorage.setItem('learnamath_activeCharId', activeCharacter.id);
+        localStorage.setItem('learnamath_difficulty', difficulty);
         localStorage.setItem('learnamath_gachaPity', gachaPity);
-    }, [user, xp, level, weaknesses, activeLevel, userStream, theme, unlockedCharacters, activeCharacter, gachaPity]);
+    }, [user, xp, level, weaknesses, activeLevel, userStream, theme, unlockedCharacters, activeCharacter, gachaPity, difficulty]);
 
     useEffect(() => {
         if (theme === 'light') {
@@ -145,6 +147,7 @@ export function UserProgressProvider({ children }) {
         weaknesses, setWeaknesses, markWeakness, resolveWeakness,
         activeLevel, setActiveLevel,
         userStream, setUserStream,
+        difficulty, setDifficulty,
         theme, toggleTheme,
         unlockedCharacters, activeCharacter, setActiveCharacter, claimCharacter,
         showReward, setShowReward, rewardData, setRewardData,

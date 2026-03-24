@@ -8,91 +8,8 @@ import DOMPurify from 'dompurify';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
 import MathDiagram from './MathDiagrams';
+import { FormatMathText } from './FormatMathText';
 
-// Robust parser to handle inline ($ $) and block ($$ $$) math, as well as escaped variants and diagrams
-const FormatMathText = ({ text }) => {
-    if (!text) return null;
-
-    // Split the text by Diagram tags first to keep them at the top level
-    const diagramParts = text.split(/\[DIAGRAM:\s*(.*?)\]/g);
-
-    return (
-        <div className="math-text-container" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {diagramParts.map((diagramPart, diagramIdx) => {
-                if (diagramPart === undefined) return null;
-
-                // Odd indices are the captured diagram types
-                if (diagramIdx % 2 !== 0) {
-                    return <MathDiagram key={`diagram-${diagramIdx}`} type={diagramPart.trim()} />;
-                }
-
-                // Even indices are regular text blocks containing math
-                const blocks = diagramPart.split('\n');
-
-                return blocks.map((block, idx) => {
-                    if (!block.trim()) return null;
-
-                    // Split by Block Math first `$$ ... $$` or `\\[ ... \\]` (escaped and unescaped)
-                    const blockParts = block.split(/(?:\$\$(.*?)\$\$|\\\[(.*?)\\\]|\\\\\[(.*?)\\\\\])/g);
-
-                    return (
-                        <p key={idx} style={{ margin: 0, lineHeight: 1.6 }}>
-                            {blockParts.map((part, i) => {
-                                if (part === undefined) return null;
-
-                                // Even indices are text (which could contain inline math), odd indices are block math
-                                if (i % 4 === 0) {
-                                    // Now split this text part by Inline Math `$ ... $` or `\( ... \)`
-                                    const inlineParts = part.split(/(?:\$(.*?)\$|\\\((.*?)\\\)|\\\\(\(.*?)\\\\\))/g);
-
-                                    return inlineParts.map((inlinePart, j) => {
-                                        if (inlinePart === undefined) return null;
-
-                                        if (j % 4 === 0) { // Normal text
-                                            return (
-                                                <span
-                                                    key={`inline-text-${i}-${j}`}
-                                                    className="text-span"
-                                                    dangerouslySetInnerHTML={{
-                                                        __html: DOMPurify.sanitize(inlinePart.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'))
-                                                    }}
-                                                />
-                                            );
-                                        } else { // Inline Math
-                                            try {
-                                                const mathStr = inlinePart.replace(/\\\\\\\\/g, '\\\\').replace(/\\\\/g, '\\');
-                                                return (
-                                                    <span key={`inline-math-${i}-${j}`} className="math-span">
-                                                        <InlineMath math={mathStr} />
-                                                    </span>
-                                                );
-                                            } catch (e) {
-                                                return <span key={`inline-math-${i}-${j}`} style={{ color: 'var(--accent-error)' }}>[Math Error: {inlinePart}]</span>;
-                                            }
-                                        }
-                                    });
-                                } else if (part.trim() !== '') {
-                                    // Block Math
-                                    try {
-                                        const mathStr = part.replace(/\\\\\\\\/g, '\\\\').replace(/\\\\/g, '\\');
-                                        return (
-                                            <div key={`block-math-${i}`} className="math-block">
-                                                <BlockMath math={mathStr} />
-                                            </div>
-                                        );
-                                    } catch (e) {
-                                        return <div key={`block-math-${i}`} style={{ color: 'var(--accent-error)', textAlign: 'center' }}>[Math Error: {part}]</div>;
-                                    }
-                                }
-                                return null;
-                            })}
-                        </p>
-                    );
-                });
-            })}
-        </div>
-    );
-};
 
 export default function QuestionInterface({ questionsObj, onComplete, onGainXp, onMissedQuestion, isWeaknessMode, activeCharacter }) {
     const [phase, setPhase] = useState(isWeaknessMode ? 'testing' : 'learning');
@@ -368,4 +285,3 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
     );
 }
 
-export { FormatMathText };
