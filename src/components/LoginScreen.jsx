@@ -50,7 +50,7 @@ export default function LoginScreen({ onLogin }) {
 
         const mockUser = {
             id: 'guest-' + Math.random().toString(36).substr(2, 9),
-            name: 'Guest Arithmancer',
+            name: 'Guest Scholar',
             email: 'guest@learnamath.app',
             isNewUser: true,
             isGuest: true,
@@ -99,14 +99,7 @@ export default function LoginScreen({ onLogin }) {
 
     return (
         <div className="flex items-center justify-center w-full relative" style={{ minHeight: '85vh' }}>
-            {/* Arithmancer Splash Background Character */}
-            <div className="hidden lg:block absolute left-[-100px] top-1/2 translate-y-[-50%] opacity-90 drop-shadow-2xl z-10" style={{ transform: 'translateY(-50%) rotate(-5deg)' }}>
-                <img 
-                  src="/src/assets/images/arithmancer.png" 
-                  alt="Arithmancer" 
-                  style={{ width: '550px', height: 'auto', filter: 'drop-shadow(0 0 50px rgba(59, 130, 246, 0.4))', mixBlendMode: 'screen' }} 
-                />
-            </div>
+
 
             <div className="glass-panel p-10 max-w-[500px] w-full text-center relative z-20" style={{ border: '3px solid var(--geo-gold)' }}>
                 {/* Corner Accents */}

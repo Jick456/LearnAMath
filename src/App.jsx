@@ -188,7 +188,7 @@ function MainApp() {
 
                   <div className="glass-panel p-10 max-w-[450px] w-full text-center flex flex-col gap-8 items-center" style={{ border: '2px solid var(--geo-gold)' }}>
                     <div className="flex flex-col gap-2 w-full text-center">
-                       <span className="opacity-50 font-black uppercase tracking-[5px] text-xs">Arithmancer Status</span>
+                       <span className="opacity-50 font-black uppercase tracking-[5px] text-xs">Scholar Status</span>
                        <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>Ascension Rank {level}</h3>
                     </div>
 
@@ -287,11 +287,13 @@ function MainApp() {
       <LegalModal show={!!legalType} type={legalType} onClose={() => setLegalType(null)} />
       {showGacha && <GachaPull unlockedCharIds={unlockedCharacters.map(c => c.id)} onClaim={handleGachaClaim} />}
 
-      {/* Floating Active Pet Companion (Original) or Arithmancer Guide */}
+      {/* Floating Active Pet Companion (Original) or Guide */ }
       {user && viewMode !== '/' && viewMode !== '/setup' && (
         <GuideCompanion 
+          activeCharacter={activeCharacter}
+          level={level}
           message={
-            viewMode === '/home' ? `Welcome back, Arithmancer ${user.name}! Ready to ascend?` :
+            viewMode === '/home' ? `Welcome back, Scholar ${user.name}! Ready to ascend?` :
             viewMode === '/selector' ? "Choose your domain wisely. Each node holds ancient secrets." :
             viewMode === '/questions' ? "Focus your mind. The proof is within your reach!" :
             null

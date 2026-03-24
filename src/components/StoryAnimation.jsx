@@ -7,7 +7,7 @@ export default function StoryAnimation({ topic, pet, onComplete }) {
     const [step, setStep] = useState(0);
 
     const dialogs = topic.storySegments || [
-        { text: `Welcome to ${topic.location}, Arithmancer!`, character: pet.name },
+        { text: `Welcome to ${topic.location}, Scholar!`, character: pet.name },
         { text: topic.storyline, character: pet.name },
         { text: "Are you ready to cast your Proofs, defeat the Irrational, and restore this island?", character: pet.name }
     ];

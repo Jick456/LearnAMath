@@ -17,10 +17,10 @@ const LegalModal = ({ show, onClose, type }) => {
 By accessing the Realm of Axiom ("the Service"), you agree to be bound by these Sacred Decrees. If you do not resonate with these terms, you may not enter the Domain.
 
 ## 2. Divine Purpose
-MathMastery SG is a celestial learning experience designed to guide Arithmancers through the Singapore MOE syllabus.
+MathMastery SG is a celestial learning experience designed to guide Scholars through the Singapore MOE syllabus.
 
 ## 3. Guardian Accounts
-- Arithmancers are responsible for their own Spirit Keys (credentials).
+- Scholars are responsible for their own Spirit Keys (credentials).
 - Parental/Guardian ritual consent is required for those who have seen fewer than 13 summers.
 
 ## 4. Celestial Property

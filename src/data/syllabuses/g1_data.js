@@ -7,7 +7,7 @@ const g1Topics = [
         description: 'Prime numbers, HCF, LCM, and integers.', color: '#34d399', emoji: '🔢',
         location: 'The Prime Forest', storyline: 'The trees here are only divisible by themselves and one. Find the prime path!', themeClass: 'theme-forest',
         storySegments: [
-            { text: "Welcome to the Prime Forest, Arithmancer! 🌲", character: "Companion" },
+            { text: "Welcome to the Prime Forest, Scholar! 🌲", character: "Companion" },
             { text: "The trees here have a strange property... they are only divisible by 1 and themselves.", character: "Companion" },
             { text: "We need to find the Prime Path to reach the Axiom Core. Are you ready?", character: "Companion" }
         ],

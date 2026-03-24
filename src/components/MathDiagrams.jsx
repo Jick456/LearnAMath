@@ -46,8 +46,8 @@ export default function MathDiagram({ type }) {
                 <text x="20" y="100" fill={textColor} fontSize="16" textAnchor="middle" fontFamily="sans-serif" transform="rotate(-90 20,100)">Height (a) / Opposite</text>
                 <text x="145" y="90" fill={accentColor} fontSize="16" textAnchor="middle" fontFamily="sans-serif" transform="rotate(35 145,90)">Hypotenuse (c)</text>
                 {/* Theta curve */}
-                <path d="M 180,160 A 30,30 0 0,0 165,145" fill="none" stroke={accentColor} strokeWidth="2" />
-                <text x="160" y="155" fill={accentColor} fontSize="16" fontFamily="sans-serif">θ</text>
+                <path d="M 180,160 A 30,30 0 0,1 185.5,142.7" fill="none" stroke={accentColor} strokeWidth="2" />
+                <text x="175" y="145" fill={accentColor} fontSize="16" fontFamily="sans-serif">θ</text>
             </svg>
         );
     } else if (type === 'circle') {
@@ -67,21 +67,21 @@ export default function MathDiagram({ type }) {
         content = (
             <svg width="250" height="250" viewBox="0 0 250 250" style={svgStyle}>
                 {/* Axes */}
-                <line x1="20" y1="200" x2="230" y2="200" stroke={textColor} strokeWidth="2" strokeOpacity="0.5" />
-                <line x1="125" y1="20" x2="125" y2="230" stroke={textColor} strokeWidth="2" strokeOpacity="0.5" />
+                <line x1="20" y1="180" x2="230" y2="180" stroke={textColor} strokeWidth="2" strokeOpacity="0.5" />
+                <line x1="80" y1="40" x2="80" y2="230" stroke={textColor} strokeWidth="2" strokeOpacity="0.5" />
                 {/* Parabola curve */}
-                <path d="M 50,40 Q 125,280 200,40" fill="none" stroke={strokeColor} strokeWidth="3" strokeLinecap="round" />
+                <path d="M 60,60 Q 140,380 220,60" fill="none" stroke={strokeColor} strokeWidth="3" strokeLinecap="round" />
                 {/* Turning point */}
-                <circle cx="125" cy="160" r="5" fill={accentColor} />
-                <text x="125" y="180" fill={accentColor} fontSize="14" textAnchor="middle" fontFamily="sans-serif">Turning Point</text>
+                <circle cx="140" cy="220" r="5" fill={accentColor} />
+                <text x="140" y="240" fill={accentColor} fontSize="14" textAnchor="middle" fontFamily="sans-serif">Turning Point</text>
                 {/* Roots */}
-                <circle cx="85" cy="200" r="4" fill={strokeColor} />
-                <circle cx="165" cy="200" r="4" fill={strokeColor} />
-                <text x="85" y="220" fill={textColor} fontSize="12" textAnchor="middle" fontFamily="sans-serif">Root</text>
-                <text x="165" y="220" fill={textColor} fontSize="12" textAnchor="middle" fontFamily="sans-serif">Root</text>
+                <circle cx="100" cy="180" r="4" fill={strokeColor} />
+                <circle cx="180" cy="180" r="4" fill={strokeColor} />
+                <text x="100" y="195" fill={textColor} fontSize="12" textAnchor="middle" fontFamily="sans-serif">Root</text>
+                <text x="180" y="195" fill={textColor} fontSize="12" textAnchor="middle" fontFamily="sans-serif">Root</text>
                 {/* Y-intercept */}
-                <circle cx="125" cy="115" r="4" fill={strokeColor} />
-                <text x="145" y="120" fill={textColor} fontSize="12" fontFamily="sans-serif">y-int</text>
+                <circle cx="80" cy="130" r="4" fill={strokeColor} />
+                <text x="65" y="135" fill={textColor} fontSize="12" textAnchor="end" fontFamily="sans-serif">y-int</text>
             </svg>
         );
     } else if (type === 'cylinder') {
@@ -107,15 +107,15 @@ export default function MathDiagram({ type }) {
             <svg width="300" height="120" viewBox="0 0 300 120" style={svgStyle}>
                 <line x1="20" y1="60" x2="280" y2="60" stroke={textColor} strokeWidth="2" />
                 {[-3, -2, -1, 0, 1, 2, 3].map((val, i) => (
-                    <g key={val} transform={`translate(${40 + i * 36.6}, 0)`}>
+                    <g key={val} transform={`translate(${30 + i * 36.6}, 0)`}>
                         <line x1="0" y1="55" x2="0" y2="65" stroke={textColor} strokeWidth="2" />
                         <text x="0" y="85" fill={val < 0 ? '#ef4444' : val > 0 ? '#34d399' : textColor} fontSize="14" textAnchor="middle" fontFamily="sans-serif">{val}</text>
                     </g>
                 ))}
                 {/* Arrow jumping from -2 to 1 (+3) */}
-                <path d="M 76.6,50 Q 131.6,10 186.6,50" fill="none" stroke={accentColor} strokeWidth="2" strokeDasharray="4,4" />
-                <polygon points="186.6,50 180,45 182,40" fill={accentColor} transform="rotate(30 186.6 50)" />
-                <text x="131.6" y="25" fill={accentColor} fontSize="14" textAnchor="middle" fontFamily="sans-serif">+3</text>
+                <path d="M 66.6,50 Q 121.6,10 176.4,50" fill="none" stroke={accentColor} strokeWidth="2" strokeDasharray="4,4" />
+                <polygon points="176.4,50 169.8,45 171.8,40" fill={accentColor} transform="rotate(30 176.4 50)" />
+                <text x="121.6" y="25" fill={accentColor} fontSize="14" textAnchor="middle" fontFamily="sans-serif">+3</text>
             </svg>
         );
     } else if (type === 'balance-scale') {
@@ -171,12 +171,12 @@ export default function MathDiagram({ type }) {
             <svg width="200" height="200" viewBox="0 0 200 200" style={svgStyle}>
                 <polygon points="100,20 180,80 150,170 50,170 20,80" fill={fillColor} stroke={strokeColor} strokeWidth="3" strokeLinejoin="round" />
                 {/* Interior Angle */}
-                <path d="M 50,150 A 20,20 0 0,0 70,170" fill="none" stroke={accentColor} strokeWidth="2" />
+                <path d="M 43.7,151.0 A 20,20 0 0,0 70,170" fill="none" stroke={accentColor} strokeWidth="2" />
                 <text x="75" y="155" fill={accentColor} fontSize="12">Int.</text>
                 {/* Exterior Angle */}
                 <line x1="50" y1="170" x2="10" y2="170" stroke={textColor} strokeWidth="1" strokeDasharray="3,3" />
-                <path d="M 30,170 A 20,20 0 0,1 42,150" fill="none" stroke="#f472b6" strokeWidth="2" />
-                <text x="15" y="145" fill="#f472b6" fontSize="12">Ext.</text>
+                <path d="M 30,170 A 20,20 0 0,1 43.7,151.0" fill="none" stroke="#f472b6" strokeWidth="2" />
+                <text x="25" y="145" fill="#f472b6" fontSize="12">Ext.</text>
             </svg>
         );
     } else if (type === 'venn-diagram') {
@@ -253,22 +253,22 @@ export default function MathDiagram({ type }) {
                 <line x1="50" y1="20" x2="50" y2="230" stroke={textColor} strokeWidth="2" strokeOpacity="0.5" />
 
                 {/* Line 1 (y = x + 1) */}
-                <line x1="30" y1="180" x2="200" y2="30" stroke="#60a5fa" strokeWidth="3" />
-                <text x="180" y="25" fill="#60a5fa" fontSize="12" fontWeight="bold">Line 1</text>
+                <line x1="20" y1="200" x2="200" y2="20" stroke="#60a5fa" strokeWidth="3" />
+                <text x="190" y="30" fill="#60a5fa" fontSize="12" fontWeight="bold">Line 1</text>
 
                 {/* Line 2 (y = -x + 5) */}
-                <line x1="40" y1="60" x2="210" y2="190" stroke="#f472b6" strokeWidth="3" />
-                <text x="190" y="205" fill="#f472b6" fontSize="12" fontWeight="bold">Line 2</text>
+                <line x1="20" y1="20" x2="230" y2="230" stroke="#f472b6" strokeWidth="3" />
+                <text x="210" y="220" fill="#f472b6" fontSize="12" fontWeight="bold">Line 2</text>
 
-                {/* Intersection Point */}
-                <circle cx="120" cy="100" r="6" fill={accentColor} />
+                {/* Intersection Point (Math x=2, y=3) -> mapped to (110, 110) visually */}
+                <circle cx="110" cy="110" r="6" fill={accentColor} />
 
                 {/* Dashed lines to axes */}
-                <line x1="120" y1="100" x2="120" y2="200" stroke={accentColor} strokeWidth="2" strokeDasharray="4,4" />
-                <line x1="120" y1="100" x2="50" y2="100" stroke={accentColor} strokeWidth="2" strokeDasharray="4,4" />
+                <line x1="110" y1="110" x2="110" y2="200" stroke={accentColor} strokeWidth="2" strokeDasharray="4,4" />
+                <line x1="110" y1="110" x2="50" y2="110" stroke={accentColor} strokeWidth="2" strokeDasharray="4,4" />
 
                 {/* Point Label */}
-                <text x="120" y="85" fill={accentColor} fontSize="14" textAnchor="middle" fontWeight="bold">Solution (x, y)</text>
+                <text x="110" y="95" fill={accentColor} fontSize="14" textAnchor="middle" fontWeight="bold">Sol (2, 3)</text>
             </svg>
         );
     } else {

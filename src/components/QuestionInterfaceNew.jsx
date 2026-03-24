@@ -246,7 +246,7 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
 
                             <div className="p-4 mb-6 rounded-xl bg-white/5 border border-white/10">
                                 <div style={{ color: item.isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)', fontWeight: 'bold', marginBottom: 'var(--space-2)' }}>
-                                    Arithmancer Input: <FormatMathText text={item.question.options[item.selectedOption]} />
+                                    Scholar Input: <FormatMathText text={item.question.options[item.selectedOption]} />
                                 </div>
                                 {!item.isCorrect && (
                                     <div style={{ color: 'var(--geo-gold)' }}>

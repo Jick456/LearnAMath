@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getCharacterStage } from '../data/characters';
 
-const GuideCompanion = ({ message }) => {
+const GuideCompanion = ({ message, activeCharacter, level }) => {
+  const currentStage = getCharacterStage(activeCharacter, level);
+  const petImage = currentStage?.image || activeCharacter?.image;
   return (
     <AnimatePresence>
       {message && (
@@ -19,13 +22,14 @@ const GuideCompanion = ({ message }) => {
                  boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(251, 191, 36, 0.15)'
                }}>
                
-            <div className="w-12 h-12 overflow-hidden rounded-full flex-shrink-0 border-2 border-geo-gold relative bg-black flex items-center justify-center" style={{ boxShadow: '0 0 15px rgba(251, 191, 36, 0.3)' }}>
-              <img 
-                src="/src/assets/images/arithmancer.png" 
-                alt="Arithmancer Guide" 
-                className="w-[180%] h-[180%] object-cover absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%]"
-                style={{ mixBlendMode: 'screen', filter: 'contrast(1.1) brightness(1.2)' }}
-              />
+            <div className="w-8 h-8 overflow-hidden rounded-full flex-shrink-0 border border-geo-gold relative bg-black/50 flex items-center justify-center auto-margin" style={{ boxShadow: '0 0 10px rgba(251, 191, 36, 0.2)' }}>
+              {petImage && (
+                <img 
+                  src={petImage} 
+                  alt="Guide" 
+                  className="w-[120%] h-[120%] object-contain drop-shadow-md"
+                />
+              )}
             </div>
 
             <p className="text-sm font-bold tracking-widest uppercase" style={{ color: 'var(--geo-gold)' }}>

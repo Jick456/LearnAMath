@@ -17,10 +17,12 @@ const TrigonometryVisualizer = () => {
                 <text x="100" y="145" fill="var(--text-muted)" fontSize="12" textAnchor="middle">Adjacent</text>
                 <text x="185" y="80" fill="var(--text-muted)" fontSize="12" style={{ writingMode: 'vertical-rl' }}>Opposite</text>
                 <motion.text
-                    x="50" y="70"
+                    x="90" y="65"
                     fill="var(--secondary)"
                     fontSize="14"
                     fontWeight="bold"
+                    textAnchor="middle"
+                    transform="rotate(-32 90,65)"
                     animate={{ opacity: [0, 1, 0] }}
                     transition={{ duration: 3, repeat: Infinity }}
                 >
