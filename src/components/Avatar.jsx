@@ -22,7 +22,7 @@ export default function Avatar({ level = 1, xp = 0, maxXp = 100, activeCharacter
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 style={{
-                    transform: isHovered ? 'scale(1.1) translateY(-10px)' : 'scale(1)',
+                    transform: isHovered ? 'scale(1.05)' : 'scale(1)',
                 }}
             >
                 {/* Aura Glow */}
@@ -32,8 +32,7 @@ export default function Avatar({ level = 1, xp = 0, maxXp = 100, activeCharacter
                 />
 
                 <div className="relative" style={{
-                    width: 'clamp(160px, 40vw, 240px)',
-                    animation: 'float 6s ease-in-out infinite'
+                    width: 'clamp(160px, 40vw, 240px)'
                 }}>
                     <img 
                       src={petImage} 

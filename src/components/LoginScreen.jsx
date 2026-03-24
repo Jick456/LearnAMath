@@ -104,7 +104,7 @@ export default function LoginScreen({ onLogin }) {
                 <img 
                   src="/src/assets/images/arithmancer.png" 
                   alt="Arithmancer" 
-                  style={{ width: '550px', height: 'auto', filter: 'drop-shadow(0 0 50px rgba(59, 130, 246, 0.4))' }} 
+                  style={{ width: '550px', height: 'auto', filter: 'drop-shadow(0 0 50px rgba(59, 130, 246, 0.4))', mixBlendMode: 'screen' }} 
                 />
             </div>
 

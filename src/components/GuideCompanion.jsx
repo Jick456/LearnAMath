@@ -1,40 +1,40 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const GuideCompanion = ({ message }) => {
   return (
-    <div className="fixed bottom-8 right-8 z-50 flex items-end gap-4 pointer-events-none">
+    <AnimatePresence>
       {message && (
         <motion.div 
-          initial={{ opacity: 0, scale: 0.8, x: 20 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          className="glass-panel p-4 mb-16 max-w-xs pointer-events-auto"
-          style={{ border: '2px solid var(--geo-gold)' }}
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 50, scale: 0.95 }}
+          className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[2000] flex items-center justify-center pointer-events-none"
         >
-          <p className="text-sm font-medium italic">"{message}"</p>
-          {/* Ornate corner decoration */}
-          <div className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-geo-gold" />
-          <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-geo-gold" />
+          {/* Sleek aesthetic toast */}
+          <div className="glass-panel flex items-center gap-5 px-6 py-4 rounded-full pointer-events-auto backdrop-blur-xl" 
+               style={{ 
+                 border: '1.5px solid rgba(251, 191, 36, 0.5)', 
+                 background: 'rgba(5, 8, 15, 0.85)',
+                 boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(251, 191, 36, 0.15)'
+               }}>
+               
+            <div className="w-12 h-12 overflow-hidden rounded-full flex-shrink-0 border-2 border-geo-gold relative bg-black flex items-center justify-center" style={{ boxShadow: '0 0 15px rgba(251, 191, 36, 0.3)' }}>
+              <img 
+                src="/src/assets/images/arithmancer.png" 
+                alt="Arithmancer Guide" 
+                className="w-[180%] h-[180%] object-cover absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%]"
+                style={{ mixBlendMode: 'screen', filter: 'contrast(1.1) brightness(1.2)' }}
+              />
+            </div>
+
+            <p className="text-sm font-bold tracking-widest uppercase" style={{ color: 'var(--geo-gold)' }}>
+              {message}
+            </p>
+          </div>
         </motion.div>
       )}
-      <motion.div
-        animate={{ 
-          y: [0, -15, 0],
-        }}
-        transition={{ 
-          duration: 4, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
-        }}
-        className="w-48 h-48 md:w-64 md:h-64 drop-shadow-2xl"
-      >
-        <img 
-          src="/src/assets/images/arithmancer.png" 
-          alt="Arithmancer Guide" 
-          className="w-full h-full object-contain"
-        />
-      </motion.div>
-    </div>
+    </AnimatePresence>
   );
 };
 
