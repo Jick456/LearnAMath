@@ -91,12 +91,10 @@ export const getRandomCharacter = () => {
         if (roll > 97) { // 3%
             const legendaries = gachaCharacters.filter(c => c.rarity === 'Legendary');
             if (legendaries.length > 0) return legendaries[Math.floor(Math.random() * legendaries.length)];
-        }
-        if (roll > 85) { // 12%
+        } else if (roll > 85) { // 12%
             const epics = gachaCharacters.filter(c => c.rarity === 'Epic');
             if (epics.length > 0) return epics[Math.floor(Math.random() * epics.length)];
-        }
-        if (roll > 60) { // 25%
+        } else if (roll > 60) { // 25%
             const rares = gachaCharacters.filter(c => c.rarity === 'Rare');
             if (rares.length > 0) return rares[Math.floor(Math.random() * rares.length)];
         }

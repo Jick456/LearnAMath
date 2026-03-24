@@ -28,12 +28,14 @@ class ErrorBoundary extends React.Component {
                     <div className="glass-panel" style={{ padding: '2rem', maxWidth: '600px', width: '100%' }}>
                         <h2 className="glow-text" style={{ color: 'var(--accent-error)', marginBottom: '1rem' }}>Something went wrong.</h2>
                         <p style={{ color: 'var(--text-muted)', marginBottom: '1rem' }}>We encountered an unexpected error. The mathematical forces were too strong!</p>
-                        <details style={{ whiteSpace: 'pre-wrap', textAlign: 'left', backgroundColor: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '8px', overflow: 'auto', maxHeight: '300px', fontSize: '14px' }}>
-                            <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>View Technical Details</summary>
-                            {this.state.error && this.state.error.toString()}
-                            <br />
-                            {this.state.errorInfo && this.state.errorInfo.componentStack}
-                        </details>
+                        {import.meta.env.DEV && (
+                            <details style={{ whiteSpace: 'pre-wrap', textAlign: 'left', backgroundColor: 'rgba(255,255,255,0.05)', padding: '1rem', borderRadius: '8px', overflow: 'auto', maxHeight: '300px', fontSize: '14px' }}>
+                                <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '0.5rem' }}>View Technical Details</summary>
+                                {this.state.error && this.state.error.toString()}
+                                <br />
+                                {this.state.errorInfo && this.state.errorInfo.componentStack}
+                            </details>
+                        )}
                         <button
                             className="btn option-btn"
                             style={{ marginTop: '2rem', backgroundColor: 'var(--primary-color)' }}

@@ -10,8 +10,7 @@ const analytics = {
             event: eventName,
             properties: {
                 ...properties,
-                url: window.location.href,
-                userAgent: navigator.userAgent
+                url: window.location.pathname, // pathname only, not full href
             },
             timestamp
         };
@@ -54,11 +53,15 @@ const analytics = {
     },
 
     trackError: (error, componentName) => {
+        // Only store message and component — never the full stack trace
         analytics.trackEvent('error', {
-            message: error.message || error,
+            message: error.message || String(error),
             component: componentName,
-            stack: error.stack
         });
+        // Log full stack only in dev console
+        if (import.meta.env.DEV) {
+            console.error(`[Analytics Error - ${componentName}]`, error);
+        }
     }
 };
 

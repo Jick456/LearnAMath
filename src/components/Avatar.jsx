@@ -82,8 +82,8 @@ export default function Avatar({ level = 1, xp = 0, maxXp = 100, activeCharacter
                                             onSelectCharacter(char);
                                             setIsOptionsOpen(false);
                                         }}
-                                        className={`cursor-pointer p-2 rounded-xl transition-all hover:bg-white/10 ${isSelected ? 'ring-2 ring-offset-2 ring-offset-black' : ''}`}
-                                        style={{ ringColor: char.color }}
+                                        className={`cursor-pointer p-2 rounded-xl transition-all hover:bg-white/10`}
+                                        style={isSelected ? { boxShadow: `0 0 0 3px ${char.color}`, borderRadius: '12px' } : {}}
                                     >
                                         <img 
                                           src={charStage?.image} 
