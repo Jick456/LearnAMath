@@ -75,13 +75,61 @@ export const FormatMathText = ({ text }) => {
 
                 // Even indices are regular text blocks containing math
                 const lines = diagramPart.split('\n');
+                let currentAlertType = null;
+
                 return lines.map((line, idx) => {
-                    const parsed = renderTokens(line);
-                    if (!parsed) return null;
+                    // Fix \frac bug where \f is incorrectly evaluated as Form Feed in JS data strings
+                    let processLine = line.replace(/\x0Crac/g, '\\frac').replace(/\\rac/g, '\\frac');
+                    
+                    let isAlert = false;
+                    
+                    if (processLine.startsWith('> [!')) {
+                        isAlert = true;
+                        const match = processLine.match(/> \[!(\w+)\](.*)/);
+                        if (match) {
+                            currentAlertType = match[1].toLowerCase();
+                            processLine = match[2].trim();
+                        }
+                    } else if (processLine.startsWith('>')) {
+                        isAlert = true;
+                        processLine = processLine.substring(1).trim();
+                    } else {
+                        currentAlertType = null; // reset if not an alert line
+                    }
+
+                    const parsed = renderTokens(processLine);
+                    if (!parsed && !isAlert && !processLine.trim()) return null;
+                    
+                    if (isAlert) {
+                        let borderColor = 'var(--celestial-blue)';
+                        if (currentAlertType === 'tip') borderColor = 'var(--emerald-green)';
+                        if (currentAlertType === 'warning') borderColor = 'var(--accent-warning)';
+                        if (currentAlertType === 'important') borderColor = 'var(--pyro-red)';
+
+                        return (
+                            <div key={`line-${diagramIdx}-${idx}`} className="px-5 py-4 my-3 border-l-4 rounded-r-lg bg-black/20" style={{ borderColor }}>
+                                {currentAlertType && processLine === '' ? (
+                                    <strong style={{ display: 'block', color: borderColor, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>
+                                        {currentAlertType}
+                                    </strong>
+                                ) : (
+                                    <>
+                                        {currentAlertType && idx > 0 && lines[idx-1].startsWith('> [!') && (
+                                            <strong style={{ display: 'block', marginBottom: '0.5rem', color: borderColor, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>
+                                                {currentAlertType}
+                                            </strong>
+                                        )}
+                                        <div style={{ margin: 0, lineHeight: 1.6 }}>{parsed}</div>
+                                    </>
+                                )}
+                            </div>
+                        );
+                    }
+
                     return (
-                        <p key={`line-${diagramIdx}-${idx}`} style={{ margin: 0, lineHeight: 1.6 }}>
+                        <div key={`line-${diagramIdx}-${idx}`} style={{ margin: 0, lineHeight: 1.6, paddingBottom: processLine.trim() ? '0.75rem' : '0' }}>
                             {parsed}
-                        </p>
+                        </div>
                     );
                 });
             })}
@@ -177,6 +225,51 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         }
     }
 
+    if (phase === 'review') {
+        const correctCount = testAnswers.filter(a => a.isCorrect).length;
+        return (
+            <div className="flex flex-col items-center gap-10 w-full max-w-[900px] mx-auto pb-12">
+                <div className="text-center">
+                  <h2 className="glow-text" style={{ fontSize: '3rem' }}>Domain Evaluation</h2>
+                  <p style={{ fontSize: '1.4rem', color: 'var(--geo-gold)', fontWeight: 700 }}>Mastery Ratio: {correctCount} / {testAnswers.length}</p>
+                </div>
+
+                <div className="flex flex-col gap-8 w-full">
+                    {testAnswers.map((item, idx) => (
+                        <div key={idx} className="glass-panel p-8" style={{ borderLeft: `8px solid ${item.isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)'}` }}>
+                            <div className="text-sm font-bold uppercase tracking-widest mb-4 opacity-50" style={{ color: item.isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)' }}>
+                              Node {idx + 1} - {item.isCorrect ? 'Resonance Achieved' : 'Dissonance Detected'}
+                            </div>
+                            <div style={{ marginBottom: 'var(--space-6)', fontSize: '1.4rem', fontWeight: 600 }}>
+                                <FormatMathText text={item.question.text} />
+                            </div>
+
+                            <div className="p-4 mb-6 rounded-xl bg-white/5 border border-white/10">
+                                <div style={{ color: item.isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)', fontWeight: 'bold', marginBottom: 'var(--space-2)' }}>
+                                    Arithmancer Input: <FormatMathText text={item.question.options[item.selectedOption]} />
+                                </div>
+                                {!item.isCorrect && (
+                                    <div style={{ color: 'var(--geo-gold)' }}>
+                                        Correct Formula: <FormatMathText text={item.question.options[item.question.correctAnswer]} />
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="p-6 bg-blue-500/5 rounded-2xl border border-blue-500/20">
+                                <h4 style={{ color: 'var(--celestial-blue)', fontSize: '1.1rem', marginBottom: 'var(--space-2)', fontWeight: 800, textTransform: 'uppercase' }}>Celestial Insight:</h4>
+                                <FormatMathText text={item.question.explanation} />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <button className="genshin-btn px-12 py-4 text-xl" onClick={() => handleFinalComplete(null)}>
+                    Finish Domain
+                </button>
+            </div>
+        );
+    }
+
     const question = questionsList[currentIndex];
     if (!question) return null;
 
@@ -229,50 +322,7 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         }
     };
 
-    if (phase === 'review') {
-        const correctCount = testAnswers.filter(a => a.isCorrect).length;
-        return (
-            <div className="flex flex-col items-center gap-10 w-full max-w-[900px] mx-auto pb-12">
-                <div className="text-center">
-                  <h2 className="glow-text" style={{ fontSize: '3rem' }}>Domain Evaluation</h2>
-                  <p style={{ fontSize: '1.4rem', color: 'var(--geo-gold)', fontWeight: 700 }}>Mastery Ratio: {correctCount} / {testAnswers.length}</p>
-                </div>
-
-                <div className="flex flex-col gap-8 w-full">
-                    {testAnswers.map((item, idx) => (
-                        <div key={idx} className="glass-panel p-8" style={{ borderLeft: `8px solid ${item.isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)'}` }}>
-                            <div className="text-sm font-bold uppercase tracking-widest mb-4 opacity-50" style={{ color: item.isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)' }}>
-                              Node {idx + 1} - {item.isCorrect ? 'Resonance Achieved' : 'Dissonance Detected'}
-                            </div>
-                            <div style={{ marginBottom: 'var(--space-6)', fontSize: '1.4rem', fontWeight: 600 }}>
-                                <FormatMathText text={item.question.text} />
-                            </div>
-
-                            <div className="p-4 mb-6 rounded-xl bg-white/5 border border-white/10">
-                                <div style={{ color: item.isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)', fontWeight: 'bold', marginBottom: 'var(--space-2)' }}>
-                                    Arithmancer Input: <FormatMathText text={item.question.options[item.selectedOption]} />
-                                </div>
-                                {!item.isCorrect && (
-                                    <div style={{ color: 'var(--geo-gold)' }}>
-                                        Correct Formula: <FormatMathText text={item.question.options[item.question.correctAnswer]} />
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="p-6 bg-blue-500/5 rounded-2xl border border-blue-500/20">
-                                <h4 style={{ color: 'var(--celestial-blue)', fontSize: '1.1rem', marginBottom: 'var(--space-2)', fontWeight: 800, textTransform: 'uppercase' }}>Celestial Insight:</h4>
-                                <FormatMathText text={item.question.explanation} />
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                <button className="genshin-btn px-12 py-4 text-xl" onClick={() => handleFinalComplete(null)}>
-                    Finish Domain
-                </button>
-            </div>
-        );
-    }
+    // Review component was moved up to avoid premature null return
 
     const progressPercent = ((currentIndex + 1) / questionsList.length) * 100;
 
@@ -305,7 +355,7 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
 
                 <div className="grid grid-cols-1 gap-5">
                     {question.options.map((option, idx) => {
-                        let btnStyle = { textAlign: 'left', justifyContent: 'flex-start', padding: '1.25rem 2rem' };
+                        let btnStyle = { textAlign: 'left', justifyContent: 'flex-start', padding: '1.25rem 2rem', wordBreak: 'break-word', whiteSpace: 'normal', gap: '1rem', alignItems: 'center' };
                         let labelColor = 'var(--text-muted)';
                         
                         if (phase === 'learning' && hasAnswered) {
@@ -330,10 +380,10 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
                                 onClick={() => handleSelectOption(idx)}
                                 disabled={hasAnswered && phase === 'learning'}
                             >
-                                <span className="mr-6 font-black text-2xl transition-colors" style={{ color: labelColor, opacity: 0.5 }}>
+                                <span className="font-black text-2xl transition-colors flex-shrink-0" style={{ color: labelColor, opacity: 0.5, minWidth: '30px' }}>
                                     {String.fromCharCode(65 + idx)}
                                 </span>
-                                <div className="flex-1 font-semibold text-lg">
+                                <div className="flex-1 font-semibold text-lg" style={{ minWidth: 0 }}>
                                     <FormatMathText text={option} />
                                 </div>
                             </button>

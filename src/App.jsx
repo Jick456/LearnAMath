@@ -186,8 +186,8 @@ function MainApp() {
                     />
                   </div>
 
-                  <div className="glass-panel p-10 max-w-[450px] w-full text-center flex flex-col gap-8" style={{ border: '2px solid var(--geo-gold)' }}>
-                    <div className="flex flex-col gap-2">
+                  <div className="glass-panel p-10 max-w-[450px] w-full text-center flex flex-col gap-8 items-center" style={{ border: '2px solid var(--geo-gold)' }}>
+                    <div className="flex flex-col gap-2 w-full text-center">
                        <span className="opacity-50 font-black uppercase tracking-[5px] text-xs">Arithmancer Status</span>
                        <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>Ascension Rank {level}</h3>
                     </div>
@@ -205,7 +205,13 @@ function MainApp() {
                     <button 
                       className="genshin-btn w-full text-2xl py-6" 
                       onClick={() => navigate('/selector')}
-                      style={{ animation: 'pulse-glow 3s infinite' }}
+                      style={{ 
+                          animation: 'pulse-glow 3s infinite', 
+                          background: 'var(--geo-gold)', 
+                          color: '#000000', 
+                          border: 'none',
+                          fontWeight: '900'
+                      }}
                     >
                       Begin Voyage
                     </button>

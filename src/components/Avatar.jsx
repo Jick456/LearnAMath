@@ -52,18 +52,12 @@ export default function Avatar({ level = 1, xp = 0, maxXp = 100, activeCharacter
                     {level}
                 </div>
 
-                <AnimatePresence>
-                  {isHovered && (
-                      <motion.div 
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0 }}
-                        className="absolute -top-12 left-1/2 -translate-x-1/2 py-2 px-6 bg-black/60 backdrop-blur-md rounded-full border border-white/20 text-white font-bold whitespace-nowrap shadow-2xl z-20"
-                      >
-                          {petName}
-                      </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Permanent Pet Name Display */}
+                <div 
+                    className="absolute -bottom-8 left-1/2 -translate-x-1/2 py-1 px-4 bg-black/40 backdrop-blur-sm rounded-full border border-white/10 text-white font-bold whitespace-nowrap shadow-lg z-20 text-sm"
+                >
+                    {petName}
+                </div>
             </div>
 
             {/* Companion Selection Grid */}
