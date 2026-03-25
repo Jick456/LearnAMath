@@ -1,62 +1,95 @@
-# LearnAMath 🏔️🍵
+# Realm of Axiom: LearnAMaths 🏔️🍵
 
-**LearnAMath** is a premium, gamified learning platform designed to help students master the MOE Additional Mathematics syllabus through a serene, interactive, and high-quality "Mountain Tea" aesthetic.
+[![Live Demo](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://learn-a-math.vercel.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Vite](https://img.shields.io/badge/built%20with-Vite-646CFF.svg)](https://vitejs.dev/)
 
-![LearnAMath Home](assets/screenshots/homepage.png)
+**Realm of Axiom** (LearnAMaths) is a premium, gamified learning platform designed to help students master the MOE Additional Mathematics syllabus through a serene, interactive, and high-quality "Mountain Tea" aesthetic. It transforms the rigor of secondary mathematics into an immersive journey of discovery and resonance.
 
-## ✨ Features
+🌐 **Live Website**: [https://learn-a-math.vercel.app](https://learn-a-math.vercel.app)
 
-- **Interactive Crash Courses**: Concise, high-density study guides with embedded LaTeX for perfect mathematical rendering.
-- **Vast Question Bank**: Hundreds of learning and testing questions across G1, G2, G3, and Add Math syllabuses.
-- **Companion Evolution**: Collect and evolve elemental spirits (Terra, Aqua, Aero, Ignis, Void, Luminous) as you gain XP.
-- **PWA Support**: Installable on iOS, Android, and Desktop for a native app-like experience.
-- **Exception Resilience**: Robust error handling with global Error Boundaries to ensure a flawless session.
+---
 
-## 🖼️ Gallery
+## ✨ Core Pillars
+
+### 📘 Infinite Resonance (Learning)
+
+High-density, interactive study guides ("Crash Courses") featuring precision LaTeX rendering for flawless mathematical notation.
+
+### ⚡ Sigil Cleansing (Testing)
+
+A vast domain of hundreds of questions across G1, G2, G3, and Additional Mathematics syllabuses, designed to test and reinforce conceptual mastery.
+
+### 🦊 Elemental Companions
+
+Collect and evolve unique spirits (Terra, Aqua, Aero, Ignis, Void, Luminous) as you gain XP and ascend through the mathematical ranks.
+
+### 📱 Perfect Portability
+
+A full Progressive Web App (PWA) experience, installable on iOS, Android, and Desktop for seamless learning anywhere, even offline.
+
+---
+
+## 🖼️ Visual Experience
+
+<p align="center">
+  <img src="assets/screenshots/homepage.png" width="90%" alt="Realm of Axiom Home" />
+</p>
 
 <p align="center">
   <img src="assets/screenshots/syllabus.png" width="45%" alt="Syllabus Selection" />
   <img src="assets/screenshots/learning_interface.png" width="45%" alt="Learning Interface" />
 </p>
 
-## 🛠️ Technology Stack
+---
 
-- **Core**: React + Vite
-- **Styling**: Vanilla CSS (Premium Glassmorphism & Fluid Typography)
-- **Math Visualization**: KaTeX
-- **Animation**: Framer Motion
-- **Architecture**: Context API + LocalStorage persistence
+## 🛠️ The Forge (Technology Stack)
+
+- **Frontend**: [React](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+- **Visuals**: Vanilla CSS (Custom Glassmorphism 2.0 & Fluid Typography)
+- **Math Engine**: [KaTeX](https://katex.org/) for high-fidelity rendering
+- **Motion**: [Framer Motion](https://www.framer.com/motion/) for fluid animations
+- **State**: Precise Context API architecture with persistent LocalStorage
+
+---
 
 ## 🚀 Getting Started
 
 ### Development
 
-1. Install dependencies:
+1. **Clone & Install**:
 
    ```bash
+   git clone https://github.com/Jick456/LearnAMath.git
+   cd LearnAMath
    npm install
    ```
 
-2. Start the development server:
+2. **Launch Domain**:
 
    ```bash
    npm run dev
    ```
 
-### Production Build
+### Deployment
 
-To generate the distribution bundle for deployment:
+To generate a production-ready distribution:
 
 ```bash
 npm run build
 ```
+The output in `dist/` is optimized for zero-config hosting on [Vercel](https://vercel.com).
 
-The output will be in the `dist/` folder, ready for hosting on Vercel, Netlify, or any static provider.
+---
 
-## 📱 PWA Installation
+## 🤝 Contributing
 
-LearnAMath is a Progressive Web App. Visit the live URL on your mobile device and use "Add to Home Screen" to install it.
+We welcome scholars and architects! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to improve the realm.
 
 ## 📜 License
 
-Created by **Antigravity** for the MOE Math Mastery project. All rights reserved.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+*Brewed with logic and matcha by the Masters of Mathematics.*
