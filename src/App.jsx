@@ -58,7 +58,16 @@ function MainApp() {
 
   useEffect(() => {
     // Clear old theme classes first
-    document.body.className = theme === 'light' ? 'light-mode' : '';
+    document.body.classList.remove('light-mode', 'dark-mode');
+    document.body.classList.add(theme === 'light' ? 'light-mode' : 'dark-mode');
+
+    // Remove any existing theme- classes
+    const classes = Array.from(document.body.classList);
+    classes.forEach(cls => {
+      if (cls.startsWith('theme-')) {
+        document.body.classList.remove(cls);
+      }
+    });
 
     if (activeTopicObj?.themeClass && (viewMode === '/story' || viewMode === '/crashcourse' || viewMode === '/questions')) {
       document.body.classList.add(activeTopicObj.themeClass);

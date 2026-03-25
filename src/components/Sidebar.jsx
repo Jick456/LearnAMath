@@ -21,9 +21,9 @@ const Sidebar = () => {
     const chapters = ['Sec 1', 'Sec 2', 'Sec 3', 'Sec 4', 'Add Math'];
     const streams = ['G1', 'G2', 'G3'];
     const difficulties = [
-        { id: 'easy', label: 'Light Brew', desc: 'Apprentice', color: '#22c55e' },
-        { id: 'medium', label: 'Balanced', desc: 'Journeyman', color: '#f59e0b' },
-        { id: 'hard', label: 'Strong', desc: 'Grandmaster', color: '#ef4444' }
+        { id: 'easy', label: 'Light Brew', desc: 'Apprentice' },
+        { id: 'medium', label: 'Balanced', desc: 'Journeyman' },
+        { id: 'hard', label: 'Strong', desc: 'Grandmaster' }
     ];
 
     const handleLevelSelect = (level) => {
@@ -36,7 +36,7 @@ const Sidebar = () => {
     return (
         <aside className="tea-sidebar">
             <div className="tea-sidebar-header">
-                <h1 className="tea-sidebar-title" style={{ background: 'linear-gradient(to bottom, #556b2f, #3a4a20)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Tea & Axios</h1>
+                <h1 className="tea-sidebar-title">Tea & Axios</h1>
                 <p className="tea-sidebar-subtitle">Mathematical Brew House</p>
             </div>
 
@@ -152,7 +152,7 @@ const Sidebar = () => {
                 </AnimatePresence>
             </div>
 
-            <div style={{ marginTop: 'auto', padding: '1.5rem', borderTop: '1px solid #e8e2d8', fontSize: '0.75rem', opacity: 0.5, textAlign: 'center' }}>
+            <div style={{ marginTop: 'auto', padding: '1.5rem', borderTop: '1px solid var(--sidebar-border)', fontSize: '0.75rem', color: 'var(--sidebar-text-muted)', textAlign: 'center' }}>
                 Brewed with Logic & Matcha
             </div>
         </aside>

@@ -71,10 +71,11 @@ export function UserProgressProvider({ children }) {
     }, [user, xp, level, weaknesses, activeLevel, userStream, theme, unlockedCharacters, activeCharacter, gachaPity, difficulty]);
 
     useEffect(() => {
+        document.body.classList.remove('dark-mode', 'light-mode');
         if (theme === 'dark') {
             document.body.classList.add('dark-mode');
         } else {
-            document.body.classList.remove('dark-mode');
+            document.body.classList.add('light-mode');
         }
     }, [theme]);
 
