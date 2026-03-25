@@ -36,7 +36,7 @@ const Sidebar = () => {
     return (
         <aside className="tea-sidebar">
             <div className="tea-sidebar-header">
-                <h1 className="tea-sidebar-title">Tea & Axios</h1>
+                <h1 className="tea-sidebar-title" style={{ background: 'linear-gradient(to bottom, #556b2f, #3a4a20)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Tea & Axios</h1>
                 <p className="tea-sidebar-subtitle">Mathematical Brew House</p>
             </div>
 

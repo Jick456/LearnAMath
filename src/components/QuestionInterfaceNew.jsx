@@ -47,8 +47,8 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         return (
             <div className="flex flex-col items-center gap-12 w-full max-w-[1000px] mx-auto pb-12">
                 <div className="text-center">
-                  <h2 className="glow-text" style={{ fontSize: '3.5rem', fontWeight: 900, textTransform: 'uppercase' }}>Select Your Domain</h2>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem' }}>Choose the severity of the mathematical dissonance.</p>
+                  <h2 className="premium-heading" data-text="Select Your Domain" style={{ fontSize: '3.5rem', lineHeight: 1 }}>Select Your Domain</h2>
+                  <p className="mt-4 opacity-70" style={{ color: 'var(--text-muted)', fontSize: '1.2rem', fontWeight: 500 }}>Choose the severity of the mathematical dissonance.</p>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
@@ -71,7 +71,7 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
                             <span style={{ fontSize: '4rem', marginBottom: 'var(--space-4)' }}>{tier.icon}</span>
                             <h3 style={{ color: tier.color, fontSize: '1.8rem', fontWeight: 800, marginBottom: 'var(--space-2)' }}>{tier.label}</h3>
                             <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: 1.6, flexGrow: 1, marginBottom: '2rem' }}>{tier.desc}</p>
-                            <button className="genshin-btn w-full" style={{ borderColor: tier.color, color: tier.color }}>
+                            <button className="genshin-btn genshin-btn-premium w-full" style={{ borderColor: tier.color, border: 'none' }}>
                                 Select Tier
                             </button>
                         </motion.div>
@@ -107,10 +107,10 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         }
         if (phase !== 'review') {
             return (
-                <div className="glass-panel p-12 text-center max-w-[600px] mx-auto">
-                    <h3 className="glow-text" style={{ fontSize: '2.5rem' }}>Domain Conquered!</h3>
-                    <p className="mt-4 text-muted">The mathematical flows has been restored to this region.</p>
-                    <button className="genshin-btn mt-8" onClick={() => onComplete(null)}>Return to World Map</button>
+                <div className="glass-panel p-12 text-center max-w-[600px] mx-auto border-2 border-geo-gold">
+                    <h3 className="premium-heading" data-text="Domain Conquered!" style={{ fontSize: '2.5rem' }}>Domain Conquered!</h3>
+                    <p className="mt-6 text-muted font-medium">The mathematical flows has been restored to this region.</p>
+                    <button className="genshin-btn genshin-btn-premium mt-10" onClick={() => onComplete(null)}>Return to World Map</button>
                 </div>
             );
         }
@@ -121,8 +121,8 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         return (
             <div className="flex flex-col items-center gap-10 w-full max-w-[900px] mx-auto pb-12">
                 <div className="text-center">
-                  <h2 className="glow-text" style={{ fontSize: '3rem' }}>Domain Evaluation</h2>
-                  <p style={{ fontSize: '1.4rem', color: 'var(--geo-gold)', fontWeight: 700 }}>Mastery Ratio: {correctCount} / {testAnswers.length}</p>
+                  <h2 className="premium-heading" data-text="Domain Evaluation" style={{ fontSize: '3rem' }}>Domain Evaluation</h2>
+                  <p className="mt-4" style={{ fontSize: '1.4rem', color: 'var(--geo-gold)', fontWeight: 800, letterSpacing: '2px' }}>MASTERY RATIO: {correctCount} / {testAnswers.length}</p>
                 </div>
 
                 <div className="flex flex-col gap-8 w-full">
@@ -154,7 +154,7 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
                     ))}
                 </div>
 
-                <button className="genshin-btn px-12 py-4 text-xl" onClick={() => handleFinalComplete(null)}>
+                <button className="genshin-btn genshin-btn-premium px-12 py-4 text-xl" onClick={() => handleFinalComplete(null)}>
                     Finish Domain
                 </button>
             </div>
@@ -297,15 +297,12 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
                 )}
             </div>
 
-            {phase === 'learning' && hasAnswered && (
                 <button 
-                  className="genshin-btn px-16 py-4 text-xl" 
-                  style={{ animation: 'pulse-glow 2s infinite' }}
+                  className="genshin-btn genshin-btn-premium px-16 py-4 text-xl" 
                   onClick={handleNext} 
                 >
                     {currentIndex < questionsList.length - 1 ? 'Continue Domain Path' : 'Initiate Final Ascension'}
                 </button>
-            )}
         </div>
     );
 }

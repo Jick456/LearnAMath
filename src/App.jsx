@@ -181,8 +181,8 @@ function MainApp() {
             <Route path="/home" element={
               <div className="flex flex-col items-center gap-12 w-full max-w-[1000px] py-10" style={{ animation: 'fadeIn 0.7s ease' }}>
                 <div className="text-center relative">
-                  <h2 className="glow-text" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', fontWeight: 900, textTransform: 'uppercase', lineHeight: 1 }}>Grasp Your Destiny</h2>
-                  <p className="mt-4 opacity-70" style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '1rem auto 0 auto' }}>
+                  <h2 className="premium-heading" data-text="Grasp Your Destiny" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', lineHeight: 1 }}>Grasp Your Destiny</h2>
+                  <p className="mt-6 opacity-80" style={{ fontSize: '1.25rem', maxWidth: '750px', margin: '1.5rem auto 0 auto', lineHeight: 1.6, fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
                     The shattered islands of mathematics awaits your resonance. Bond with celestial companions and mend the dissonant flows through pure logic.
                   </p>
                 </div>
@@ -217,15 +217,8 @@ function MainApp() {
                     </div>
 
                     <button 
-                      className="genshin-btn w-full text-2xl py-6" 
+                      className="genshin-btn genshin-btn-premium w-full text-2xl py-6" 
                       onClick={() => navigate('/selector')}
-                      style={{ 
-                          animation: 'pulse-glow 3s infinite', 
-                          background: 'var(--geo-gold)', 
-                          color: '#000000', 
-                          border: 'none',
-                          fontWeight: '900'
-                      }}
                     >
                       Begin Voyage
                     </button>

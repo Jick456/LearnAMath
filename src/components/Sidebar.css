@@ -5,8 +5,8 @@
 .tea-sidebar {
     width: var(--sidebar-width);
     height: 100vh;
-    background: #fdfaf5;
-    border-right: 2px solid #e8e2d8;
+    background: linear-gradient(180deg, #fdfaf5 0%, #f7f2ea 100%);
+    border-right: 1px solid rgba(139, 115, 85, 0.2);
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -26,12 +26,13 @@
 }
 
 .tea-sidebar-title {
-    font-size: 1.5rem;
-    font-weight: 900;
+    font-size: 1.75rem;
+    font-weight: 950;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     color: #556b2f;
     margin: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .tea-sidebar-subtitle {
@@ -115,7 +116,8 @@
     background: #556b2f;
     color: #fff;
     border-color: #556b2f;
-    box-shadow: 0 4px 10px rgba(85, 107, 47, 0.3);
+    box-shadow: 0 8px 20px rgba(85, 107, 47, 0.25);
+    transform: scale(1.02);
 }
 
 .tea-char-icon {

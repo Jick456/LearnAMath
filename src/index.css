@@ -58,6 +58,11 @@
   --font-size-h2: clamp(2rem, 6vw, 3rem);
   --font-size-h3: clamp(1.4rem, 4vw, 1.8rem);
 
+  /* Premium Typography Enhancements */
+  --text-glow-gold: 0 0 10px rgba(251, 191, 36, 0.4), 0 0 20px rgba(251, 191, 36, 0.2);
+  --text-glow-blue: 0 0 15px rgba(59, 130, 246, 0.5);
+  --heading-ls: -0.04em;
+
   /* Effects */
   --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -210,7 +215,31 @@ h6 {
   font-family: var(--font-heading);
   line-height: 1.1;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--heading-ls);
+}
+
+.premium-heading {
+  font-family: var(--font-heading);
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  background: linear-gradient(180deg, #ffffff 0%, #d1d5db 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+  position: relative;
+}
+
+.premium-heading::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  -webkit-text-stroke: 4px rgba(251, 191, 36, 0.1);
+  filter: blur(8px);
 }
 
 button {
@@ -323,6 +352,35 @@ a {
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
   z-index: 1;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 0 10px rgba(251, 191, 36, 0.1);
+}
+
+.genshin-btn-premium {
+  background: linear-gradient(135deg, var(--geo-gold) 0%, #f59e0b 100%) !important;
+  color: #000 !important;
+  border: none !important;
+  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4), inset 0 2px 2px rgba(255,255,255,0.4) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.15em !important;
+}
+
+.genshin-btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-25deg);
+  transition: none;
+  animation: shimmer-btn 3s infinite;
+}
+
+@keyframes shimmer-btn {
+  0% { left: -100%; }
+  20% { left: 150%; }
+  100% { left: 150%; }
 }
 
 .genshin-btn::after {

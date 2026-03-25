@@ -122,7 +122,14 @@ export const FormatMathText = ({ text }) => {
                     }
 
                     return (
-                        <div key={`line-${diagramIdx}-${idx}`} style={{ margin: 0, lineHeight: 1.6, paddingBottom: processLine.trim() ? '0.75rem' : '0' }}>
+                        <div key={`line-${diagramIdx}-${idx}`} style={{ 
+                            margin: 0, 
+                            lineHeight: 1.8, 
+                            paddingBottom: processLine.trim() ? '1rem' : '0',
+                            fontSize: '1.05rem',
+                            letterSpacing: '0.01em',
+                            color: 'rgba(255,255,255,0.95)'
+                        }}>
                             {parsed}
                         </div>
                     );
