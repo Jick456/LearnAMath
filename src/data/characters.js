@@ -10,7 +10,7 @@ import bubbleTeaIcon from '../assets/bubble_tea_1772982017700.png';
 // Singaporean Favorites
 import tehTarikIcon from '../assets/teh_tarik.png';
 import kopiOIcon from '../assets/kopi_o.png';
-import miloDinoIcon from '../assets/milo_dinosaur.png';
+import maltDinoIcon from '../assets/malt_dinosaur.png';
 import soyaBeanIcon from '../assets/soya_bean.png';
 
 const baseCharacters = [
@@ -24,7 +24,7 @@ const baseCharacters = [
     { id: 'bubble_tea', image: bubbleTeaIcon, name: 'Boba Sovereign', rarity: 'Legendary', color: '#d2b48c' },
     { id: 'teh_tarik', image: tehTarikIcon, name: 'Teh Tarik Puller', rarity: 'Rare', color: '#d2b48c' },
     { id: 'kopi_o', image: kopiOIcon, name: 'Kopi O Master', rarity: 'Common', color: '#4b3621' },
-    { id: 'milo_dino', image: miloDinoIcon, name: 'Milo Dinosaur', rarity: 'Legendary', color: '#3d2b1f' },
+    { id: 'malt_dino', image: maltDinoIcon, name: 'Malt Dinosaur', rarity: 'Legendary', color: '#3d2b1f' },
     { id: 'soya_bean', image: soyaBeanIcon, name: 'Soya Bean Sprite', rarity: 'Common', color: '#f5f5dc' },
 ];
 
@@ -42,7 +42,7 @@ const iconsByRarity = {
     Common: [terraIcon, aquaIcon, kopiOIcon, soyaBeanIcon],
     Rare: [aeroIcon, ignisIcon, tehTarikIcon],
     Epic: [voidIcon, luminousIcon],
-    Legendary: [strawberryMatchaIcon, bubbleTeaIcon, miloDinoIcon]
+    Legendary: [strawberryMatchaIcon, bubbleTeaIcon, maltDinoIcon]
 };
 
 // Add base characters first
