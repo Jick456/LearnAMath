@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from './Button';
 import { useUserProgress } from '../context/UserProgressContext';
 
-export default function GachaPull({ onClaim, unlockedCharIds }) {
+export default function GachaPull({ onClaim, unlockedCharIds, score = 0 }) {
     const { gachaPity, setGachaPity } = useUserProgress();
     const [character, setCharacter] = useState(null);
     const [phase, setPhase] = useState('shooting-star'); // 'shooting-star', 'burst', 'reveal'
 
     useEffect(() => {
         import('../data/characters.js').then(({ getRandomCharacter, gachaCharacters }) => {
-            let char = getRandomCharacter();
+            let char = getRandomCharacter(score);
 
             // Pity System: 3 duplicates guarantee a new character
             if (gachaPity >= 3 && unlockedCharIds.length < gachaCharacters.length) {

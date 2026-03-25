@@ -38,6 +38,7 @@ function MainApp() {
   const [selectedTopic, setSelectedTopic] = useState(null);
   const [legalType, setLegalType] = useState(null);
   const [showGacha, setShowGacha] = useState(false);
+  const [lastTestScore, setLastTestScore] = useState(0);
 
   const navigate = useNavigate();
   const { pathname: viewMode } = useLocation();
@@ -65,7 +66,7 @@ function MainApp() {
   }, [activeTopicObj, viewMode, theme]);
 
   const handleLogin = (loggedInUser) => {
-    setUser(loggedInUser);
+    login(loggedInUser);
     if (loggedInUser.isNewUser) {
       navigate('/setup');
     } else {
@@ -92,7 +93,7 @@ function MainApp() {
     }
   };
 
-  const handleCompleteTopic = (resolvedWeaknessId = null) => {
+  const handleCompleteTopic = (resolvedWeaknessId = null, score = 0) => {
     if (selectedTopic === 'weaknesses') {
       if (resolvedWeaknessId !== null) {
         resolveWeakness(resolvedWeaknessId);
@@ -101,6 +102,7 @@ function MainApp() {
       return;
     }
 
+    setLastTestScore(score);
     gainXp(50);
     setShowGacha(true);
   };
@@ -293,7 +295,7 @@ function MainApp() {
 
       <RewardModal show={showReward} onClose={() => setShowReward(false)} title={rewardData.title} rewardText={rewardData.text} rewardImage={rewardData.image} />
       <LegalModal show={!!legalType} type={legalType} onClose={() => setLegalType(null)} />
-      {showGacha && <GachaPull unlockedCharIds={unlockedCharacters.map(c => c.id)} onClaim={handleGachaClaim} />}
+      {showGacha && <GachaPull unlockedCharIds={unlockedCharacters.map(c => c.id)} onClaim={handleGachaClaim} score={lastTestScore} />}
 
       {/* Floating Active Pet Companion (Original) or Guide */ }
       {user && viewMode !== '/' && viewMode !== '/setup' && (

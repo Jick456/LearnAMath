@@ -96,9 +96,10 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
         const timeSpent = Math.round((Date.now() - startTime) / 1000);
         const correctCount = testAnswers.filter(a => a.isCorrect).length;
         const totalCount = testAnswers.length || 1;
+        const score = (correctCount / totalCount) * 100;
         const safeTopicId = questionsList[currentIndex]?.topicId || testAnswers[0]?.question?.topicId || 'unknown';
-        analytics.trackTopicCompletion(safeTopicId, timeSpent, (correctCount / totalCount) * 100);
-        onComplete(weaknessId);
+        analytics.trackTopicCompletion(safeTopicId, timeSpent, score);
+        onComplete(weaknessId, score);
     };
 
     if (!questionsList || questionsList.length === 0) {

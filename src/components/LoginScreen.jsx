@@ -13,12 +13,24 @@ export default function LoginScreen({ onLogin }) {
     const handleGoogleLogin = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             setLoading(true);
+            setError(''); // Clear previous errors
             try {
+                if (!tokenResponse.access_token) {
+                    throw new Error('No access token received from Google.');
+                }
+
                 const res = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
                     headers: {
                         Authorization: `Bearer ${tokenResponse.access_token}`,
                     },
                 });
+
+                if (!res.ok) {
+                    const errorData = await res.json().catch(() => ({}));
+                    console.error('Google UserInfo Error:', errorData);
+                    throw new Error(`Failed to fetch profile: ${res.status} ${res.statusText}`);
+                }
+
                 const profile = await res.json();
                 
                 // Check if returning user
@@ -30,7 +42,9 @@ export default function LoginScreen({ onLogin }) {
                         if (storedUser && storedUser.id === profile.sub) {
                             isNewUser = false;
                         }
-                    } catch(e) {}
+                    } catch(e) {
+                        console.warn('Failed to parse stored user data:', e);
+                    }
                 }
 
                 onLogin({
@@ -42,15 +56,15 @@ export default function LoginScreen({ onLogin }) {
                     isGuest: false,
                 });
             } catch (err) {
-                console.error('Google Auth Error:', err);
-                setError('Failed to fetch profile from Google. Please try again.');
+                console.error('Google Auth Processing Error:', err);
+                setError(`Authentication Error: ${err.message || 'Failed to sync with the celestial records.'}`);
             } finally {
                 setLoading(false);
             }
         },
-        onError: (error) => {
-            console.error('Login Failed:', error);
-            setError('Google Sign-In failed. Please try again.');
+        onError: (errorResponse) => {
+            console.error('Google Login Hook Failed:', errorResponse);
+            setError('The resonance with Google failed. Please check your connection or try again later.');
         }
     });
 
