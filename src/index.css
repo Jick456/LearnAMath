@@ -1,10 +1,13 @@
 :root {
   /* Genshin Color Palette - Elemental & Celestial */
   --celestial-blue: #3b82f6;
+  --celestial-blue-low: rgba(59, 130, 246, 0.1);
   --primogem-purple: #a855f7;
   --emerald-green: #10b981;
+  --emerald-green-low: rgba(16, 185, 129, 0.1);
   --geo-gold: #fbbf24;
   --pyro-red: #ef4444;
+  --pyro-red-low: rgba(239, 68, 68, 0.1);
   
   /* Backgrounds & Surfaces */
   --bg-main: #f0f4f8;
@@ -69,19 +72,20 @@
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Light Mode (Default) --- */
+/* --- Light Mode (Default Teahouse) --- */
 :root, .light-mode {
-  --bg-main: #f0f4f8;
-  --bg-gradient: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+  --bg-main: #fcf9f2;
+  --bg-gradient: linear-gradient(135deg, #fdfaf5 0%, #f7f2ea 100%);
   
-  --surface: rgba(255, 255, 255, 0.72);
-  --surface-hover: rgba(255, 255, 255, 0.88);
-  --surface-border: rgba(251, 191, 36, 0.3);
-  --surface-glow: rgba(251, 191, 36, 0.15);
+  --surface: rgba(255, 255, 255, 0.85);
+  --surface-hover: rgba(255, 255, 255, 0.95);
+  --surface-border: rgba(139, 115, 85, 0.2);
+  --surface-glow: rgba(139, 115, 85, 0.1);
 
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --text-dark: #0f172a;
+  --text-main: #4a3e2e;
+  --text-muted: #8b7355;
+  --text-dark: #2d241c;
+  --surface-sub: rgba(0, 0, 0, 0.04);
   
   --sidebar-bg: linear-gradient(180deg, #fdfaf5 0%, #f7f2ea 100%);
   --sidebar-header-bg: #f8f5f0;
@@ -94,9 +98,9 @@
   --sidebar-item-active-bg: #556b2f;
   --sidebar-item-active-text: #ffffff;
   
-  --header-bg: rgba(255, 255, 255, 0.05);
-  --header-border: rgba(255, 255, 255, 0.1);
-  --header-text: #1e293b;
+  --header-bg: rgba(252, 249, 242, 0.85); /* More opaque teahouse color */
+  --header-border: rgba(139, 115, 85, 0.3);
+  --header-text: #4a3e2e;
 
   --secondary: #b89a68;
   --accent-warning: #947119;
@@ -115,7 +119,9 @@
   
   --text-main: #e8e2d8;
   --text-muted: #b8b0a0;
-  --text-dark: #ffffff;
+  --text-dark: #ffffff; /* Keep white for dark mode */
+
+  --surface-sub: rgba(255, 255, 255, 0.05); /* Subtle sub-panel for dark mode */
 
   --sidebar-bg: linear-gradient(180deg, #1a1612 0%, #0d0b09 100%);
   --sidebar-header-bg: #1e1a16;
@@ -138,43 +144,43 @@
 
 /* Thematic Background Classes */
 .theme-forest {
-  --bg-gradient: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
-}
-
-.dark-mode.theme-forest {
   --bg-gradient: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
 }
 
-.theme-glacier {
-  --bg-gradient: linear-gradient(135deg, #0c4a6e 0%, #082f49 100%);
+.dark-mode.theme-forest {
+  --bg-gradient: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
 }
 
-.dark-mode.theme-glacier {
+.theme-glacier {
   --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
 }
 
-.theme-abyss {
-  --bg-gradient: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
+.dark-mode.theme-glacier {
+  --bg-gradient: linear-gradient(135deg, #0c4a6e 0%, #082f49 100%);
 }
 
-.dark-mode.theme-abyss {
+.theme-abyss {
   --bg-gradient: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
 }
 
-.theme-volcano {
-  --bg-gradient: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
+.dark-mode.theme-abyss {
+  --bg-gradient: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
 }
 
-.dark-mode.theme-volcano {
+.theme-volcano {
   --bg-gradient: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
 }
 
+.dark-mode.theme-volcano {
+  --bg-gradient: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
+}
+
 .theme-sky {
-  --bg-gradient: linear-gradient(135deg, #4c1d95 0%, #2e1065 100%);
+  --bg-gradient: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
 }
 
 .dark-mode.theme-sky {
-  --bg-gradient: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  --bg-gradient: linear-gradient(135deg, #4c1d95 0%, #2e1065 100%);
 }
 
 *,
@@ -248,8 +254,8 @@ body::after {
 }
 
 .dark-mode body::after {
-  background: radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
-              radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 40%);
+  background: radial-gradient(circle at 20% 30%, rgba(139, 115, 85, 0.15) 0%, transparent 40%),
+              radial-gradient(circle at 80% 70%, rgba(184, 154, 104, 0.1) 0%, transparent 40%);
   animation: aurora-glow 15s infinite alternate ease-in-out;
   filter: blur(60px);
 }
@@ -284,12 +290,16 @@ h6 {
   text-transform: uppercase;
   letter-spacing: -0.05em;
   line-height: 0.9;
+  color: var(--text-dark);
+  position: relative;
+}
+
+.dark-mode .premium-heading {
   background: linear-gradient(180deg, #ffffff 0%, #d1d5db 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
-  position: relative;
 }
 
 .premium-heading::after {

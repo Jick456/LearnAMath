@@ -136,7 +136,7 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
                                 <FormatMathText text={item.question.text} />
                             </div>
 
-                            <div className="p-4 mb-6 rounded-xl bg-white/5 border border-white/10">
+                            <div className="p-4 mb-6 rounded-xl bg-[var(--surface-sub)] border border-[var(--surface-border)]">
                                 <div style={{ color: item.isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)', fontWeight: 'bold', marginBottom: 'var(--space-2)' }}>
                                     Scholar Input: <FormatMathText text={item.question.options[item.selectedOption]} />
                                 </div>
@@ -147,7 +147,7 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
                                 )}
                             </div>
 
-                            <div className="p-6 bg-blue-500/5 rounded-2xl border border-blue-500/20">
+                            <div className="p-6 bg-[var(--surface-sub)] rounded-2xl border border-[var(--surface-border)]">
                                 <h4 style={{ color: 'var(--celestial-blue)', fontSize: '1.1rem', marginBottom: 'var(--space-2)', fontWeight: 800, textTransform: 'uppercase' }}>Celestial Insight:</h4>
                                 <FormatMathText text={item.question.explanation} />
                             </div>
@@ -247,16 +247,16 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
                         
                         if (phase === 'learning' && hasAnswered) {
                             if (idx === question.correctAnswer) {
-                                btnStyle = { ...btnStyle, background: 'var(--emerald-green)', color: 'white', borderColor: 'var(--emerald-green)', boxShadow: '0 0 25px var(--emerald-green)88' };
+                                btnStyle = { ...btnStyle, background: 'var(--emerald-green)', color: 'white', borderColor: 'var(--emerald-green)', boxShadow: '0 0 25px var(--emerald-green)' };
                                 labelColor = 'white';
                             } else if (idx === selectedOption) {
                                 btnStyle = { ...btnStyle, background: 'var(--pyro-red)', color: 'white', borderColor: 'var(--pyro-red)', opacity: 0.8 };
                                 labelColor = 'white';
                             } else {
-                                btnStyle = { ...btnStyle, opacity: 0.4, grayscale: 1 };
+                                btnStyle = { ...btnStyle, opacity: 0.4 };
                             }
                         } else if (idx === selectedOption) {
-                            btnStyle = { ...btnStyle, borderColor: 'var(--celestial-blue)', background: 'var(--celestial-blue)11', transform: 'scale(1.02)' };
+                            btnStyle = { ...btnStyle, borderColor: 'var(--celestial-blue)', background: 'var(--celestial-blue-low)', transform: 'scale(1.02)' };
                         }
 
                         return (
@@ -284,8 +284,8 @@ export default function QuestionInterface({ questionsObj, onComplete, onGainXp, 
                       animate={{ opacity: 1, y: 0 }}
                       className="mt-12 p-8 rounded-3xl relative overflow-hidden" 
                       style={{ 
-                        background: isCorrect ? 'var(--emerald-green)11' : 'var(--pyro-red)11',
-                        border: `2px solid ${isCorrect ? 'var(--emerald-green)33' : 'var(--pyro-red)33'}`
+                        background: isCorrect ? 'var(--emerald-green-low)' : 'var(--pyro-red-low)',
+                        border: `2px solid ${isCorrect ? 'var(--emerald-green-low)' : 'var(--pyro-red-low)'}`
                       }}
                     >
                         <h4 style={{ color: isCorrect ? 'var(--emerald-green)' : 'var(--pyro-red)', marginBottom: 'var(--space-2)', fontSize: '1.4rem', fontWeight: 900, textTransform: 'uppercase' }}>

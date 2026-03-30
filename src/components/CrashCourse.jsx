@@ -34,7 +34,7 @@ export default function CrashCourse({ topic, onSkip, onContinue }) {
                         }}>
                             {topic.emoji}
                         </div>
-                        <h2 className="glow-text mt-4" style={{ fontSize: '3.5rem', fontWeight: 900, textTransform: 'uppercase', color: 'var(--text-dark)' }}>{topic.title}</h2>
+                        <h2 className="glow-text mt-4" style={{ fontSize: '3.5rem', fontWeight: 900, textTransform: 'uppercase', color: 'var(--text-main)' }}>{topic.title}</h2>
                         <div className="w-24 h-1 mt-2 rounded-full" style={{ background: topic.color }} />
                     </div>
 
@@ -45,7 +45,7 @@ export default function CrashCourse({ topic, onSkip, onContinue }) {
                         <ConceptVisualizer topicId={topic.id} emoji={topic.emoji} />
                     </div>
 
-                    <div className="p-8 md:p-10 mb-12 text-left rounded-3xl bg-white/5 border border-white/10" style={{ boxShadow: 'inset 0 0 40px rgba(0,0,0,0.05)' }}>
+                    <div className="p-8 md:p-10 mb-12 text-left rounded-3xl bg-[var(--surface-sub)] border border-[var(--surface-border)]" style={{ boxShadow: 'inset 0 0 40px rgba(0,0,0,0.05)' }}>
                         <h4 className="mb-6 opacity-60 uppercase tracking-widest text-xs font-black">Celestial Principles</h4>
                         <div style={{ fontSize: '1.3rem', lineHeight: 1.8, color: 'var(--text-main)', fontWeight: 500 }}>
                             <FormatMathText text={topic.crashCourse} />

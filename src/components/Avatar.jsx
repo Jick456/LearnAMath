@@ -54,7 +54,8 @@ export default function Avatar({ level = 1, xp = 0, maxXp = 100, activeCharacter
 
                 {/* Permanent Pet Name Display */}
                 <div 
-                    className="absolute -bottom-8 left-1/2 -translate-x-1/2 py-1 px-4 bg-black/40 backdrop-blur-sm rounded-full border border-white/10 text-white font-bold whitespace-nowrap shadow-lg z-20 text-sm"
+                    className="absolute -bottom-8 left-1/2 -translate-x-1/2 py-1 px-4 backdrop-blur-sm rounded-full font-bold whitespace-nowrap shadow-lg z-20 text-sm"
+                    style={{ background: 'var(--surface)', border: '1px solid var(--surface-border)', color: 'var(--text-main)' }}
                 >
                     {petName}
                 </div>
@@ -68,7 +69,7 @@ export default function Avatar({ level = 1, xp = 0, maxXp = 100, activeCharacter
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 10 }}
                         className="glass-panel absolute top-[110%] p-6 z-[500] w-[350px] shadow-[0_30px_100px_rgba(0,0,0,0.5)]"
-                        style={{ border: '2px solid rgba(255,255,255,0.1)' }}
+                        style={{ border: '2px solid var(--surface-border)' }}
                     >
                         <h4 className="text-[10px] uppercase tracking-[4px] font-black opacity-40 mb-4 text-center">Bonded Companions</h4>
                         <div className="grid grid-cols-4 gap-4">
@@ -82,8 +83,8 @@ export default function Avatar({ level = 1, xp = 0, maxXp = 100, activeCharacter
                                             onSelectCharacter(char);
                                             setIsOptionsOpen(false);
                                         }}
-                                        className={`cursor-pointer p-2 rounded-xl transition-all hover:bg-white/10`}
-                                        style={isSelected ? { boxShadow: `0 0 0 3px ${char.color}`, borderRadius: '12px' } : {}}
+                                        className={`cursor-pointer p-2 rounded-xl transition-all`}
+                                        style={{ ...(isSelected ? { boxShadow: `0 0 0 3px ${char.color}`, borderRadius: '12px' } : {}), ':hover': { background: 'var(--surface-sub)' } }}
                                     >
                                         <img 
                                           src={charStage?.image} 

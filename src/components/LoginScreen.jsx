@@ -152,7 +152,7 @@ export default function LoginScreen({ onLogin }) {
                     </div>
                 )}
 
-                <div className="text-left mb-8 p-4 bg-white/5 rounded-xl cursor-pointer hover:bg-white/10 transition-colors"
+                <div className="text-left mb-8 p-4 bg-[var(--surface-sub)] border border-[var(--surface-border)] rounded-xl cursor-pointer hover:bg-[var(--surface-hover)] transition-colors"
                     onClick={() => {
                         setAgreed(!agreed);
                         if (!agreed) setError('');
@@ -202,10 +202,10 @@ export default function LoginScreen({ onLogin }) {
                     </button>
                     
                     <div className="flex gap-4 mt-2">
-                        <button onClick={handleExport} className="w-1/2 p-2 text-xs font-bold uppercase tracking-wider bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors">
+                        <button onClick={handleExport} className="w-1/2 p-2 text-xs font-bold uppercase tracking-wider bg-[var(--surface-sub)] border border-[var(--surface-border)] rounded-lg hover:bg-[var(--surface-hover)] transition-colors">
                             Export Progress
                         </button>
-                        <label className="w-1/2 p-2 text-xs font-bold uppercase tracking-wider bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-pointer text-center">
+                        <label className="w-1/2 p-2 text-xs font-bold uppercase tracking-wider bg-[var(--surface-sub)] border border-[var(--surface-border)] rounded-lg hover:bg-[var(--surface-hover)] transition-colors cursor-pointer text-center">
                             Import Progress
                             <input type="file" accept=".json" style={{ display: 'none' }} onChange={handleImport} />
                         </label>

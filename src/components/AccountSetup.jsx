@@ -28,7 +28,7 @@ export default function AccountSetup({ onComplete }) {
                             key={lvl.id}
                             className={`glass-panel p-8 text-center cursor-pointer transition-all duration-300 relative overflow-hidden group ${isActive ? 'scale-105' : 'hover:scale-102 opacity-70 hover:opacity-100'}`}
                             style={{ 
-                              border: isActive ? `3px solid ${lvl.color}` : '1px solid rgba(255,255,255,0.1)',
+                              border: isActive ? `3px solid ${lvl.color}` : '1px solid var(--surface-border)',
                               boxShadow: isActive ? `0 20px 60px ${lvl.color}33` : 'none'
                             }}
                             onClick={() => setSelectedLevel(lvl.id)}

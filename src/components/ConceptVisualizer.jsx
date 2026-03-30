@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const TrigonometryVisualizer = () => {
     return (
-        <div style={{ width: '100%', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: 'var(--radius-md)', padding: 'var(--space-4)' }}>
+        <div style={{ width: '100%', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'var(--surface-sub)', borderRadius: 'var(--radius-md)', padding: 'var(--space-4)' }}>
             <svg width="200" height="150" viewBox="0 0 200 150">
                 <motion.path
                     d="M 20 130 L 180 130 L 180 30 Z"

@@ -9,12 +9,12 @@ export default function MathDiagram({ type }) {
     };
 
     const svgStyle = {
-        background: 'rgba(15, 23, 42, 0.4)',
+        background: 'var(--surface-sub)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         borderRadius: '12px',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255,255,255,0.05)',
+        border: '1px solid var(--surface-border)',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
         padding: '1rem',
         maxWidth: '100%',
         height: 'auto'
@@ -90,7 +90,7 @@ export default function MathDiagram({ type }) {
                 {/* Top ellipse */}
                 <ellipse cx="100" cy="50" rx="60" ry="20" fill={fillColor} stroke={strokeColor} strokeWidth="2" />
                 {/* Bottom ellipse */}
-                <ellipse cx="100" cy="190" rx="60" ry="20" fill="rgba(15, 23, 42, 0.4)" stroke={strokeColor} strokeWidth="2" />
+                <ellipse cx="100" cy="190" rx="60" ry="20" fill={fillColor} stroke={strokeColor} strokeWidth="2" />
                 {/* Body lines */}
                 <line x1="40" y1="50" x2="40" y2="190" stroke={strokeColor} strokeWidth="2" />
                 <line x1="160" y1="50" x2="160" y2="190" stroke={strokeColor} strokeWidth="2" />

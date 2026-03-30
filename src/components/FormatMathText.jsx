@@ -102,7 +102,7 @@ export const FormatMathText = ({ text }) => {
                         if (currentAlertType === 'important') borderColor = 'var(--pyro-red)';
 
                         return (
-                            <div key={`line-${diagramIdx}-${idx}`} className="px-5 py-4 my-3 border-l-4 rounded-r-lg bg-black/20" style={{ borderColor }}>
+                            <div key={`line-${diagramIdx}-${idx}`} className="px-5 py-4 my-3 border-l-4 rounded-r-lg bg-[var(--surface-sub)]" style={{ borderColor }}>
                                 {currentAlertType && processLine === '' ? (
                                     <strong style={{ display: 'block', color: borderColor, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>
                                         {currentAlertType}
@@ -128,7 +128,7 @@ export const FormatMathText = ({ text }) => {
                             paddingBottom: processLine.trim() ? '1rem' : '0',
                             fontSize: '1.05rem',
                             letterSpacing: '0.01em',
-                            color: 'rgba(255,255,255,0.95)'
+                            color: 'var(--text-main)'
                         }}>
                             {parsed}
                         </div>

@@ -141,20 +141,20 @@ function MainApp() {
       {user && <Sidebar />}
       <div className={`flex-1 transition-all duration-300 ${user ? 'app-content-with-sidebar' : ''} container`} style={{ paddingBottom: 'var(--space-12)' }}>
         {user && (
-        <header className="flex justify-between items-center py-6 px-10 relative z-[2000]" style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)' }}>
+        <header className="flex justify-between items-center py-6 px-10 relative z-[2000]" style={{ borderBottom: '1px solid var(--header-border)', background: 'var(--header-bg)', backdropFilter: 'blur(10px)' }}>
           <div className="flex items-center gap-4 cursor-pointer" onClick={() => navigate('/home')}>
             <span className="glow-text font-black text-2xl tracking-[4px] uppercase">LearnAMaths</span>
           </div>
           
           <div className="flex gap-4 items-center">
             <button 
-              className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all"
+              className="w-10 h-10 rounded-full flex items-center justify-center border transition-all" style={{ background: 'var(--surface-sub)', borderColor: 'var(--surface-border)' }}
               onClick={toggleTheme}
             >
               {theme === 'dark' ? '☀️' : '🌙'}
             </button>
 
-            <div className="flex items-center gap-4 px-4 py-2 bg-black/40 rounded-2xl border border-white/10">
+            <div className="flex items-center gap-4 px-4 py-2 rounded-2xl border" style={{ background: 'var(--surface)', borderColor: 'var(--surface-border)' }}>
               <div className="relative">
                 {user.picture ? (
                   <img src={user.picture} alt={user.name} className="w-9 h-9 rounded-full border-2 border-geo-gold" />
@@ -193,7 +193,7 @@ function MainApp() {
               <div className="flex flex-col items-center gap-12 w-full max-w-[1000px] py-10" style={{ animation: 'fadeIn 0.7s ease' }}>
                 <div className="text-center relative">
                   <h2 className="premium-heading" data-text="Grasp Your Destiny" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', lineHeight: 1 }}>Grasp Your Destiny</h2>
-                  <p className="mt-6 opacity-80" style={{ fontSize: '1.25rem', maxWidth: '750px', margin: '1.5rem auto 0 auto', lineHeight: 1.6, fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
+                  <p className="mt-6" style={{ fontSize: '1.25rem', maxWidth: '750px', margin: '1.5rem auto 0 auto', lineHeight: 1.6, fontWeight: 500, color: 'var(--text-muted)' }}>
                     The shattered islands of mathematics awaits your resonance. Bond with celestial companions and mend the dissonant flows through pure logic.
                   </p>
                 </div>
@@ -222,7 +222,7 @@ function MainApp() {
                         <span>Axiom Resonance</span>
                         <span>{xp} / {maxXp}</span>
                       </div>
-                      <div className="progress-container h-3" style={{ background: 'rgba(255,255,255,0.05)' }}>
+                      <div className="progress-container h-3" style={{ background: 'var(--surface-sub)' }}>
                         <div className="progress-fill" style={{ width: `${(xp / maxXp) * 100}%`, background: 'var(--celestial-blue)' }} />
                       </div>
                     </div>
