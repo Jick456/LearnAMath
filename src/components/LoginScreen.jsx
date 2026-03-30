@@ -174,7 +174,7 @@ export default function LoginScreen({ onLogin }) {
                 <div className="flex flex-col gap-6">
                     <button
                         className="genshin-btn flex items-center justify-center gap-3 w-full"
-                        style={{ background: 'white', color: 'black', padding: '1.2rem', borderColor: 'transparent' }}
+                        style={{ background: 'var(--google-btn-bg, white)', color: 'var(--google-btn-text, black)', padding: '1.2rem', borderColor: 'var(--surface-border)' }}
                         onClick={() => {
                             if (!agreed) {
                                 setError('Consult the scroll of agreement first.');

@@ -101,6 +101,10 @@
   --header-bg: rgba(252, 249, 242, 0.85); /* More opaque teahouse color */
   --header-border: rgba(139, 115, 85, 0.3);
   --header-text: #4a3e2e;
+  
+  --google-btn-bg: #ffffff;
+  --google-btn-text: #1a1a1a;
+  --modal-overlay: rgba(0, 0, 0, 0.4);
 
   --secondary: #b89a68;
   --accent-warning: #947119;
@@ -137,6 +141,10 @@
   --header-bg: rgba(18, 16, 14, 0.6);
   --header-border: rgba(255, 255, 255, 0.05);
   --header-text: #e8e2d8;
+
+  --google-btn-bg: var(--surface-sub);
+  --google-btn-text: var(--text-main);
+  --modal-overlay: rgba(18, 16, 14, 0.85); /* Deep brown teahouse overlay */
 
   --secondary: #a88a58;
   --accent-warning: #b89a68;

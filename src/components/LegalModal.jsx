@@ -58,7 +58,8 @@ You may request to dissolve your resonance at any time ("The Right to Fade").
             <motion.div 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
-                className="absolute inset-0 bg-black/80 backdrop-blur-md"
+                className="absolute inset-0 backdrop-blur-md"
+                style={{ background: 'var(--modal-overlay)' }}
                 onClick={onClose}
             />
 
@@ -70,8 +71,8 @@ You may request to dissolve your resonance at any time ("The Right to Fade").
             >
                 {/* Scroll Header */}
                 <div 
-                  className="p-10 text-center relative border-b border-white/10"
-                  style={{ background: 'linear-gradient(to bottom, rgba(251, 191, 36, 0.1), transparent)' }}
+                  className="p-10 text-center relative border-b"
+                  style={{ background: 'linear-gradient(to bottom, rgba(251, 191, 36, 0.1), transparent)', borderColor: 'var(--surface-border)' }}
                 >
                     <h2 className="glow-text text-4xl font-black uppercase tracking-[6px] mb-2">{content.title}</h2>
                     <p className="opacity-50 text-sm font-bold uppercase tracking-widest">{content.subtitle}</p>
@@ -85,7 +86,7 @@ You may request to dissolve your resonance at any time ("The Right to Fade").
                 </div>
 
                 {/* Footer */}
-                <div className="p-8 border-t border-white/10 flex justify-center">
+                <div className="p-8 border-t flex justify-center" style={{ borderColor: 'var(--surface-border)' }}>
                     <button className="genshin-btn px-20" onClick={onClose}>
                         Resonate & Close
                     </button>

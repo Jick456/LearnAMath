@@ -34,6 +34,34 @@ const generateStages = (icon, name) => [
     { levelThreshold: 10, image: icon, name: name }
 ];
 
+const COMMON_NAMES = [
+    "Unity Wisp", "Digit Sprite", "Prime Pebble", "Pixel Glint", "Summative Slime",
+    "Fractional Fin", "Binary Bee", "Pandan Puff", "Kaya Kitten", "Biscuit Bat",
+    "Cracker Crab", "Milo Mite", "Rusk Rabbit", "Prism Pup", "Sphere Snail",
+    "Angle Ant", "Grid Grasshopper", "Point Pixie", "Line Larva", "Segment Squirrel",
+    "Base Butterfly", "Digit Drake", "Ratio Rat", "Percent Prawn", "Decimal Deer",
+    "Mean Marmot", "Median Mole", "Mode Moth", "Range Raven", "Data Duck",
+    "Plot Platypus", "Scale Salamander", "Origin Otter", "Axis Axolotl", "Banded Bee",
+    "Tally Tiger", "Graph Goat", "Chart Cheetah", "Logic Lemur", "Proof Penguin",
+    "Set Swan", "Element Eel", "Union Unicorn", "Intersection Ibis", "Subset Seal",
+    "Universal Urchin", "Null Nightingale", "Finite Fox", "Infinite Inchworm", "Constant Crane",
+    "Variable Vulture", "Factor Falcon", "Multiple Mouse", "Product Parrot", "Quotient Quail",
+    "Remainder Robin"
+];
+
+const RARE_NAMES = [
+    "Algebraic Adder", "Geometric Griffin", "Calculus Cockatrice", "Trigonometric Triton", "Statistical Sphinx",
+    "Linear Lynx", "Quadratic Quetzal", "Exponential Eagle", "Logarithmic Leopard", "Polynomial Panther",
+    "Integral Iguana", "Derivative Dragon", "Matrix Manticore", "Vector Valkyrie", "Scalar Scorpion",
+    "Complex Chimera", "Imaginary Imp", "Rational Raptor", "Irrational Ibex", "Real Rhino",
+    "Natural Narcissus", "Integer Inugami"
+];
+
+const EPIC_NAMES = [
+    "Theorem Titan", "Axiom Archon", "Corollary Celestial", "Lemma Leviathan", "Hypothesis Hydra",
+    "Conjecture Colossus", "Paradox Phoenix", "Infinity Incarnate", "Entropy Ember", "Singularity Sovereign"
+];
+
 const expandedCharacters = [];
 
 // Distribution: 60 Common, 25 Rare, 12 Epic, 3 Legendary
@@ -56,13 +84,23 @@ baseCharacters.forEach(bc => {
 
 // Fill the rest to reach 100
 const rarityLevels = ['Common', 'Rare', 'Epic', 'Legendary'];
+const namesByRarity = {
+    Common: COMMON_NAMES,
+    Rare: RARE_NAMES,
+    Epic: EPIC_NAMES,
+    Legendary: []
+};
+
 rarityLevels.forEach(rarity => {
     const count = distribution[rarity];
     const icons = iconsByRarity[rarity];
+    const names = namesByRarity[rarity];
+    
     for (let i = 0; i < count; i++) {
         const icon = icons[i % icons.length];
         const id = `${rarity.toLowerCase()}_${i + 10}`;
-        const name = `${rarity} Pet #${i + 1}`;
+        const name = names[i] || `${rarity} Pet #${i + 1}`;
+        
         expandedCharacters.push({
             id,
             image: icon,
