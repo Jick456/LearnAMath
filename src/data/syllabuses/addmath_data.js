@@ -69,7 +69,7 @@ const addMathTopics = [
 - Before starting, if the top power (degree of numerator) $\\ge$ bottom power, you MUST forcefully perform Long Division first to extract the whole number polynomial.
 - **Linear factors**: $\\frac{1}{(x-a)(x-b)} = \\frac{A}{x-a} + \\frac{B}{x-b}$
 - **Repeated factors**: $\\frac{1}{(x-a)^2} = \\frac{A}{x-a} + \\frac{B}{(x-a)^2}$
-- **Quadratic factors**: $\\frac{1}{x^2+c} = \\frac{Ax+B}{x^2+c}$
+- **Non factorisable quadratic factors**: $\\frac{1}{x^2+c} = \\frac{Ax+B}{x^2+c}$
 
 > [!tip] **Exam Strategy**
 > Long Division is your safety net. Always check the highest exponent on the top vs bottom before decomposing into A, B, C fractions.`
