@@ -31,7 +31,7 @@ export function UserProgressProvider({ children }) {
     const [activeLevel, setActiveLevel] = useState(() => localStorage.getItem('learnamath_activeLevel') || 'Sec 1');
     const [userStream, setUserStream] = useState(() => localStorage.getItem('learnamath_userStream') || 'G3');
     const [difficulty, setDifficulty] = useState(() => localStorage.getItem('learnamath_difficulty') || 'medium');
-    const [theme, setTheme] = useState(() => localStorage.getItem('learnamath_theme') || 'dark');
+
 
     // Inventory State
     const [unlockedCharacters, setUnlockedCharacters] = useState(() => {
@@ -63,23 +63,14 @@ export function UserProgressProvider({ children }) {
         localStorage.setItem('learnamath_weaknesses', JSON.stringify(weaknesses));
         localStorage.setItem('learnamath_activeLevel', activeLevel);
         localStorage.setItem('learnamath_userStream', userStream);
-        localStorage.setItem('learnamath_theme', theme);
+
         localStorage.setItem('learnamath_unlocked', JSON.stringify(unlockedCharacters));
         localStorage.setItem('learnamath_activeCharId', activeCharacter.id);
         localStorage.setItem('learnamath_difficulty', difficulty);
         localStorage.setItem('learnamath_gachaPity', gachaPity);
-    }, [user, xp, level, weaknesses, activeLevel, userStream, theme, unlockedCharacters, activeCharacter, gachaPity, difficulty]);
+    }, [user, xp, level, weaknesses, activeLevel, userStream, unlockedCharacters, activeCharacter, gachaPity, difficulty]);
 
-    useEffect(() => {
-        document.body.classList.remove('dark-mode', 'light-mode');
-        if (theme === 'dark') {
-            document.body.classList.add('dark-mode');
-        } else {
-            document.body.classList.add('light-mode');
-        }
-    }, [theme]);
 
-    const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
 
     const login = (newUser) => {
         if (user && user.id !== newUser.id) {
@@ -178,7 +169,7 @@ export function UserProgressProvider({ children }) {
         activeLevel, setActiveLevel,
         userStream, setUserStream,
         difficulty, setDifficulty,
-        theme, toggleTheme,
+
         unlockedCharacters, activeCharacter, setActiveCharacter, claimCharacter,
         showReward, setShowReward, rewardData, setRewardData,
         gachaPity, setGachaPity

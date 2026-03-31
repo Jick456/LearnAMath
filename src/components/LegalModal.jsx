@@ -83,7 +83,7 @@ You may request to dissolve your resonance at any time ("The Right to Fade").
 
                 {/* Scroll Body */}
                 <div className="p-10 overflow-y-auto custom-scrollbar flex-grow text-left">
-                    <div className="prose prose-invert max-w-none opacity-80 leading-relaxed font-medium">
+                    <div className="prose max-w-none opacity-80 leading-relaxed font-medium">
                         <FormatMathText text={content.text} />
                     </div>
                 </div>

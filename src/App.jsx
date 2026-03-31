@@ -28,8 +28,8 @@ import ErrorBoundary from './components/ErrorBoundary';
 import 'katex/dist/katex.min.css';
 
 function MainApp() {
-  const {
-    user, setUser, login, logout, xp, level, maxXp, theme, toggleTheme,
+    const {
+    user, setUser, login, logout, xp, level, maxXp,
     unlockedCharacters, activeCharacter, setActiveCharacter, claimCharacter,
     activeLevel, setActiveLevel, userStream, setUserStream,
     weaknesses, gainXp, markWeakness, resolveWeakness,
@@ -56,12 +56,7 @@ function MainApp() {
   }, [viewMode, selectedTopic]);
 
   const activeTopicObj = selectedTopic && selectedTopic !== 'weaknesses' ? topics.find(t => t.id === selectedTopic) : null;
-
   useEffect(() => {
-    // Clear old theme classes first
-    document.body.classList.remove('light-mode', 'dark-mode');
-    document.body.classList.add(theme === 'light' ? 'light-mode' : 'dark-mode');
-
     // Remove any existing theme- classes
     const classes = Array.from(document.body.classList);
     classes.forEach(cls => {
@@ -73,7 +68,7 @@ function MainApp() {
     if (activeTopicObj?.themeClass && (viewMode === '/story' || viewMode === '/crashcourse' || viewMode === '/questions')) {
       document.body.classList.add(activeTopicObj.themeClass);
     }
-  }, [activeTopicObj, viewMode, theme]);
+  }, [activeTopicObj, viewMode]);
 
   const handleLogin = (loggedInUser) => {
     login(loggedInUser);
@@ -148,12 +143,7 @@ function MainApp() {
           </div>
           
           <div className="flex gap-4 items-center">
-            <button 
-              className="w-10 h-10 rounded-full flex items-center justify-center border transition-all" style={{ background: 'var(--surface-sub)', borderColor: 'var(--surface-border)' }}
-              onClick={toggleTheme}
-            >
-              {theme === 'dark' ? '☀️' : '🌙'}
-            </button>
+
 
             <div className="flex items-center gap-4 px-4 py-2 rounded-2xl border" style={{ background: 'var(--surface)', borderColor: 'var(--surface-border)' }}>
               <div className="relative">
