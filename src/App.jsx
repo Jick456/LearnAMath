@@ -9,6 +9,7 @@ import LoginScreen from './components/LoginScreen';
 import AccountSetup from './components/AccountSetup';
 import GuideCompanion from './components/GuideCompanion';
 import Sidebar from './components/Sidebar';
+import AdBanner from './components/AdBanner';
 import { topics, questions } from './data/questions';
 
 // Lazy loaded components for better performance
@@ -181,6 +182,15 @@ function MainApp() {
         </header>
       )}
 
+      {/* Site-Wide Top Ad Unit */}
+      <div className="flex justify-center w-full px-4 mt-6">
+        <AdBanner 
+          dataAdSlot="2345678901" // Placeholder for Top Banner
+          dataAdFormat="horizontal" 
+          fullWidth={true}
+        />
+      </div>
+
       <main className="flex flex-col items-center justify-center gap-6" style={{ minHeight: '70vh' }}>
         <ErrorBoundary>
           <Suspense fallback={<div className="flex justify-center items-center h-full"><div className="glow-text" style={{ fontSize: '1.5rem' }}>Loading Axioms...</div></div>}>
@@ -292,6 +302,15 @@ function MainApp() {
             </Routes>
           </Suspense>
         </ErrorBoundary>
+
+        {/* Site-Wide Bottom Ad Unit */}
+        <div className="flex justify-center w-full px-4 mt-12 mb-6">
+          <AdBanner 
+            dataAdSlot="3456789012" // Placeholder for Bottom Banner
+            dataAdFormat="horizontal" 
+            fullWidth={true}
+          />
+        </div>
       </main>
 
       <footer className="mt-auto py-12 border-t border-white/10 text-center opacity-40 text-xs font-bold uppercase tracking-[4px]">

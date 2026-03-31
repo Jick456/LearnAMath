@@ -42,13 +42,16 @@ We gather only what is necessary to sustain your journey:
 - **Resonance ID:** Name and email (via Google Login).
 - **Mastery Trace:** XP progress and domain completion.
 
-## 2. Using Your Essence
-To personalize your Path of Mastery and improve the accuracy of our Prophecies.
+## 3. Third-Party Scribes (AdSense)
+To sustain the Domain, we employ Google as a Third-Party Scribe (AdSense):
+- Google uses cookies to serve ads based on your prior visits to this or other domains.
+- Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to our site and/or other sites on the Internet.
+- You may opt out of personalized advertising by visiting [Ads Settings](https://www.google.com/settings/ads).
 
-## 3. Protection
+## 4. Protection
 Your essence is guarded by the highest celestial enchantments.
 
-## 4. Rights (PDPA)
+## 5. Rights (PDPA)
 You may request to dissolve your resonance at any time ("The Right to Fade").
     `
     };

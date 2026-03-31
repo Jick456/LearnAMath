@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUserProgress } from '../context/UserProgressContext';
 import { useNavigate, useLocation } from '../utils/router';
+import AdBanner from './AdBanner';
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -150,6 +151,14 @@ const Sidebar = () => {
                         </motion.div>
                     )}
                 </AnimatePresence>
+
+                {/* Sidebar Ad Unit - Visible to users logic */}
+                <div style={{ padding: '0 1rem', marginTop: '1rem' }}>
+                    <AdBanner 
+                        dataAdSlot="1234567890" 
+                        dataAdFormat="vertical" 
+                    />
+                </div>
             </div>
 
             <div style={{ marginTop: 'auto', padding: '1.5rem', borderTop: '1px solid var(--sidebar-border)', fontSize: '0.75rem', color: 'var(--sidebar-text-muted)', textAlign: 'center' }}>
