@@ -24,6 +24,7 @@ import genshinBg from './assets/images/genshin_bg.png';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from './utils/router';
 import { useUserProgress, UserProgressProvider } from './context/UserProgressContext';
 import ErrorBoundary from './components/ErrorBoundary';
+import { Analytics } from '@vercel/analytics/react';
 
 import 'katex/dist/katex.min.css';
 
@@ -139,7 +140,7 @@ function MainApp() {
         {user && (
         <header className="flex justify-between items-center py-6 px-10 relative z-[2000]" style={{ borderBottom: '1px solid var(--header-border)', background: 'var(--header-bg)', backdropFilter: 'blur(10px)' }}>
           <div className="flex items-center gap-4 cursor-pointer" onClick={() => navigate('/home')}>
-            <span className="glow-text font-black text-2xl tracking-[4px] uppercase">LearnAMaths</span>
+            <span className="glow-text font-black text-2xl tracking-[4px] uppercase">Learn A Math</span>
           </div>
           
           <div className="flex gap-4 items-center">
@@ -304,7 +305,7 @@ function MainApp() {
       </main>
 
       <footer className="mt-auto py-12 border-t border-white/10 text-center opacity-40 text-xs font-bold uppercase tracking-[4px]">
-        <p>© 2026 LearnAMaths | Masters of Mathematics</p>
+        <p>© 2026 Learn A Math | Masters of Mathematics</p>
         <div className="flex justify-center gap-8 mt-4">
           <button onClick={() => setLegalType('terms')} className="hover:text-geo-gold transition-colors underline cursor-pointer">Decree of Axiom</button>
           <button onClick={() => setLegalType('privacy')} className="hover:text-geo-gold transition-colors underline cursor-pointer">Veil of Shadows</button>
@@ -340,6 +341,7 @@ function App() {
     <BrowserRouter>
       <UserProgressProvider>
         <MainApp />
+        <Analytics />
       </UserProgressProvider>
     </BrowserRouter>
   );

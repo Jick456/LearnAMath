@@ -141,7 +141,7 @@ export default function LoginScreen({ onLogin }) {
                 <div className="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-geo-gold rounded-tl-xl" />
                 <div className="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-geo-gold rounded-br-xl" />
 
-                <h2 className="glow-text" style={{ fontSize: '3rem', fontWeight: 900, marginBottom: 'var(--space-2)' }}>LearnAMaths</h2>
+                <h2 className="glow-text" style={{ fontSize: '3rem', fontWeight: 900, marginBottom: 'var(--space-2)' }}>Learn A Math</h2>
                 <p style={{ color: 'var(--text-muted)', marginBottom: 'var(--space-8)', fontSize: '1.1rem', fontStyle: 'italic' }}>
                     Cast your Proofs and mend the shattered islands.
                 </p>

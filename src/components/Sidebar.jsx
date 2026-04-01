@@ -37,7 +37,7 @@ const Sidebar = () => {
     return (
         <aside className="tea-sidebar">
             <div className="tea-sidebar-header">
-                <h1 className="tea-sidebar-title">Tea & Axios</h1>
+                <h1 className="tea-sidebar-title">Learn A Math</h1>
                 <p className="tea-sidebar-subtitle">Mathematical Brew House</p>
             </div>
 
